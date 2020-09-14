@@ -6,7 +6,7 @@ const Landing = () => {
   return (
     <div className="Landing">
       <h1>KnOwRona</h1>
-      <h3>A PROJECT BY *CNSplitLogo goes here*</h3>
+      <h3>A PROJECT BY <img src='./cnsplit_logo_white.png' /></h3>
     </div>
   );
 }

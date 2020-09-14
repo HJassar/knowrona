@@ -8,6 +8,10 @@ import MainMenu from '../MainMenu/MainMenu';
 import Header from '../../components/Header/Header';
 import Footer from '../../components/Footer/Footer';
 import GeneratingQuiz from '../GeneratingQuiz/GeneratingQuiz';
+import About from '../About/About';
+import ContactUs from '../ContactUs/ContactUs';
+import Privacy from '../Privacy/Privacy';
+import TermsOfUse from '../TermsOfUse/TermsOfUse';
 
 const Main = () => {
   const [headerToggle, setHeaderToggle] = useState(false);
@@ -33,6 +37,10 @@ const Main = () => {
           </Route>
           <Route path='/mainmenu' component={MainMenu} />
           <Route path='/generatingquiz' component={GeneratingQuiz} />
+          <Route path='/about' component={About} />
+          <Route path='/contactus' component={ContactUs} />
+          <Route path='/privacy' component={Privacy} />
+          <Route path='/termsofuse' component={TermsOfUse} />
         </Switch>
         {footerToggle ? <Footer /> : null}
       </div>
