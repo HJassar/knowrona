@@ -1,0 +1,8 @@
+.footer-nav {
+    display: flex;
+}
+
+.footer-nav a {
+    color:white;
+    text-decoration: none;
+}
