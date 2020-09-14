@@ -27,13 +27,16 @@ const Main = () => {
     }, timer * 1000);
   }, []);
 
+  
+
   return (
     <Router>
       <div className="Main">
         {headerToggle ? <Header /> : null}
         <Switch>
           <Route exact path='/'>
-            {routerPath === 'mainmenu' ? <Redirect to='/mainmenu' /> : <Landing />}
+            {routerPath === 'mainmenu' ? <Redirect to='/mainmenu' /> : 
+             <Landing />}
           </Route>
           <Route path='/mainmenu' component={MainMenu} />
           <Route path='/generatingquiz' component={GeneratingQuiz} />
