@@ -23,7 +23,6 @@ const Main = () => {
     }, timer * 1000);
   }, []);
 
-  
   return (
     <Router>
       <div className="Main">
