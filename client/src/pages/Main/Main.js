@@ -12,6 +12,7 @@ import About from '../About/About';
 import ContactUs from '../ContactUs/ContactUs';
 import Privacy from '../Privacy/Privacy';
 import TermsOfUse from '../TermsOfUse/TermsOfUse';
+import Question from '../Question/Question';
 
 const Main = () => {
   const [headerToggle, setHeaderToggle] = useState(false);
@@ -26,8 +27,6 @@ const Main = () => {
       setRouterPath('mainmenu');
     }, timer * 1000);
   }, []);
-
-  
 
   return (
     <Router>
@@ -44,6 +43,7 @@ const Main = () => {
           <Route path='/contactus' component={ContactUs} />
           <Route path='/privacy' component={Privacy} />
           <Route path='/termsofuse' component={TermsOfUse} />
+          <Route path='/question' component={Question} />
         </Switch>
         {footerToggle ? <Footer /> : null}
       </div>
