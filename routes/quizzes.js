@@ -3,7 +3,7 @@ const   express     =   require("express")
         ,Question   =   require('../models/question')
         ,Quiz       =   require('../models/quiz');
 
-router.get("/", (req,res) => {
+router.get("/generate", (req,res) => {
     Question.aggregate([{ $sample: { size: 5 } }], (err, questions) => {
         if(err) {
             console.log("some error");

@@ -7,17 +7,20 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const mongoose = require('mongoose');
-const flash = require('flash');
-//models declarations
+
+//Models declarations
 Quiz = require('./models/quiz');
 Question = require('./models/question');
-//routes declarations
+
+//Routes declarations
 const indexRouter = require('./routes/index')
 const quizRouter = require('./routes/quizzes')
 const questionRouter = require('./routes/questions')
-//seeds declaration
+
+//Seeds declaration
 const seedDB = require('./seed');
-//value declarations
+
+//Value declarations
 const port = process.env.PORT || 5000;
 const ip = process.env.IP;
 const db = process.env.DB || "mongodb://localhost/knowrona";
