@@ -8,7 +8,7 @@ router.get("/generate", (req,res) => {
         if(err) {
             console.log("some error");
         } else {
-
+            
             res.json({questions: questions});
         }
     });
