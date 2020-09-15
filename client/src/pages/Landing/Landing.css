@@ -1,23 +1,44 @@
 .Landing {
-    box-sizing: border-box;
-    margin-top: 12%;
+    margin-top: 100px;
+    padding: 0;   
 }
 
 .Landing h1{
-  font-size: 5.5em;
-  padding: 0 10% 0;
+  font-size: 6em;
   letter-spacing: 10px;
   font-weight: 400;
   margin-bottom: 0;
 }
 
 .Landing h3{
-    font-size: 1.2em;
-    padding: 0 10% 0;
+    font-size: 1.2rem;
     font-weight: 300;
     letter-spacing: 4px;
 }
 
 .Landing img{
     max-width: 1.2em;
+}
+
+@media screen and (max-width: 800px) {
+    .Landing h1{
+        font-size: 3.7em;
+        letter-spacing: 10px;
+        font-weight: 400;
+        margin-bottom: 0;
+    }
+}
+
+@media screen and (max-width: 360px) {
+    .Landing h1{
+        font-size: 2.5em;
+        letter-spacing: 7px;
+        font-weight: 400;
+        margin-bottom: 0;
+    }
+    .Landing h3{
+        font-size: 0.8rem;
+        font-weight: 300;
+        letter-spacing: 3px;
+    }
 }
