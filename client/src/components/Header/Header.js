@@ -5,7 +5,8 @@ import './Header.css';
 const Header = () => {
   return (
     <div className="Header">
-      <h1>I'm the Header Component</h1>
+      <h1>KnowRona</h1>
+      <p>AvatarIcon Goes Here with Hamburger Menu</p>
     </div>
   );
 }
