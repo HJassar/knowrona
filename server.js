@@ -13,7 +13,7 @@ Quiz = require('./models/quiz');
 Question = require('./models/question');
 //routes declarations
 const indexRouter = require('./routes/index')
-const quizRouter = require('./routes/quiz')
+const quizRouter = require('./routes/quizzes')
 const questionRouter = require('./routes/questions')
 //seeds declaration
 const seedDB = require('./seed');
