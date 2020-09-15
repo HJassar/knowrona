@@ -5,14 +5,11 @@
     flex-direction: column;
     margin-top: 620px;  
     font-size:13px;
-
 }
-
 
 .footer-nav{
     display:flex;
     justify-content:center;
-
 }
 
 .footer-nav ul{
@@ -25,7 +22,7 @@
 
 
 .footer-nav ul a{
-    /* color: var(--on-primary); */
+   color: var(--on-primary);
    text-decoration:none;   
 }
 
@@ -57,5 +54,5 @@
        margin-top:15px;
        opacity:30%; 
        letter-spacing: 0.5px;
-   }
+}
 
