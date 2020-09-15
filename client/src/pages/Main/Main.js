@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Route, Switch, Redirect} from 'react-router-dom';
+import { Route, Switch, Redirect, useLocation } from 'react-router-dom';
 
 import './Main.css';
 
@@ -14,28 +14,37 @@ import Privacy from '../Privacy/Privacy';
 import TermsOfUse from '../TermsOfUse/TermsOfUse';
 import Question from '../Question/Question';
 
+
+
 const Main = () => {
   const [headerToggle, setHeaderToggle] = useState(false);
   const [footerToggle, setFooterToggle] = useState(false);
   const [routerPath, setRouterPath] = useState('');
 
+  let location = useLocation().pathname;
+  console.log(location.pathname);
+
+
   // Used to delay the start of the screen.  No fade effect yet.
   const timer = 3;
-  useEffect( () => {
-    setTimeout( () => {
+  useEffect(() => {
+    setTimeout(() => {
       setFooterToggle(true);
       setRouterPath('mainmenu');
     }, timer * 1000);
   }, []);
 
+
+
   return (
-    <Router>
-      <div className="Main">
-        {headerToggle ? <Header /> : null}
+    <div>
+      {location!=='/'? <Header />: null}
+      <main className="main">
+        
         <Switch>
           <Route exact path='/'>
-            {routerPath === 'mainmenu' ? <Redirect to='/mainmenu' /> : 
-             <Landing />}
+            {routerPath === 'mainmenu' ? <Redirect to='/mainmenu' /> :
+              <Landing />}
           </Route>
           <Route path='/mainmenu' component={MainMenu} />
           <Route path='/generatingquiz' component={GeneratingQuiz} />
@@ -45,10 +54,10 @@ const Main = () => {
           <Route path='/termsofuse' component={TermsOfUse} />
           <Route path='/question' component={Question} />
         </Switch>
-        {footerToggle ? <Footer /> : null}
+      </main>
+      {location!=='/'? <Footer />: null}
       </div>
-    </Router>
-    
+
   );
 }
 
