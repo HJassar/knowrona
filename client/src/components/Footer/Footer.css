@@ -1,4 +1,4 @@
-/* 
+
 
 .Footer{
     display:flex;
@@ -25,7 +25,7 @@
 
 
 .footer-nav ul a{
-    color: var(--on-primary);
+    /* color: var(--on-primary); */
    text-decoration:none;   
 }
 
@@ -58,4 +58,4 @@
        opacity:30%; 
        letter-spacing: 0.5px;
    }
- */
+
