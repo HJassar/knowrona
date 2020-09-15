@@ -5,16 +5,36 @@ if (process.env.NODE_ENV !== 'production') {
 
 const express = require('express');
 const app = express();
+const path = require('path');
 const port = process.env.PORT || 5000;
+const ip = process.env.IP;
 
 //Needed to make requests from front end to back end.
 const cors = require('cors');
 app.use(cors());
 
-app.get('/',(req,res,next)=>{
-    res.send('Great things are brewing!')
-});
 
-app.listen(port,()=>{
+// Setting up different routes
+const indexRouter = require('./routes/index')
+const quizRouter = require('./routes/quizzes')
+const questionRouter = require('./routes/questions')
+
+app.use(indexRouter)
+app.use('/quizzes',quizRouter)
+app.use('/questions',questionRouter)
+
+
+// Set up the react build directory as static in production
+// Good Explanation of what's going on here: https://www.youtube.com/watch?v=71wSzpLyW9k&t=328s
+if (process.env.NODE_ENV === 'production') {
+    app.use(express.static(path.join('client', 'build')));
+
+    app.get('*', (req, res) => {
+        // Using resolve here instead of join https://stackoverflow.com/questions/35048686/whats-the-difference-between-path-resolve-and-path-join
+        res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html')); 
+    })
+}
+
+app.listen(port, ip, () => {
     console.log('connected')
 })
