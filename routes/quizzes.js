@@ -1,8 +1,17 @@
-const express = require('express');
-const router = express.Router();
+const   express     =   require("express")
+        ,router     =   express.Router()
+        ,Question   =   require('../models/question')
+        ,Quiz       =   require('../models/quiz');
 
-router.get('/',(req,res)=>{
-    res.send('this is quizzes index')
+router.get("/", (req,res) => {
+    Question.aggregate([{ $sample: { size: 5 } }], (err, questions) => {
+        if(err) {
+            console.log("some error");
+        } else {
+
+            res.json({questions: questions});
+        }
+    });
 })
 
-module.exports = router;
+module.exports  =   router;
