@@ -25,9 +25,8 @@
 
 
 .footer-nav ul a{
-    color:#fff;
-   text-decoration:none; 
-      
+    color: var(--on-primary);
+   text-decoration:none;   
 }
 
 .footer-nav ul li{
