@@ -6,21 +6,38 @@ if (process.env.NODE_ENV !== 'production') {
 const express = require('express');
 const app = express();
 const path = require('path');
+const mongoose = require('mongoose');
+const flash = require('flash');
+//models declarations
+Quiz = require('./models/quiz');
+Question = require('./models/question');
+//routes declarations
+const indexRouter = require('./routes/index')
+const quizRouter = require('./routes/quiz')
+const questionRouter = require('./routes/questions')
+//seeds declaration
+const seedDB = require('./seed');
+//value declarations
 const port = process.env.PORT || 5000;
 const ip = process.env.IP;
+const db = process.env.DB || "mongodb://localhost/knowrona";
 
 //Needed to make requests from front end to back end.
 const cors = require('cors');
 app.use(cors());
 
+//avoiding deprecated warnings for mongoose
+mongoose.set('useNewUrlParser', true);
+mongoose.set('useUnifiedTopology', true);
+mongoose.set('useFindAndModify', false);
 
-// Setting up different routes
-const indexRouter = require('./routes/index')
-const quizRouter = require('./routes/quizzes')
-const questionRouter = require('./routes/questions')
+//mongoose connection
+mongoose.connect(db);
+
+seedDB();
 
 app.use(indexRouter)
-app.use('/quizzes',quizRouter)
+app.use('/quiz',quizRouter)
 app.use('/questions',questionRouter)
 
 
