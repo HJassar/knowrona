@@ -2,17 +2,17 @@ const mongoose = require("mongoose");
 
 const quizSchema = new mongoose.Schema(
 	{
-		questions : [
+		questions: [
 			{
-				id             : {
-					type : mongoose.Schema.Types.ObjectId,
-					ref  : "Question"
+				id: {
+					type: mongoose.Schema.Types.ObjectId,
+					ref: "Question"
 				},
-				points         : Number,
-				selectedChoice : String
+				points: Number,
+				selectedChoice: String
 			}
 		],
-		result    : Number
+		result: Number
 	},
 	{ timestamps: true }
 );

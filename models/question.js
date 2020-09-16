@@ -2,13 +2,13 @@ const mongoose = require("mongoose");
 
 const questionSchema = new mongoose.Schema(
 	{
-		stem        : String,
-		explanation : String,
-		choices     : [
+		stem: String,
+		explanation: String,
+		choices: [
 			{
-				text      : String,
-				isCorrect : Boolean,
-				counter   : Number
+				text: String,
+				isCorrect: Boolean,
+				counter: Number
 			}
 		]
 	},
