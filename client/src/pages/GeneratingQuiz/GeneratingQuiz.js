@@ -17,12 +17,12 @@ const GeneratingQuiz = () => {
   useEffect( () => {
     axios.get('/quiz/generate' || 'https://knoworona-staging.herokuapp.com/quiz/generate')
       .then(res => {
-        console.log(res.data.questions);
+        console.log(res)//.data.questions);
         // Below is the function call syntax to redefine the piece of state 'quizData'
-        setQuizData(res.data.questions);
+        // setQuizData(res.data.questions);
         // This sets the isLoaded state to true, so that the quiz question can 
         // conditionally render in this component.
-        setIsLoaded(true);
+        // setIsLoaded(true);
       }
       )
       .catch(err => console.log(err));
