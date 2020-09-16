@@ -1,0 +1,25 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+
+.MainMenu{
+    display:flex;
+    flex-direction:column;   
+ }
+
+
+ button{
+    align-self:center;
+    width:47vw;
+    margin-top:0.5em;
+    padding:0.4em;
+    font-family: 'Open Sans', sans-serif;
+    font-size:2.2vw;
+    letter-spacing:0.3em;
+    background: var(--primary);
+    color: var(--on-primary);
+    border-radius: 50px;
+    border: 0;
+    cursor: pointer;
+ }
+ 
