@@ -8,7 +8,7 @@
   /* calculating the width minus the padding on both sides */
   width: calc(100% - 20px);
 
-  max-width: 1024px;
+  max-width: 768px;
 
   /* Centering the main */
   margin: 0 auto;

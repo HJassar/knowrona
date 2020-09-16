@@ -1,6 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+
 body {
   background: black;
   color: white;
+  font-family: 'Open Sans', sans-serif;
 }
 
 .App {
@@ -13,21 +17,20 @@ img {
 }
 
 
+
+/* Since  */
 .primary-btn {
   width: 100%;
   margin-top: 0.5em;
   padding: 0.4em;
-
-  /* All the font-family is the same everywhere,*/
-  /* font-family: 'Open Sans', sans-serif; */
-
-  font-size: 1.1em;
+  font-size: 1.5em;
   letter-spacing: 0.3em;
   background: var(--primary);
   color: var(--on-primary);
   border-radius: 50px;
   border: 0;
   cursor: pointer;
+  font-weight: bold;
 
   /* comment the following line out and see how there's an ugly border around the button when clicked */
   outline: none;
