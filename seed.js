@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const Question = require("./models/question.js");
+const Quiz = require("./models/quiz.js");
 
 const questions = [
 	{
@@ -70,12 +71,20 @@ const questions = [
 
 const seedDB = async () => {
 	try {
-		await Question.deleteMany({});
-		console.log("Deleted questions");
+		await Question.deleteMany({},(err,questions)=>{
+			if(err) {return console.log(err);}
+			console.log("Deleted Old Questions");
+		});
+
+		await Quiz.deleteMany({},(err,quizzes)=>{
+			if(err) {return console.log(err);}
+			console.log("Deleted Old Quizzes");
+		});
 
 		for (const question of questions) {
-			await Question.create(question);
-			console.log("Created a question");
+			await Question.create({},(err,question)=>{
+				console.log(question._id+ " has been created");
+			});
 		}
 	} catch (err) {
 		console.log(err);
