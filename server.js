@@ -7,6 +7,7 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
 
 //Models declarations
 Quiz = require('./models/quiz');
@@ -39,6 +40,8 @@ mongoose.connect(databaseurl);
 
 //temporary sseding db with sample documents
 seedDB();
+
+app.use(bodyParser.urlencoded({extended: true}));
 
 //Creating routes shorthand
 app.use(indexRouter);
