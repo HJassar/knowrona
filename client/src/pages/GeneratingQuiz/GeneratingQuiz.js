@@ -11,7 +11,7 @@ const GeneratingQuiz = () => {
   const [questionIndex, setQuestionIndex] = useState(0);
 
   useEffect( () => {
-    axios.get('http://localhost:5000/quiz/generate' || 'https://knoworona-staging.herokuapp.com/quiz/generate')
+    axios.get('https://knoworona-staging.herokuapp.com/quiz/generate')
       .then(res => {
         console.log(res.data.questions);
         setQuizData(res.data.questions);
