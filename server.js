@@ -6,7 +6,7 @@ if (process.env.NODE_ENV !== 'production') {
 const express = require('express');
 const app = express();
 const path = require('path');
-// const mongoose = require('mongoose');
+const mongoose = require('mongoose');
 
 //Models declarations
 Quiz = require('./models/quiz');
@@ -18,7 +18,7 @@ const quizRouter = require('./routes/quizzes')
 const questionRouter = require('./routes/questions')
 
 //Seeds declaration
-// const seedDB = require('./seed');
+const seedDB = require('./seed');
 
 //Value declarations
 const port = process.env.PORT || 5000;
@@ -30,14 +30,14 @@ const cors = require('cors');
 app.use(cors());
 
 //avoiding deprecated warnings for mongoose
-// mongoose.set('useNewUrlParser', true);
-// mongoose.set('useUnifiedTopology', true);
-// mongoose.set('useFindAndModify', false);
+mongoose.set('useNewUrlParser', true);
+mongoose.set('useUnifiedTopology', true);
+mongoose.set('useFindAndModify', false);
 
 // //mongoose connection
-// mongoose.connect(db);
+mongoose.connect(db);
 
-// seedDB();
+seedDB();
 
 app.use(indexRouter)
 app.use('/quiz',quizRouter)
