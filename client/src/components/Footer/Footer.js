@@ -6,17 +6,26 @@ import './Footer.css';
 const Footer = () => {
   return (
     <div className="Footer">
-      <nav className="footer-nav">
-        <ul>
-          <li><Link to='about'>About</Link></li>
-          <li><Link to='contactus'>Contact Us</Link></li>
-          <li><Link to='privacy'>Privacy</Link></li>
-          <li><Link to='termsofuse'>Terms of Use</Link></li>
-          <li>A Project by <img src='./cnsplit_logo_white.png'></img> </li>
+      <nav className="Footer__nav">
+        <ul className="Footer__list">
+          <li className="Footer__list-item"><Link className="Footer__link" to='about'>About</Link></li>
+          <li className="Footer__list-item"><Link className="Footer__link" to='contactus'>Contact Us</Link></li>
+          <li className="Footer__list-item"><Link className="Footer__link" to='privacy'>Privacy</Link></li>
+          <li className="Footer__list-item"><Link className="Footer__link" to='termsofuse'>Terms of Use</Link></li>
+          <li className="Footer__list-item">
+            <a className="Footer__link Footer__cnsplit" href="https://cnsplit.com">
+              A Project by
+              <div className="Footer__cnsplit-logo">
+              <img src='./cnsplit_logo_white.png'></img>
+              </div>
+            </a>
+          </li>
         </ul>
       </nav>
-      <div className="copyrights">
-        <p>All rights reserved 2020 KnowRona</p>
+      <div className="Footer__copyrights">
+        <p className="Footer__copyright-text">
+          All rights reserved 2020 KnowRona
+        </p>
       </div>
     </div>
   );

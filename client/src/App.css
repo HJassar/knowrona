@@ -3,6 +3,10 @@ body{
   color: white;
 }
 
+img{
+  width: 100%;
+}
+
 .App {
   text-align: center;
 }
