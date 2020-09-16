@@ -1,12 +1,35 @@
-body{
+body {
   background: black;
   color: white;
 }
 
-img{
+.App {
+  text-align: center;
+  
+}
+
+img {
   width: 100%;
 }
 
-.App {
-  text-align: center;
+
+.primary-btn {
+  width: 100%;
+  margin-top: 0.5em;
+  padding: 0.4em;
+
+  /* All the font-family is the same everywhere,*/
+  /* font-family: 'Open Sans', sans-serif; */
+
+  font-size: 1.1em;
+  letter-spacing: 0.3em;
+  background: var(--primary);
+  color: var(--on-primary);
+  border-radius: 50px;
+  border: 0;
+  cursor: pointer;
+
+  /* comment the following line out and see how there's an ugly border around the button when clicked */
+  outline: none;
+
 }

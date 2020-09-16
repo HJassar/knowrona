@@ -1,18 +1,10 @@
 .Landing {
-    position: fixed;
+    /* position: fixed;
     left: 50%;
     top: 45%;
     transform: translate(-50%, -50%);
-    width: 80%;
+    width: 80%; */
 }
-
-.Landing h1{
-  font-size:  5em;
-  letter-spacing: 0.2em;
-  font-weight: 400;
-  margin: 0 auto;
-}
-
 
 /* Wrap h3 and img with a div, wrap the img with another div, and set the div that surrounds both the text and logo to display:flex; */
 
@@ -26,14 +18,14 @@
     max-width: 1.2em;
 }
 
-@media screen and (max-width: 768px) {
+/* @media screen and (max-width: 768px) {
     .Landing h1{
         font-size: 10vw;
     }
     .Landing h3{
         font-size: 6vw;
     }
-}
+} */
 
 /*
 @media screen and (max-width: 360px) {

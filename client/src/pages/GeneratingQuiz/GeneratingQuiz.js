@@ -4,6 +4,7 @@ import axios from 'axios';
 import './GeneratingQuiz.css';
 
 import Question from '../Question/Question';
+import BigLogo from '../../components/BigLogo/BigLogo';
 
 const GeneratingQuiz = () => {
   // useState is one of React's 'hooks', this one in particular stores data and the
@@ -42,7 +43,7 @@ const GeneratingQuiz = () => {
             />
             :
             <div>
-              <h1>KnOwRona</h1>
+              <BigLogo />
               <h2>Pulling the questions...</h2>
               <h4>Taking too long? you click here in 15 seconds</h4>
             </div>

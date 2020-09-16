@@ -18,7 +18,6 @@ import Question from '../Question/Question';
 
 const Main = () => {
   const [headerToggle, setHeaderToggle] = useState(false);
-  const [footerToggle, setFooterToggle] = useState(false);
   const [routerPath, setRouterPath] = useState('');
 
   let location = useLocation().pathname;
@@ -28,18 +27,25 @@ const Main = () => {
   const timer = 3;
   useEffect(() => {
     setTimeout(() => {
-      setFooterToggle(true);
       setRouterPath('mainmenu');
     }, timer * 1000);
+    
+    
+    if (['/', '/mainmenu', '/generatingquiz'].includes(location)) {
+      setHeaderToggle(false);
+    }else{
+      setHeaderToggle(true);
+    }
+
   }, []);
 
 
 
   return (
-    <div>
-      {location!=='/'? <Header />: null}
+    <div class="container">
+      {headerToggle? <Header /> : null}
       <main className="main">
-        
+
         <Switch>
           <Route exact path='/'>
             {routerPath === 'mainmenu' ? <Redirect to='/mainmenu' /> :
@@ -54,8 +60,8 @@ const Main = () => {
           <Route path='/question' component={Question} />
         </Switch>
       </main>
-      {location!=='/'? <Footer />: null}
-      </div>
+      {location !== '/' ? <Footer /> : null}
+    </div>
 
   );
 }

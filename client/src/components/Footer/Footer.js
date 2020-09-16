@@ -14,7 +14,7 @@ const Footer = () => {
           <li className="Footer__list-item"><Link className="Footer__link" to='privacy'>Privacy</Link></li>
           <li className="Footer__list-item"><Link className="Footer__link" to='termsofuse'>Terms of Use</Link></li>
           <li className="Footer__list-item">
-            <a className="Footer__link Footer__cnsplit" href="https://cnsplit.com">
+            <a className="Footer__link Footer__cnsplit" href="https://cnsplit.com" target="_blank">
               A Project by
               <div className="Footer__cnsplit-logo">
               <img src='./cnsplit_logo_white.png'></img>

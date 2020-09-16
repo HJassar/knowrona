@@ -1,4 +1,21 @@
-.main{
-    padding: 10px 0;
-    min-height: 60vh;
+.container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main {
+  /* calculating the width minus the padding on both sides */
+  width: calc(100% - 20px);
+
+  max-width: 1024px;
+
+  /* Centering the main */
+  margin: 0 auto;
+  
+  flex-grow: 1;
+  
+  justify-content: center;
+  padding: 30vh 10px 10px;
+
 }
