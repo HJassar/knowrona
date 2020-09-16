@@ -4,6 +4,7 @@ const   express     =   require("express")
         ,Quiz       =   require('../models/quiz');
 
 router.get("/generate", (req,res) => {
+    console.log('HITTING THE GENERATE QUIZ ROUTE');
     Question.aggregate([{ $sample: { size: 5 } }], (err, questions) => {
         if(err) {
             console.log("some error");
