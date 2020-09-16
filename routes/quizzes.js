@@ -5,12 +5,12 @@ const express = require("express")
 
 router.get("/generate", (req, res) => {
     console.log('HITTING THE GENERATE QUIZ ROUTE');
-    Question.aggregate([{ $sample: { size: 5 } }], (err, questions) => {
-        if (err) { return console.log(); }
-        res.send(
-            {question:"Hello Paul"}
-        )
-    });
+    res.send(
+        {question:"Hello Paul"}
+    )
+    // Question.aggregate([{ $sample: { size: 5 } }], (err, questions) => {
+    //     if (err) { return console.log(); }
+    // });
     // res.send('generated quiz')
 })
 

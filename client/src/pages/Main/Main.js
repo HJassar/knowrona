@@ -22,7 +22,6 @@ const Main = () => {
   const [routerPath, setRouterPath] = useState('');
 
   let location = useLocation().pathname;
-  console.log(location.pathname);
 
 
   // Used to delay the start of the screen.  No fade effect yet.

@@ -14,10 +14,10 @@ const GeneratingQuiz = () => {
   const [quizData, setQuizData] = useState([]);
   const [questionIndex, setQuestionIndex] = useState(0);
 
-  useEffect( () => {
-    axios.get('/quiz/generate' || 'https://knoworona-staging.herokuapp.com/quiz/generate')
+  useEffect(() => {
+    axios.get('/quiz/generate')
       .then(res => {
-        console.log(res)//.data.questions);
+        console.log(res.data.question);
         // Below is the function call syntax to redefine the piece of state 'quizData'
         // setQuizData(res.data.questions);
         // This sets the isLoaded state to true, so that the quiz question can 
@@ -32,20 +32,20 @@ const GeneratingQuiz = () => {
     <div className="GeneratingQuiz">
       <div className="generatingquiz-render">
         {
-          isLoaded ? 
-            <Question 
+          isLoaded ?
+            <Question
               //Below is prop declaration. Basically you are passing information from the current 'GeneratingQuiz' component to the child 'Question' component. By default, these will show up in the 'Question' component as prop.stem, prop.choice1, etc. However, you can descructure them out as is done in the 'Question' component.
               stem={quizData[questionIndex].stem}
               choice1={quizData[questionIndex].choices[0].text}
               choice2={quizData[questionIndex].choices[1].text}
               choice3={quizData[questionIndex].choices[2].text}
             />
-           : 
-          <div>
-            <h1>KnOwRona</h1>
-            <h2>Pulling the questions...</h2>
-            <h4>Taking too long? you click here in 15 seconds</h4>
-          </div>
+            :
+            <div>
+              <h1>KnOwRona</h1>
+              <h2>Pulling the questions...</h2>
+              <h4>Taking too long? you click here in 15 seconds</h4>
+            </div>
         }
       </div>
     </div>
