@@ -3,7 +3,7 @@ const router = express.Router();
 const Quiz = require('../models/quiz');
 
 router.post('/',(req,res)=>{
-    let quizData = someVar; //var received from front-end
+/*     let quizData = someVar; //var received from front-end
     let id;
     let selectedChoice;
     let isCorrect;
@@ -31,7 +31,7 @@ router.post('/',(req,res)=>{
         } else {
             res.json({ result: result });
         }
-    });
+    }); */
 })
 
 
