@@ -17,7 +17,7 @@ const Footer = () => {
             <a className="Footer__link Footer__cnsplit" href="https://cnsplit.com" target="_blank">
               A Project by
               <div className="Footer__cnsplit-logo">
-              <img src='./cnsplit_logo_white.png'></img>
+                <img src='./cnsplit_logo_white.png'></img>
               </div>
             </a>
           </li>

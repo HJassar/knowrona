@@ -18,18 +18,20 @@
 .Footer__list-item {
   padding: 0 0.5em;
 }
+
 .Footer__link {
   color: var(--on-primary);
   text-decoration: none;
   opacity: 0.3;
 }
+
 .Footer__link:hover {
   opacity: 1;
 }
 
-.Footer__cnsplit{
-    display: flex;
-    justify-content: center;
+.Footer__cnsplit {
+  display: flex;
+  justify-content: center;
 }
 
 .Footer__cnsplit-logo {

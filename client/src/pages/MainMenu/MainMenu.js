@@ -8,7 +8,7 @@ import './MainMenu.css';
 const MainMenu = () => {
 
   // Temporarily hiding the login button
-  const loginButtonStyle ={
+  const loginButtonStyle = {
     display: "none"
   }
 

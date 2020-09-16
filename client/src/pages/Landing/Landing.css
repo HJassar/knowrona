@@ -1,7 +1,8 @@
-.Landing{
-    animation: fade 1500ms forwards;
+.Landing {
+  animation: fade 1500ms forwards;
 
 }
+
 .Landing__project-by {
   font-size: 1.5rem;
   font-weight: 300;
@@ -11,6 +12,7 @@
   align-items: center;
   animation: fade 1500ms 2 alternate forwards;
 }
+
 .Landing__cnsplit-logo {
   width: 2rem;
   margin-left: 0.7em;
@@ -21,11 +23,13 @@
   0% {
     opacity: 0;
   }
+
   70%,
   100% {
     opacity: 1;
   }
 }
+
 /* @media screen and (max-width: 768px) {
     .Landing h1{
         font-size: 10vw;
