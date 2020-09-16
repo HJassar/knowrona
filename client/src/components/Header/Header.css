@@ -1,0 +1,15 @@
+.Header {
+  position: relative;
+}
+
+.Header__menu {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.Header__menu-button {
+  background: none;
+  color: var(--on-background);
+  text-decoration: none;
+}

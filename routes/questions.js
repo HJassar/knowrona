@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const Quiz = require('../models/quiz');
+const Question = require('../models/question');
+
 
 router.post('/',(req,res)=>{
     let quizData = someVar; //var received from front-end
@@ -33,6 +35,28 @@ router.post('/',(req,res)=>{
         }
     });
 })
+
+
+router.get('/quiz/:quizId/:questionId/:choiceId',(req,res)=>{
+    Question.find(questionId,(err,question)=>{
+        // question.choices.find(...)
+        // counter+1, quiz score, AnswerCorrect of one question is sent back to front, explanation
+    })
+})
+
+// Getting the question
+// /quiz/:quizId/:questionId
+// router.get('/quiz/:quizId/:questionId',(req,res)=>{
+//     const questionId = req.params.questionId;
+//     Question.findById(questionId,(err,question)=>{
+//         // choicesOnly
+
+//         const questionOnly = {
+//             stem: question.stem,
+//             choices: [...choices]
+//         }
+//     })
+// })
 
 
 

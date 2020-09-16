@@ -16,11 +16,10 @@ const MainMenu = () => {
     <div className="MainMenu">
       <BigLogo />
       <Link to='/generatingquiz'>
-        <button className="primary-btn">Generate a Quiz!
-        {/* AS GUEST */}
+        <button className="btn primary-btn">Generate a Quiz!
         </button>
       </Link>
-      <button className="primary-btn" style={loginButtonStyle}>LOGIN</button>
+      <button className="btn primary-btn" style={loginButtonStyle}>LOGIN</button>
     </div>
   );
 }

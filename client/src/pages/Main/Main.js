@@ -17,7 +17,7 @@ import Question from '../Question/Question';
 
 
 const Main = () => {
-  const [headerToggle, setHeaderToggle] = useState(false);
+  const [headerToggle, setHeaderToggle] = useState(true);
   const [routerPath, setRouterPath] = useState('');
 
   let location = useLocation().pathname;

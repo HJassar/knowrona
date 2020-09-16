@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
 
-
 body {
   background: black;
   color: white;
@@ -16,9 +15,12 @@ img {
   width: 100%;
 }
 
+.btn{
+  border:none;
+  outline: none;
+  cursor: pointer;
+}
 
-
-/* Since  */
 .primary-btn {
   width: 100%;
   margin-top: 0.5em;
@@ -28,11 +30,10 @@ img {
   background: var(--primary);
   color: var(--on-primary);
   border-radius: 50px;
-  border: 0;
-  cursor: pointer;
   font-weight: bold;
+  transition: 300ms;
+}
 
-  /* comment the following line out and see how there's an ugly border around the button when clicked */
-  outline: none;
-
+.primary-btn:hover{
+  transform: translateY(-3px);
 }
