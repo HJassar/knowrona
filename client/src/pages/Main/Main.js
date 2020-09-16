@@ -26,6 +26,7 @@ const Main = () => {
   // Used to delay the start of the screen.  No fade effect yet.
   const timer = 3;
   useEffect(() => {
+   
     setTimeout(() => {
       setRouterPath('mainmenu');
     }, timer * 1000);

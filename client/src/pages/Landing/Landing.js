@@ -5,10 +5,14 @@ import './Landing.css';
 
 const Landing = () => {
   return (
-    
+
     <div className="Landing">
       <BigLogo />
-      <h3>A PROJECT BY <img src='./cnsplit_logo_white.png' /></h3>
+      <div className='Landing__project-by'>A PROJECT BY
+        <div className='Landing__cnsplit-logo'>
+          <img src='./cnsplit_logo_white.png' />
+        </div>
+      </div>
     </div>
   );
 }
