@@ -71,19 +71,20 @@ const questions = [
 
 const seedDB = async () => {
 	try {
-		await Question.deleteMany({},(err,questions)=>{
-			if(err) {return console.log(err);}
+		await Question.deleteMany({}, (err, questions) => {
+			if (err) { return console.log(err); }
 			console.log("Deleted Old Questions");
 		});
 
-		await Quiz.deleteMany({},(err,quizzes)=>{
-			if(err) {return console.log(err);}
+		await Quiz.deleteMany({}, (err, quizzes) => {
+			if (err) { return console.log(err); }
 			console.log("Deleted Old Quizzes");
 		});
 
 		for (const question of questions) {
-			await Question.create({},(err,question)=>{
-				console.log(question._id+ " has been created");
+			await Question.create(question, (err, question) => {
+				if (err) { console.log("Error in inserting records"); }
+				console.log(question._id + " has been created");
 			});
 		}
 	} catch (err) {
