@@ -44,8 +44,11 @@ const GeneratingQuiz = () => {
             :
             <div>
               <BigLogo />
+              {/* added a div with class to fix the position in center */}
+               <div className="PullingQuiz">
               <h2>Pulling the questions...</h2>
               <h4>Taking too long? you click here in 15 seconds</h4>
+              </div>
             </div>
         }
       </div>
