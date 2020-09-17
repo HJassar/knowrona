@@ -17,10 +17,11 @@ import Question from '../Question/Question';
 
 
 const Main = () => {
-  const [headerToggle, setHeaderToggle] = useState(true);
+  const [headerToggle, setHeaderToggle] = useState(false);
   const [routerPath, setRouterPath] = useState('');
 
   let location = useLocation().pathname;
+
 
 
   // Used to delay the start of the screen.  No fade effect yet.
@@ -32,19 +33,18 @@ const Main = () => {
     }, timer * 1000);
 
 
-    if (['/', '/mainmenu', '/generatingquiz'].includes(location)) {
+    if (['/', '/mainMenu', '/generatingQuiz'].includes(location)) {
       setHeaderToggle(false);
     } else {
       setHeaderToggle(true);
     }
-
   }, []);
 
 
 
   return (
     <div class="container">
-      {headerToggle ? <Header /> : null}
+      <Header />
       <main className="main">
 
         <Switch>
