@@ -9,7 +9,7 @@ const Header = () => {
 
 
   return (
-    <div className="Header">
+    <header className="Header">
         {['/', '/mainmenu', '/generatingquiz'].includes(location) ? null : 
       <div className="Header__logo">
         <h1>KnowRona</h1>
@@ -22,7 +22,7 @@ const Header = () => {
          Main Menu
         </Link>
       </div>
-    </div>
+    </header>
   );
 }
 

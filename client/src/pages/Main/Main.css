@@ -2,20 +2,13 @@
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  margin: 0;
 }
 
 .main {
-  /* calculating the width minus the padding on both sides */
   width: calc(100% - 20px);
-
   max-width: 768px;
-
-  /* Centering the main */
   margin: 0 auto;
-
   flex-grow: 1;
-
-  justify-content: center;
-  padding: 20vh 10px 10px;
-
+  padding: 10px;
 }
