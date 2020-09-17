@@ -43,7 +43,7 @@ const Main = () => {
 
 
   return (
-    <div class="container">
+    <div className="container">
       {headerToggle ? <Header /> : null}
       <main className="main">
 
