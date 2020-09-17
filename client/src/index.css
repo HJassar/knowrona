@@ -13,6 +13,8 @@
   --on-surface: #000000;
   --on-sucess: #ffffff;
   --on-error: #ffffff;
+  /* Defaults */
+  --default-radius: 15px;
 }
 
 body {

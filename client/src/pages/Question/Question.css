@@ -1,32 +1,55 @@
 .Question {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    margin: 0;
-    font-size: 2.3vh;
-  }
+  /* Neither of these two are necessary */
+  /* display: flex;
+  flex-direction: column; */
 
-.Question__question {
-    background: white;
-    color: black;
-    border-radius:10px;
-    padding: 3%;
-    text-align: justify;
+  /* this is already configured site-wide */
+  /* margin: 0; */
+
+  /* already configured, but turn it on and see where the footer goes to... */
+  /* min-height: 100vh; */
+
+  /* absolutely don't use font size vh + don't change the size in a whole page, this gets configured in app.css -> body so that you can change the font-size site-wide */
+  /* font-size: 2.3vh; */
 }
 
-.Question__answer {
-    background: #a2001a;
-    color: #ffffff;
-    border-radius:10px;
-    text-align: justify;
-    padding: 3%;
-    /* min-height: 60px; */
-    margin-top: 0;
-    position: relative;
-    top: 0;  
-    transition: top ease 0.3s;
+.Question__stem {
+  /* We're using variables */
+  background: var(--surface);
+  color: var(--on-surface);
+  
+  /* Added another variable here */
+  border-radius: var(--default-radius);
+
+  /* remember when adding padding on the sides, you need to calculate the width accordingly, in this case, specifying the width is not needed*/
+  /* width: calc(100%-30px); */
+
+  /* Percentage in padding is not a good idea in general */
+  padding: 15px;
+  text-align: justify;
 }
 
-.Question__answer:hover {
-    top: -2px; 
+.Question__choice {
+  /* we're using variables */
+  background: var(--primary);
+  color: var(on-primary);
+  border-radius: var(--default-radius);
+  text-align: justify;
+  padding: 15px;
+  
+  /* Not necessary */
+  /* margin-top: 0; */
+  /* position: relative; */
+  /* top: 0; */
+
+  /* ease is the default, removed it. Make it a habit to use ms for short animations */
+  transition: 300ms;
+  /* Pay attention to the UX as well */
+  cursor: pointer;
+}
+
+.Question__choice:hover {
+  /* top: -2px;  */
+  /* In animations, use translate, it doesn't recalculate the DOM so: better performance. in some instances you might need the above, but if not needed go with the following */
+  transform: translateY(-3px);
 }
