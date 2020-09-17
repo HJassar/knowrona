@@ -35,24 +35,24 @@ const Main = () => {
   }, []);
 
   return (
-    <div className="container">
+    <div className='container'>
       {headerToggle ? <Header /> : null}
-      <main className="main">
+      <main className='main'>
         <Switch>
-          <Route exact path="/">
+          <Route exact path='/'>
             {routerPath === 'mainmenu' ? (
-              <Redirect to="/mainmenu" />
+              <Redirect to='/mainmenu' />
             ) : (
               <Landing />
             )}
           </Route>
-          <Route path="/mainmenu" component={MainMenu} />
-          <Route path="/generatingquiz" component={GeneratingQuiz} />
-          <Route path="/about" component={About} />
-          <Route path="/contactus" component={ContactUs} />
-          <Route path="/privacy" component={Privacy} />
-          <Route path="/termsofuse" component={TermsOfUse} />
-          <Route path="/question" component={Question} />
+          <Route path='/mainmenu' component={MainMenu} />
+          <Route path='/generatingquiz' component={GeneratingQuiz} />
+          <Route path='/about' component={About} />
+          <Route path='/contactus' component={ContactUs} />
+          <Route path='/privacy' component={Privacy} />
+          <Route path='/termsofuse' component={TermsOfUse} />
+          <Route path='/question' component={Question} />
         </Switch>
       </main>
       {location !== '/' ? <Footer /> : null}
