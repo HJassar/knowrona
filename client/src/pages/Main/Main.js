@@ -14,39 +14,33 @@ import Privacy from '../Privacy/Privacy';
 import TermsOfUse from '../TermsOfUse/TermsOfUse';
 import Question from '../Question/Question';
 
-
-
 const Main = () => {
-  const [headerToggle, setHeaderToggle] = useState(true);
+  const [headerToggle, setHeaderToggle] = useState(false);
   const [routerPath, setRouterPath] = useState('');
 
   let location = useLocation().pathname;
 
-
   // Used to delay the start of the screen.  No fade effect yet.
   const timer = 3;
   useEffect(() => {
-
     setTimeout(() => {
       setRouterPath('mainmenu');
     }, timer * 1000);
 
 
-    if (['/', '/mainmenu', '/generatingquiz'].includes(location)) {
+    if (['/', '/mainMenu', '/generatingQuiz'].includes(location)) {
       setHeaderToggle(false);
     } else {
       setHeaderToggle(true);
     }
-
   }, []);
 
 
 
   return (
     <div class="container">
-      {headerToggle ? <Header /> : null}
+      <Header />
       <main className="main">
-
         <Switch>
           <Route exact path='/'>
             {routerPath === 'mainmenu' ? <Redirect to='/mainmenu' /> :

@@ -10,7 +10,7 @@ const Landing = () => {
       <BigLogo />
       <div className='Landing__project-by'>A PROJECT BY
         <div className='Landing__cnsplit-logo'>
-          <img src='./cnsplit_logo_white.png' />
+          <img src='./cnsplit_logo_white.png' alt='' />
         </div>
       </div>
     </div>
