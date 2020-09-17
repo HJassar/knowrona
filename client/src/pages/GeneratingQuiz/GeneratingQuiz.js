@@ -1,4 +1,4 @@
-import React, { useEffect, useHistory, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
 import './GeneratingQuiz.css';
@@ -12,15 +12,15 @@ const GeneratingQuiz = () => {
   // The first one is the name of the piece of state you want, and the second is
   // the name of the function you use to set the value.  
   const [isLoaded, setIsLoaded] = useState(false);
-  const [quizData, setQuizData] = useState([]);
-  const [questionIndex, setQuestionIndex] = useState(0);
+  const [quizIds, setQuizIds] = useState([]);
+  // const [questionIndex, setQuestionIndex] = useState(0);
 
   useEffect(() => {
     axios.get('/quiz/generate')
       .then(res => {
         console.log(res.data.questions);
-        // Below is the function call syntax to redefine the piece of state 'quizData'
-        setQuizData(res.data.questions);
+        // Below is the function call syntax to redefine the piece of state 'quizIds'
+        setQuizIds(res.data.questions);
         // This sets the isLoaded state to true, so that the quiz question can 
         // conditionally render in this component.
         setIsLoaded(true);
@@ -36,10 +36,11 @@ const GeneratingQuiz = () => {
           isLoaded ?
             <Question
               //Below is prop declaration. Basically you are passing information from the current 'GeneratingQuiz' component to the child 'Question' component. By default, these will show up in the 'Question' component as prop.stem, prop.choice1, etc. However, you can descructure them out as is done in the 'Question' component.
-              stem={quizData[questionIndex].stem}
-              choice1={quizData[questionIndex].choices[0].text}
-              choice2={quizData[questionIndex].choices[1].text}
-              choice3={quizData[questionIndex].choices[2].text}
+                 quizIds={quizIds}
+              // stem={quizData[questionIndex].stem}
+              // choice1={quizData[questionIndex].choices[0].text}
+              // choice2={quizData[questionIndex].choices[1].text}
+              // choice3={quizData[questionIndex].choices[2].text}
             />
             :
             <div>

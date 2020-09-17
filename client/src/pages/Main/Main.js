@@ -14,20 +14,15 @@ import Privacy from '../Privacy/Privacy';
 import TermsOfUse from '../TermsOfUse/TermsOfUse';
 import Question from '../Question/Question';
 
-
-
 const Main = () => {
   const [headerToggle, setHeaderToggle] = useState(false);
   const [routerPath, setRouterPath] = useState('');
 
   let location = useLocation().pathname;
 
-
-
   // Used to delay the start of the screen.  No fade effect yet.
   const timer = 3;
   useEffect(() => {
-
     setTimeout(() => {
       setRouterPath('mainmenu');
     }, timer * 1000);
@@ -46,7 +41,6 @@ const Main = () => {
     <div class="container">
       <Header />
       <main className="main">
-
         <Switch>
           <Route exact path='/'>
             {routerPath === 'mainmenu' ? <Redirect to='/mainmenu' /> :

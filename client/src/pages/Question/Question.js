@@ -1,15 +1,16 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 
 import './Question.css';
 
-const Question = ({ stem, choice1, choice2, choice3 }) => {
+const Question = ({quizIds}) => {
 
   return (
     <div className="Question">
-      <p>{stem}</p>
+      {quizIds.map(question => <p key={question._id}>{question._id}</p>)}
+      {/* <p>{stem}</p>
       <p>{choice1}</p>
       <p>{choice2}</p>
-      <p>{choice3}</p>
+      <p>{choice3}</p> */}
     </div>
   );
 }
