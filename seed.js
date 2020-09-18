@@ -82,7 +82,7 @@ const seedDB = async () => {
 		});
 
 		for (const question of questions) {
-			await Question.create({},(err,question)=>{
+			await Question.create(question,(err,question)=>{
 				console.log(question._id+ " has been created");
 			});
 		}
