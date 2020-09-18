@@ -37,7 +37,6 @@ const HeaderLogo = () => {
           wRona
         </h1>
       </div>
-      ;
     </>
   );
 };

@@ -26,25 +26,25 @@ const Main = () => {
     setTimeout(() => {
       setRouterPath('mainmenu');
     }, timer * 1000);
-
-
-    if (['/', '/mainMenu', '/generatingQuiz'].includes(location)) {
-      setHeaderToggle(false);
-    } else {
-      setHeaderToggle(true);
-    }
   }, []);
 
-
+  const displayHeader = () => {
+    if (!['/', '/mainMenu', '/generatingQuiz'].includes(location)) {
+      return <Header />;
+    }
+  };
 
   return (
-    <div class="container">
-      <Header />
-      <main className="main">
+    <div class='container'>
+      {displayHeader()}
+      <main className='main'>
         <Switch>
           <Route exact path='/'>
-            {routerPath === 'mainmenu' ? <Redirect to='/mainmenu' /> :
-              <Landing />}
+            {routerPath === 'mainmenu' ? (
+              <Redirect to='/mainmenu' />
+            ) : (
+              <Landing />
+            )}
           </Route>
           <Route path='/mainmenu' component={MainMenu} />
           <Route path='/generatingquiz' component={GeneratingQuiz} />
@@ -57,8 +57,7 @@ const Main = () => {
       </main>
       {location !== '/' ? <Footer /> : null}
     </div>
-
   );
-}
+};
 
 export default Main;
