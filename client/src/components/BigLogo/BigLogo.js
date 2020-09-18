@@ -8,7 +8,7 @@ const BigLogo = () => {
     <div className='BigLogo'>
       <h1>Kn
         <div className='BigLogo__logo'>
-        <img src='./logo_white.png' />
+        <img src='/logo_white.png' />
         </div>
       wRona</h1>
     </div>
