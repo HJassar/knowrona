@@ -28,9 +28,7 @@ const Main = () => {
   }, []);
 
   const displayHeader = () => {
-    if (!['/', '/mainMenu', '/generatingquiz'].includes(location)) {
       return <Header />;
-    }
   };
 
   return (
