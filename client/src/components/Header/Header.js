@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 
 import './Header.css';
+import logo from '../../assets/logo_white.png';
 
 const Header = () => {
   let location = useLocation().pathname;
@@ -33,7 +34,7 @@ const HeaderLogo = () => {
         <h1>
           Kn
           <div className='Header__img'>
-            <img src='./logo_white.png' alt='Logo' />
+            <img src={logo} alt='Logo' />
           </div>
           wRona
         </h1>

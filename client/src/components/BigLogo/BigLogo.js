@@ -1,5 +1,5 @@
 import React from 'react';
-
+import logo from '../../assets/logo_white.png'
 import './BigLogo.css';
 
 const BigLogo = () => {
@@ -8,7 +8,7 @@ const BigLogo = () => {
       <h1>
         Kn
         <div className='BigLogo__logo'>
-          <img src='./logo_white.png' alt='Logo' />
+          <img src={logo} alt='Logo' />
         </div>
         wRona
       </h1>
