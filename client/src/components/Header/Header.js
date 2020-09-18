@@ -8,14 +8,19 @@ import './Header.css';
 
 const Header = () => {
   let location = useLocation().pathname;
+  const displayHeaderLogo = () => {
+    {
+      if (
+        !['/', '/mainmenu', '/generatingquiz', '/landing'].includes(location)
+      ) {
+        return <HeaderLogo />;
+      }
+    }
+  };
 
   return (
     <header className='Header'>
-      {['/', '/mainmenu', '/generatingquiz', '/landing'].includes(
-        location
-      ) ? null : (
-        <HeaderLogo />
-      )}
+      {displayHeaderLogo()}
       <div className='Header__menu'>
         <Link className='Header__menu-button' to='/mainmenu'>
           <FontAwesomeIcon icon={faBars} />
