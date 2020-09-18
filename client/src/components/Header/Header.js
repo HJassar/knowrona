@@ -18,7 +18,11 @@ const Header = () => {
     <header className="Header">
       {['/', '/mainmenu', '/generatingquiz'].includes(location) ? null :
         <div className="Header__logo">
-          <h1>KnowRona</h1>
+          <h1>Kn
+            <div className="Header__img">
+            <img src='./logo_white.png' />
+            </div>
+            wRona</h1>
         </div>
       }
       <div className="Header__menu">

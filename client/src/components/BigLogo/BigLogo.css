@@ -1,6 +1,12 @@
 .BigLogo {
   font-size: 1.5rem;
   letter-spacing: 1rem;
-  margin: 25vh auto 0;
+  margin: 20vh auto 0;
   font-weight: 100;
+}
+
+.BigLogo__logo{
+  display: inline-block;
+  width: 3rem;
+  margin-right: 0.5rem;
 }
