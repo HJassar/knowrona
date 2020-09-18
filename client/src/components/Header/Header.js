@@ -9,12 +9,8 @@ import './Header.css';
 const Header = () => {
   let location = useLocation().pathname;
   const displayHeaderLogo = () => {
-    {
-      if (
-        !['/', '/mainmenu', '/generatingquiz', '/landing'].includes(location)
-      ) {
-        return <HeaderLogo />;
-      }
+    if (!['/', '/mainmenu', '/generatingquiz', '/landing'].includes(location)) {
+      return <HeaderLogo />;
     }
   };
 
@@ -37,7 +33,7 @@ const HeaderLogo = () => {
         <h1>
           Kn
           <div className='Header__img'>
-            <img src='./logo_white.png' />
+            <img src='./logo_white.png' alt='Logo' />
           </div>
           wRona
         </h1>
