@@ -15,7 +15,6 @@ import TermsOfUse from '../TermsOfUse/TermsOfUse';
 import Question from '../Question/Question';
 
 const Main = () => {
-  const [headerToggle, setHeaderToggle] = useState(false);
   const [routerPath, setRouterPath] = useState('');
 
   let location = useLocation().pathname;
