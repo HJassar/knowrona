@@ -15,7 +15,6 @@ import TermsOfUse from '../TermsOfUse/TermsOfUse';
 import Question from '../Question/Question';
 
 const Main = () => {
-  const [headerToggle, setHeaderToggle] = useState(false);
   const [routerPath, setRouterPath] = useState('');
 
   let location = useLocation().pathname;
@@ -26,25 +25,23 @@ const Main = () => {
     setTimeout(() => {
       setRouterPath('mainmenu');
     }, timer * 1000);
-
-
-    if (['/', '/mainMenu', '/generatingQuiz'].includes(location)) {
-      setHeaderToggle(false);
-    } else {
-      setHeaderToggle(true);
-    }
   }, []);
 
-
+  const displayHeader = () => {
+      return <Header />;
+  };
 
   return (
-    <div class="container">
-      <Header />
-      <main className="main">
+    <div class='container'>
+      {displayHeader()}
+      <main className='main'>
         <Switch>
           <Route exact path='/'>
-            {routerPath === 'mainmenu' ? <Redirect to='/mainmenu' /> :
-              <Landing />}
+            {routerPath === 'mainmenu' ? (
+              <Redirect to='/mainmenu' />
+            ) : (
+              <Landing />
+            )}
           </Route>
           <Route path='/mainmenu' component={MainMenu} />
           <Route path='/generatingquiz' component={GeneratingQuiz} />
@@ -57,8 +54,7 @@ const Main = () => {
       </main>
       {location !== '/' ? <Footer /> : null}
     </div>
-
   );
-}
+};
 
 export default Main;

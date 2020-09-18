@@ -1,18 +1,19 @@
 import React from 'react';
 
-
 import './BigLogo.css';
 
 const BigLogo = () => {
   return (
     <div className='BigLogo'>
-      <h1>Kn
+      <h1>
+        Kn
         <div className='BigLogo__logo'>
-        <img src='/logo_white.png' />
+          <img src='./logo_white.png' alt='Logo' />
         </div>
-      wRona</h1>
+        wRona
+      </h1>
     </div>
   );
-}
+};
 
-export default BigLogo; 
+export default BigLogo;
