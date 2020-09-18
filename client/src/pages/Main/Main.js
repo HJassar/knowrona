@@ -32,7 +32,7 @@ const Main = () => {
   };
 
   return (
-    <div class='container'>
+    <div className='container'>
       {displayHeader()}
       <main className='main'>
         <Switch>

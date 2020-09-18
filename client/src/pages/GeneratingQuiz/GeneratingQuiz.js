@@ -18,7 +18,7 @@ const GeneratingQuiz = () => {
   useEffect(() => {
     axios.get('/quiz/generate')
       .then(res => {
-        console.log(res.data.questions);
+        console.log(res.data);
         // Below is the function call syntax to redefine the piece of state 'quizIds'
         setQuizIds(res.data.questions);
         // This sets the isLoaded state to true, so that the quiz question can 
