@@ -4,7 +4,6 @@ import axios from 'axios';
 
 import './GeneratingQuiz.css';
 
-import Question from '../Question/Question';
 import BigLogo from '../../components/BigLogo/BigLogo';
 import Quiz from '../Quiz/Quiz';
 

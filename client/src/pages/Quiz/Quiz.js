@@ -2,18 +2,25 @@ import React, { useState } from 'react';
 import axios from 'axios';
 
 import './Quiz.css';
-import Question from '../Question/Question';
+import Question from '../../components/Question/Question';
 import Explanation from '../../components/Explanation/Explanation';
+import NextButton from '../../components/NextButton/NextButton';
 
 const Quiz = ({ quizData }) => {
   const [correctChoiceId, setCorrectChoiceId] = useState('');
   const [explanationText, setExplanationText] = useState('');
+  const [questionIndex, setQuestionIndex] = useState(0);
+  const [isAnswered, setIsAnswered] = useState(false);
 
   const handleChoiceClick = (choiceId) => {
+    if (isAnswered) {
+      alert('You have already answered this question. Please click on the next button.');
+      return;
+    }
     console.log('choiceId:', choiceId);
     axios
       .get(
-        `/questions/quiz/${quizData.quizId}/${quizData.questions[0].id}/${choiceId}`
+        `/questions/quiz/${quizData.quizId}/${quizData.questions[questionIndex].id}/${choiceId}`
       )
       .then((res) => {
         console.log(res.data);
@@ -26,10 +33,21 @@ const Quiz = ({ quizData }) => {
           }
         });
         setExplanationText(res.data.explanation);
+        setIsAnswered(true);
       })
       .catch((err) => console.log(err));
   };
-
+  const handleNextClick = () => {
+    if (quizData.questions.length - 1 > questionIndex) {
+      setCorrectChoiceId('');
+      setExplanationText('');
+      setIsAnswered(false);
+      setQuestionIndex(questionIndex + 1);
+    } else {
+      //Create logic for sending to the results page
+      alert('sending you to the results page...');
+    }
+  }
   document.title = 'KnowRona | Quiz';
   return (
     <div className='Quiz'>
@@ -38,13 +56,19 @@ const Quiz = ({ quizData }) => {
         quizData={quizData}
         handleChoiceClick={handleChoiceClick}
         correctChoiceId={correctChoiceId}
-        // stem={quizData[questionIndex].stem}
-        // choice1={quizData[questionIndex].choices[0].text}
-        // choice2={quizData[questionIndex].choices[1].text}
-        // choice3={quizData[questionIndex].choices[2].text}
+        questionIndex={questionIndex}
       />
       {correctChoiceId ? (
-        <Explanation explanationText={explanationText} />
+        <div>
+          <div>
+            <Explanation explanationText={explanationText} />
+          </div>
+          <div>
+            <NextButton 
+              handleNextClick={handleNextClick}  
+            />
+          </div>
+        </div>
       ) : null}
     </div>
   );

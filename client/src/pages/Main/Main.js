@@ -12,7 +12,7 @@ import About from '../About/About';
 import ContactUs from '../ContactUs/ContactUs';
 import Privacy from '../Privacy/Privacy';
 import TermsOfUse from '../TermsOfUse/TermsOfUse';
-import Question from '../Question/Question';
+import Question from '../../components/Question/Question';
 import Quiz from '../Quiz/Quiz';
 
 const Main = () => {
