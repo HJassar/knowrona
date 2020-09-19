@@ -1,12 +1,18 @@
 .BigLogo {
   font-size: 1.5rem;
-  letter-spacing: 1rem;
   margin: 20vh auto 0;
-  font-weight: 100;
 }
 
 .BigLogo__logo{
   display: inline-block;
-  width: 3rem;
-  margin-right: 0.5rem;
+  width: 3rem; 
+}
+
+@media screen and (max-width: 576px){
+  .BigLogo{
+    font-size: 3vw;
+  }
+  .BigLogo__logo{
+    width: 6vw;
+  }
 }

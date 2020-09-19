@@ -9,7 +9,6 @@ body {
 
 .App {
   text-align: center;
-
 }
 
 img {
@@ -37,4 +36,11 @@ img {
 
 .primary-btn:hover{
   transform: translateY(-3px);
+}
+
+
+@media screen and (max-width: 576px){
+  .App{
+    font-size: 3vw;
+  }
 }

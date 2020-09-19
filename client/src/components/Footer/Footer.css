@@ -1,5 +1,5 @@
 .Footer {
-  font-size: 0.9rem;
+  font-size: 0.9em;
 }
 
 .Footer__nav {
@@ -43,7 +43,7 @@
 }
 
 .Footer__copyrights {
-  font-size: 0.8rem;
+  font-size: 0.8em;
 }
 
 .Footer__copyright-text {
