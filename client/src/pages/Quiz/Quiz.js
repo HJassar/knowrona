@@ -6,7 +6,7 @@ import Question from '../Question/Question';
 
 const Quiz = ({quizData}) => {
   const handleChoiceClick = (choiceId) => {
-    console.log('choiceId', choiceId);
+    console.log('choiceId:', choiceId);
     axios.get(`/questions/quiz/${quizData.quizId}/${quizData.questions[0].id}/${choiceId}`)
       .then(res => console.log(res.data))
       .catch(err => console.log(err));

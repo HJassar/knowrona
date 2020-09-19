@@ -6,7 +6,9 @@ const Question = ({quizData, handleChoiceClick}) => {
   // const lorem = 'Occaecat sit eiusmod pariatur esse. Et nulla cupidatat ex aliquip non elit dolor tempor nostrud nulla proident. Reprehenderit sit magna do et minim nulla laborum cupidatat cillum. Consequat aute exercitation ipsum occaecat elit eu nisi ea ex mollit id et est. Labore tempor laborum non culpa do est. Est eiusmod excepteur dolor sit occaecat cillum anim occaecat pariatur velit elit aliqua. Dolore dolor ea officia est ipsum cillum.'
   // const [stem,choice1,choice2,choice3] = [lorem,lorem,lorem,lorem]
   const handleClick = (e) => {
-    const choiceId = e.target.getAttribute('data-choice-id');
+    // dataset works with lowercase only
+    const choiceId = e.target.dataset.choiceid;
+    // const choiceId = e.target.getAttribute('data-choiceId')
     handleChoiceClick(choiceId);
   }
   return (
@@ -19,7 +21,7 @@ const Question = ({quizData, handleChoiceClick}) => {
             return <p 
               onClick={handleClick} 
               key={choice.choiceId}
-              data-choice-id={choice.choiceId}>
+              data-choiceid={choice.choiceId}>
               {choice.choiceText}
             </p>
           })}
