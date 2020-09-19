@@ -62,7 +62,7 @@ const questions = [
 		choices: [
 			{ text: "A sore throat", isCorrect: false, counter: 1 },
 			{ text: "A rash on yoyr skin", isCorrect: false, counter: 6 },
-			{ text: "Loosing your sense of smell or taste", isCorrect: false, counter: 15 }
+			{ text: "Loosing your sense of smell or taste", isCorrect: true, counter: 15 }
 		],
 		explanation:
 			"It’s losing your sense of smell or taste – or sometimes just a noticeable change in smell or taste. These are the three symptoms the government lists as ones which could require you to self-isolate: a high-temperature, a new persistent cough and the loss of smell or taste. Difficulty breathing, extreme tiredness, stomach pain and diarrhoea are among the other symptoms that have been associated with the virus, but these are usually present along with at least one of the main three symptoms."
