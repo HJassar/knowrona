@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 
 import './Question.css';
 
-const Question = ({quizData, handleChoiceClick, correctChoiceId}) => {
+const Question = ({ quizData, handleChoiceClick, correctChoiceId }) => {
   // const lorem = 'Occaecat sit eiusmod pariatur esse. Et nulla cupidatat ex aliquip non elit dolor tempor nostrud nulla proident. Reprehenderit sit magna do et minim nulla laborum cupidatat cillum. Consequat aute exercitation ipsum occaecat elit eu nisi ea ex mollit id et est. Labore tempor laborum non culpa do est. Est eiusmod excepteur dolor sit occaecat cillum anim occaecat pariatur velit elit aliqua. Dolore dolor ea officia est ipsum cillum.'
   // const [stem,choice1,choice2,choice3] = [lorem,lorem,lorem,lorem]
   const [selectedChoiceId, setSelectedChoiceId] = useState('');
@@ -14,54 +14,65 @@ const Question = ({quizData, handleChoiceClick, correctChoiceId}) => {
     // const choiceId = e.target.getAttribute('data-choiceId')
     setSelectedChoiceId(choiceId);
     handleChoiceClick(choiceId);
-  }
+  };
   let correctStyle = {
     backgroundColor: 'green'
-  }
+  };
   let incorrectStyle = {
     backgroundColor: 'red',
     textDecoration: 'line-through'
-  }
+  };
+
+  document.title = 'KnowRona | Question';
   return (
     <div className='Question'>
-      {!quizData ? <h1>PLEASE GO BACK TO MAIN MENU TO GENERATE A QUIZ</h1>
-        :
+      {!quizData ? (
+        <h1>PLEASE GO BACK TO MAIN MENU TO GENERATE A QUIZ</h1>
+      ) : (
         <div>
           <p>{quizData.questions[0].stem}</p>
           {
             // WILL NEED TO REFACTOR THIS LOGIC INTO DRYER CODE IF ANYONE WANTS TO TAKE A SHOT
-            quizData.questions[0].choices.map(choice => {
+            quizData.questions[0].choices.map((choice) => {
               if (correctChoiceId === choice.choiceId) {
-                return <p
-                  style={correctStyle} 
-                  onClick={handleClick} 
-                  key={choice.choiceId}
-                  data-choiceid={choice.choiceId}>
-                  {choice.choiceText}
-                </p>
+                return (
+                  <p
+                    style={correctStyle}
+                    onClick={handleClick}
+                    key={choice.choiceId}
+                    data-choiceid={choice.choiceId}
+                  >
+                    {choice.choiceText}
+                  </p>
+                );
               } else if (choice.choiceId === selectedChoiceId) {
-                  return <p
+                return (
+                  <p
                     style={incorrectStyle}
-                    onClick={handleClick} 
+                    onClick={handleClick}
                     key={choice.choiceId}
-                    data-choiceid={choice.choiceId}>
+                    data-choiceid={choice.choiceId}
+                  >
                     {choice.choiceText}
                   </p>
+                );
               } else {
-                  return <p
-                    onClick={handleClick} 
+                return (
+                  <p
+                    onClick={handleClick}
                     key={choice.choiceId}
-                    data-choiceid={choice.choiceId}>
+                    data-choiceid={choice.choiceId}
+                  >
                     {choice.choiceText}
                   </p>
-                }
-              })
+                );
+              }
+            })
           }
         </div>
-      }
+      )}
     </div>
   );
-
-}
+};
 
 export default Question;
