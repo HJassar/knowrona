@@ -30,7 +30,7 @@ router.get('/generate', (req, res) => {
                     currentSession.questions.push(compactQuestion)
                 })
             })
-            console.log(currentSession)
+            // console.log(currentSession)
             res.send(currentSession)
         }
         pushing();

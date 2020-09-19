@@ -38,10 +38,13 @@ router.post('/',(req,res)=>{
 
 
 router.get('/quiz/:quizId/:questionId/:choiceId',(req,res)=>{
-    Question.find(questionId,(err,question)=>{
-        // question.choices.find(...)
-        // counter+1, quiz score, AnswerCorrect of one question is sent back to front, explanation
-    })
+    console.log('QUIZ ID: ', req.params.quizId);
+    console.log('QUESTION ID: ', req.params.questionId);
+    console.log('CHOICE ID: ', req.params.choiceId);
+    // Question.find(questionId,(err,question)=>{
+    //     // question.choices.find(...)
+    //     // counter+1, quiz score, AnswerCorrect of one question is sent back to front, explanation
+    // })
 })
 
 // Getting the question
