@@ -14,9 +14,13 @@ import Privacy from '../Privacy/Privacy';
 import TermsOfUse from '../TermsOfUse/TermsOfUse';
 import Question from '../../components/Question/Question';
 import Quiz from '../Quiz/Quiz';
+import Results from '../Results/Results';
 
 const Main = () => {
+  // State used to determine dynamic routing
   const [routerPath, setRouterPath] = useState('');
+  // State used to store data, may need to refactor it out of GeneratingQuiz at some point since it may be duplicating state.
+  const [quizData, setQuizData] = useState('');
 
   let location = useLocation().pathname;
 
@@ -32,25 +36,62 @@ const Main = () => {
       return <Header />;
   };
 
+  const renderPage = (path) => {
+    console.log('location: ', location);
+    setRouterPath(path);
+  }
+
+  const setQuizDataPassUp = (data) => {
+    setQuizData(data);
+  }
+
   return (
     <div className='container'>
       {displayHeader()}
       <main className='main'>
         <Switch>
           <Route exact path='/'>
-            {routerPath === 'mainmenu' ? (
+            { routerPath === 'mainmenu' ? (
               <Redirect to='/mainmenu' />
-            ) : (
+            ) : 
+            (
               <Landing />
             )}
           </Route>
+          <Route path='/results' component={Results} />
           <Route path='/mainmenu' component={MainMenu} />
-          <Route path='/generatingquiz' component={GeneratingQuiz} />
+          <Route 
+            path='/generatingquiz'
+            render={(props) => (
+              <GeneratingQuiz {...props}  
+                setQuizDataPassUp={setQuizDataPassUp} 
+              />
+            )}  
+          />
           <Route path='/about' component={About} />
           <Route path='/contactus' component={ContactUs} />
           <Route path='/privacy' component={Privacy} />
           <Route path='/termsofuse' component={TermsOfUse} />
-          <Route path='/quiz' component={Quiz} />
+          <Route exact path='/quiz'>
+            { routerPath === 'results' ? (
+              <Redirect to='/results' />
+            ) : 
+            ( 
+              <Quiz 
+                quizData={quizData}
+                renderPage={renderPage} 
+              />
+            )}
+          </Route>
+          <Route 
+            path='/quiz' 
+            render={(props) => (
+              <Quiz {...props} 
+                quizData={quizData}
+                renderPage={renderPage} 
+              />
+            )}
+          />
           <Route path='/question' component={Question} />
         </Switch>
       </main>

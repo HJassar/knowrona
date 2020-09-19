@@ -7,25 +7,23 @@ import './GeneratingQuiz.css';
 import BigLogo from '../../components/BigLogo/BigLogo';
 import Quiz from '../Quiz/Quiz';
 
-const GeneratingQuiz = () => {
+const GeneratingQuiz = ({ setQuizDataPassUp }) => {
   // useState is one of React's 'hooks', this one in particular stores data and the
   // below declarations are the standard syntax.  You declare an array of two values
   // The first one is the name of the piece of state you want, and the second is
   // the name of the function you use to set the value.
   const [isLoaded, setIsLoaded] = useState(false);
-  const [quizData, setQuizData] = useState([]);
-  // const [questionIndex, setQuestionIndex] = useState(0);
 
   useEffect(() => {
     axios
       .get('/quiz/generate')
       .then((res) => {
         console.log(res.data);
-        // Below is the function call syntax to redefine the piece of state 'quizData'
-        setQuizData(res.data);
         // This sets the isLoaded state to true, so that the quiz question can
         // conditionally render in this component.
         setIsLoaded(true);
+        // This lifts state up to the main page where it can be accessed by multiple components if need be.
+        setQuizDataPassUp(res.data);
       })
       .catch((err) => console.log(err));
   }, []);
@@ -35,7 +33,7 @@ const GeneratingQuiz = () => {
     <div className='GeneratingQuiz'>
       <div className='generatingquiz-render'>
         {isLoaded ? (
-          <Quiz quizData={quizData} />
+          <Redirect to='quiz' />
         ) : (
           <div>
             <BigLogo />

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Redirect } from 'react-router-dom';
 import axios from 'axios';
 
 import './Quiz.css';
@@ -6,7 +7,7 @@ import Question from '../../components/Question/Question';
 import Explanation from '../../components/Explanation/Explanation';
 import NextButton from '../../components/NextButton/NextButton';
 
-const Quiz = ({ quizData }) => {
+const Quiz = ({ quizData, renderPage }) => {
   const [correctChoiceId, setCorrectChoiceId] = useState('');
   const [explanationText, setExplanationText] = useState('');
   const [questionIndex, setQuestionIndex] = useState(0);
@@ -45,9 +46,10 @@ const Quiz = ({ quizData }) => {
       setQuestionIndex(questionIndex + 1);
     } else {
       //Create logic for sending to the results page
-      alert('sending you to the results page...');
+      renderPage('results');
     }
   }
+
   document.title = 'KnowRona | Quiz';
   return (
     <div className='Quiz'>
