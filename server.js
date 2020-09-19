@@ -39,7 +39,7 @@ mongoose.set('useFindAndModify', false);
 mongoose.connect(databaseurl);
 
 //temporary sseding db with sample documents
-seedDB();
+// seedDB();
 
 app.use(bodyParser.urlencoded({extended: true}));
 
