@@ -23,13 +23,14 @@ router.get('/generate', (req, res) => {
                         id: question._id,
                         stem: question.stem,
                         choices: question.choices.map(choice=>{
-                            return choice.text;
+                            return {choiceText: choice.text, choiceId: choice._id}
                         })
                     }
                     generatedQuiz.questions.push(question._id);
                     currentSession.questions.push(compactQuestion)
                 })
             })
+            console.log(currentSession)
             res.send(currentSession)
         }
         pushing();
