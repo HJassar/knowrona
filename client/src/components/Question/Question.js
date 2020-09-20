@@ -1,78 +1,109 @@
 import { faGreaterThanEqual } from '@fortawesome/free-solid-svg-icons';
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import axios from 'axios';
+
 
 import './Question.css';
+import { set } from 'mongoose';
 
-const Question = ({ quizData, handleChoiceClick, correctChoiceId, questionIndex}) => {
-  // const lorem = 'Occaecat sit eiusmod pariatur esse. Et nulla cupidatat ex aliquip non elit dolor tempor nostrud nulla proident. Reprehenderit sit magna do et minim nulla laborum cupidatat cillum. Consequat aute exercitation ipsum occaecat elit eu nisi ea ex mollit id et est. Labore tempor laborum non culpa do est. Est eiusmod excepteur dolor sit occaecat cillum anim occaecat pariatur velit elit aliqua. Dolore dolor ea officia est ipsum cillum.'
-  // const [stem,choice1,choice2,choice3] = [lorem,lorem,lorem,lorem]
+const Question = ({ quizData, questionIndex, isAnswered, setIsAnswered }) => {
+
+
   const [selectedChoiceId, setSelectedChoiceId] = useState('');
-  let choiceId;
+  const [correctChoiceId, setCorrectChoiceId] = useState('');
+  const [explanation, setExplanation] = useState('')
+  const [choices, setChoices] = useState([])
+
+
+  const handleChoiceClick = (choiceId) => {
+    setIsAnswered(true);
+    axios
+      .get(
+        `/questions/quiz/${quizData.quizId}/${quizData.questions[questionIndex].id}/${choiceId}`
+      )
+      .then((res) => {
+        console.log(res.data);
+
+        res.data.choices.map((choice) => {
+          if (choice.isCorrect === true) {
+            setCorrectChoiceId(choice.choiceId);
+          }
+        });
+        setExplanation(res.data.explanation);
+        // setIsAnswered(true);
+      })
+      .catch((err) => console.log(err));
+  };
+
   const handleClick = (e) => {
     // dataset works with lowercase only
-    choiceId = e.target.dataset.choiceid;
-    // const choiceId = e.target.getAttribute('data-choiceId')
+    // choiceId = e.target.dataset.choiceid;
+    const choiceId = e.target.getAttribute('id')
     setSelectedChoiceId(choiceId);
     handleChoiceClick(choiceId);
   };
-  let correctStyle = {
-    backgroundColor: 'green'
-  };
-  let incorrectStyle = {
-    backgroundColor: 'red',
-    textDecoration: 'line-through'
-  };
 
-  
-  return (
-    <div className='Question'>
-      {!quizData ? (
-        <h1>PLEASE GO BACK TO MAIN MENU TO GENERATE A QUIZ</h1>
-      ) : (
-        <div>
-          <p>{quizData.questions[questionIndex].stem}</p>
-          {
-            // WILL NEED TO REFACTOR THIS LOGIC INTO DRYER CODE IF ANYONE WANTS TO TAKE A SHOT
-            quizData.questions[questionIndex].choices.map((choice) => {
-              if (correctChoiceId === choice.choiceId) {
-                return (
-                  <p
-                    style={correctStyle}
-                    onClick={handleClick}
-                    key={choice.choiceId}
-                    data-choiceid={choice.choiceId}
-                  >
-                    {choice.choiceText}
-                  </p>
-                );
-              } else if (choice.choiceId === selectedChoiceId) {
-                return (
-                  <p
-                    style={incorrectStyle}
-                    onClick={handleClick}
-                    key={choice.choiceId}
-                    data-choiceid={choice.choiceId}
-                  >
-                    {choice.choiceText}
-                  </p>
-                );
-              } else {
-                return (
-                  <p
-                    onClick={handleClick}
-                    key={choice.choiceId}
-                    data-choiceid={choice.choiceId}
-                  >
-                    {choice.choiceText}
-                  </p>
-                );
-              }
-            })
+  if (quizData) {
+    let choices = quizData.questions[questionIndex].choices;
+    const stem = quizData.questions[questionIndex].stem;
+    // const choices = quizData.questions[questionIndex].choices;
+
+    const Choice = (props) => {
+
+      const ChoiceClasses = ['Question__choice']
+
+      if (isAnswered) {
+        if (selectedChoiceId !== '') {
+          ChoiceClasses.push('Question__choice--disabled');
+          console.log('selected ' + selectedChoiceId)
+          if (props.id === correctChoiceId) {
+            ChoiceClasses.push('Question__choice--correct')
           }
+
+          if (props.id !== correctChoiceId && props.id === selectedChoiceId) {
+            ChoiceClasses.push('Question__choice--incorrect')
+          }
+        }
+      }
+
+
+      console.log(isAnswered)
+      return (
+        <button
+          id={props.id}
+          key={props.id}
+          onClick={handleClick}
+          className={ChoiceClasses.join(' ')}
+          disabled={selectedChoiceId !== '' && isAnswered}
+
+        >
+          {props.text}
+        </button>
+      )
+    }
+
+    const choiceButtons = choices.map(choice => {
+      return (<Choice
+        text={choice.choiceText}
+        id={choice.choiceId}
+      />)
+    })
+
+    return (
+      <div>
+        <div className='Question__stem'>
+          {stem}
         </div>
-      )}
-    </div>
-  );
+        {choiceButtons}
+        <div>{isAnswered?explanation:null}</div>
+      </div>
+    )
+
+  } else {
+    return (<Link to='/generatingquiz'>generate</Link>)
+  }
+
 };
 
 export default Question;
