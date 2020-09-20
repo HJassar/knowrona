@@ -65,8 +65,7 @@
 }
 
 .Question__choice--disabled{
-  cursor: default;
-  
+  cursor: default; 
 }
 
 .Question__choice--correct {

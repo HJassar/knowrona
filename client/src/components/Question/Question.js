@@ -17,7 +17,6 @@ const Question = ({ quizData, questionIndex, isAnswered, setIsAnswered }) => {
 
 
   const handleChoiceClick = (choiceId) => {
-    setIsAnswered(true);
     axios
       .get(
         `/questions/quiz/${quizData.quizId}/${quizData.questions[questionIndex].id}/${choiceId}`
@@ -31,7 +30,7 @@ const Question = ({ quizData, questionIndex, isAnswered, setIsAnswered }) => {
           }
         });
         setExplanation(res.data.explanation);
-        // setIsAnswered(true);
+        setIsAnswered(true);
       })
       .catch((err) => console.log(err));
   };
@@ -54,8 +53,8 @@ const Question = ({ quizData, questionIndex, isAnswered, setIsAnswered }) => {
       const ChoiceClasses = ['Question__choice']
 
       if (isAnswered) {
+        ChoiceClasses.push('Question__choice--disabled');
         if (selectedChoiceId !== '') {
-          ChoiceClasses.push('Question__choice--disabled');
           console.log('selected ' + selectedChoiceId)
           if (props.id === correctChoiceId) {
             ChoiceClasses.push('Question__choice--correct')

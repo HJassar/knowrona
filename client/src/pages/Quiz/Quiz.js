@@ -4,7 +4,6 @@ import axios from 'axios';
 
 import './Quiz.css';
 import Question from '../../components/Question/Question';
-import Explanation from '../../components/Explanation/Explanation';
 import NextButton from '../../components/NextButton/NextButton';
 
 const Quiz = ({ quizData, renderPage }) => {
