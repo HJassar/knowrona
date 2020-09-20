@@ -17,7 +17,7 @@
   /* We're using variables */
   background: var(--surface);
   color: var(--on-surface);
-  
+
   /* Added another variable here */
   border-radius: var(--default-radius);
 
@@ -31,12 +31,13 @@
 
 .Question__choice {
   /* we're using variables */
-  background: var(--primary);
-  color: var(on-primary);
+  background-color: var(--primary);
+  /* background: white; */
+  color: var(--on-primary);
   border-radius: var(--default-radius);
   text-align: justify;
   padding: 15px;
-  
+
   /* Not necessary */
   /* margin-top: 0; */
   /* position: relative; */
@@ -52,4 +53,13 @@
   /* top: -2px;  */
   /* In animations, use translate, it doesn't recalculate the DOM so: better performance. in some instances you might need the above, but if not needed go with the following */
   transform: translateY(-3px);
+}
+
+.Question__right {
+  background-color: var(--success);
+}
+
+.Question__wrong {
+  background-color: var(--error);
+  text-decoration: line-through;
 }

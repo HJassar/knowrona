@@ -1,25 +1,25 @@
 // Use dotenv in development
-if (process.env.NODE_ENV !== 'production') {
-    require('dotenv').config();
+if (process.env.NODE_ENV !== "production") {
+  require("dotenv").config();
 }
 
-const express = require('express');
+const express = require("express");
 const app = express();
-const path = require('path');
-const mongoose = require('mongoose');
-const bodyParser = require('body-parser');
+const path = require("path");
+const mongoose = require("mongoose");
+const bodyParser = require("body-parser");
 
 //Models declarations
-Quiz = require('./models/quiz');
-Question = require('./models/question');
+Quiz = require("./models/quiz");
+Question = require("./models/question");
 
 //Routes declarations
-const indexRouter = require('./routes/index');
-const quizRouter = require('./routes/quizzes');
-const questionRouter = require('./routes/questions');
+const indexRouter = require("./routes/index");
+const quizRouter = require("./routes/quizzes");
+const questionRouter = require("./routes/questions");
 
 //Seeds declaration
-const seedDB = require('./seed');
+const seedDB = require("./seed");
 
 //Value declarations
 const port = process.env.PORT || 5000;
@@ -27,39 +27,38 @@ const ip = process.env.IP;
 const databaseurl = process.env.DATABASEURL || "mongodb://localhost/knowrona";
 
 //Needed to make requests from front end to back end.
-const cors = require('cors');
+const cors = require("cors");
 app.use(cors());
 
 //avoiding deprecated warnings for mongoose
-mongoose.set('useNewUrlParser', true);
-mongoose.set('useUnifiedTopology', true);
-mongoose.set('useFindAndModify', false);
+mongoose.set("useNewUrlParser", true);
+mongoose.set("useUnifiedTopology", true);
+mongoose.set("useFindAndModify", false);
 
 //mongoose connection
 mongoose.connect(databaseurl);
 
 //temporary sseding db with sample documents
-// seedDB();
+seedDB();
 
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.urlencoded({ extended: true }));
 
 //Creating routes shorthand
 app.use(indexRouter);
-app.use('/quiz', quizRouter);
-app.use('/questions', questionRouter);
-
+app.use("/quiz", quizRouter);
+app.use("/questions", questionRouter);
 
 // Set up the react build directory as static in production
 // Good Explanation of what's going on here: https://www.youtube.com/watch?v=71wSzpLyW9k&t=328s
-if (process.env.NODE_ENV === 'production') {
-    app.use(express.static(path.join('client', 'build')));
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join("client", "build")));
 
-    app.get('*', (req, res) => {
-        // Using resolve here instead of join https://stackoverflow.com/questions/35048686/whats-the-difference-between-path-resolve-and-path-join
-        res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
-    });
+  app.get("*", (req, res) => {
+    // Using resolve here instead of join https://stackoverflow.com/questions/35048686/whats-the-difference-between-path-resolve-and-path-join
+    res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
+  });
 }
 
 app.listen(port, ip, () => {
-    console.log('connected')
+  console.log("connected");
 });
