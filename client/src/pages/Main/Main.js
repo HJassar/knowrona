@@ -23,7 +23,8 @@ const Main = () => {
   const [routerPath, setRouterPath] = useState('');
   // State used to store data, may need to refactor it out of GeneratingQuiz at some point since it may be duplicating state.
   const [quizData, setQuizData] = useState('');
-  const[score, setScore] = useState(0);
+  const [score, setScore] = useState(0);
+  const [resultsText, setResultsText] = useState('DEFAULT');
 
   let location = useLocation().pathname;
 
@@ -50,9 +51,17 @@ const Main = () => {
 
   const setResultData = () => {
     axios.get(`/session/result/${quizData.quizId}`)
-      .then(res => setScore(res.data.result))
+      .then(res => {
+        setScore(res.data.result);
+        res.data.result === 100 ? setResultsText('PERFECT')
+        : res.data.result > 90 ? setResultsText('EXCELLENT')
+        : res.data.result > 80 ? setResultsText('GOOD JOB!')
+        : res.data.result > 70 ? setResultsText('NEED TO STUDY')
+        : res.data.result > 60 ? setResultsText('CNN/FOX NEWS MUCH?')
+        : setResultsText('UHM...');
+      }) 
       .catch(err => console.log(err));
-    console.log(quizData.quizId);
+      console.log(quizData.quizId);
   }
 
   return (
@@ -73,6 +82,7 @@ const Main = () => {
             render={(props) => (
               <Results {...props}
                 score={score}
+                resultsText={resultsText}
               />
             )}
           />
