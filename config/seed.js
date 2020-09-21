@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
-const Question = require("./models/question.js");
-const Quiz = require("./models/quiz.js");
+const Question = require("../models/question.js");
+const Quiz = require("../models/quiz");
 
 const questions = [
 	{
@@ -69,26 +69,29 @@ const questions = [
 	}
 ];
 
-const seedDB = async () => {
-	try {
-		// await Question.deleteMany({},(err,questions)=>{
-		// 	if(err) {return console.log(err);}
-		// 	console.log("Deleted Old Questions");
-		// });
-
-		await Quiz.deleteMany({},(err,quizzes)=>{
-			if(err) {return console.log(err);}
-			console.log("Deleted Old Quizzes");
-		});
-
-		// for (const question of questions) {
-		// 	await Question.create(question,(err,question)=>{
-		// 		console.log(question._id+ " has been created");
-		// 	});
-		// }
-	} catch (err) {
-		console.log(err);
-	}
-};
+const seedDB = () => {
+	Question.countDocuments({}, (err, count) => {
+		if (err) console.log(err);
+		if (count === 0) {
+			// Since the quizzes are dependent on the questions, it wouldn't make sense to have any, so let's clear the Quiz collection
+			Quiz.deleteMany({}, (err, deletedQuizes) => {
+				if (err) console.log(err);
+				console.log('All old quizzes have been deleted!')
+			});
+			// And seed!
+			try {
+				for (const question of questions) {
+					Question.create(question, (err, question) => {
+						console.log(question._id + " has been created");
+					});
+				}
+			} catch (err) {
+				console.log(err);
+			}
+		}else{
+			console.log('The database is not empty! Seeding has been skipped...')
+		}
+	})
+}
 
 module.exports = seedDB;

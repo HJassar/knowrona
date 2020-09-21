@@ -7,16 +7,17 @@ import axios from 'axios';
 import './Question.css';
 import { set } from 'mongoose';
 
-const Question = ({ quizData, questionIndex, isAnswered, setIsAnswered }) => {
-
+const Question = ({ quizData, questionIndex, isAnswered, setIsAnswered, disableClick, setDisableClick }) => {
 
   const [selectedChoiceId, setSelectedChoiceId] = useState('');
   const [correctChoiceId, setCorrectChoiceId] = useState('');
-  const [explanation, setExplanation] = useState('')
+  const [explanation, setExplanation] = useState('');
   const [choices, setChoices] = useState([])
 
 
   const handleChoiceClick = (choiceId) => {
+    setDisableClick(true)
+
     axios
       .get(
         `/questions/quiz/${quizData.quizId}/${quizData.questions[questionIndex].id}/${choiceId}`
@@ -52,8 +53,11 @@ const Question = ({ quizData, questionIndex, isAnswered, setIsAnswered }) => {
 
       const ChoiceClasses = ['Question__choice']
 
-      if (isAnswered) {
-        ChoiceClasses.push('Question__choice--disabled');
+      if (disableClick) {
+      ChoiceClasses.push('Question__choice--disabled');
+      }
+
+        if (isAnswered) {
         if (selectedChoiceId !== '') {
           console.log('selected ' + selectedChoiceId)
           if (props.id === correctChoiceId) {
@@ -67,14 +71,13 @@ const Question = ({ quizData, questionIndex, isAnswered, setIsAnswered }) => {
       }
 
 
-      console.log(isAnswered)
       return (
         <button
           id={props.id}
           key={props.id}
           onClick={handleClick}
           className={ChoiceClasses.join(' ')}
-          disabled={selectedChoiceId !== '' && isAnswered}
+          disabled={selectedChoiceId !== '' && disableClick}
 
         >
           {props.text}

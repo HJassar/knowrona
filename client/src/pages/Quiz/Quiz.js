@@ -12,6 +12,7 @@ const Quiz = ({ quizData, renderPage }) => {
   const [explanationText, setExplanationText] = useState('');
   const [questionIndex, setQuestionIndex] = useState(0);
   const [isAnswered, setIsAnswered] = useState(false);
+  const [disableClick, setDisableClick] = useState(false);
 
 
   const handleNextClick = () => {
@@ -20,6 +21,7 @@ const Quiz = ({ quizData, renderPage }) => {
       // setCorrectChoiceId('');
       // setExplanationText('');
       setIsAnswered(false);
+      setDisableClick(false);
     } else {
       //Create logic for sending to the results page
       setQuestionIndex(0);
@@ -34,8 +36,10 @@ const Quiz = ({ quizData, renderPage }) => {
       <Question
         quizData={quizData}
         questionIndex={questionIndex}
-        setIsAnswered={setIsAnswered}
         isAnswered={isAnswered}
+        setIsAnswered={setIsAnswered}
+        disableClick={disableClick}
+        setDisableClick={setDisableClick}
       />
 
       {isAnswered ? <NextButton
