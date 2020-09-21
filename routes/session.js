@@ -81,6 +81,7 @@ router.get('/:quizId/:questionId/:choiceId', (req, res) => {
 
 
 router.get('/result/:quizId', (req, res) => {
+    console.log(req.params.quizId);
     const result = 50 + Math.floor(50 * Math.random());
     console.log(result)
     res.send({ result: result });
