@@ -8,7 +8,7 @@ const questionSchema = new mongoose.Schema(
 			{
 				text: String,
 				isCorrect: Boolean,
-				counter: Number
+				counter: { type: Number, default: 0 }
 			}
 		]
 	},
