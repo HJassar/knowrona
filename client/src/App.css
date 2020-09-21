@@ -1,10 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
 
 body {
   background: black;
   color: white;
-  font-family: 'Open Sans', sans-serif;
-  margin:0;
+  font-family: "Open Sans", sans-serif;
+  margin: 0;
 }
 
 .App {
@@ -15,8 +15,8 @@ img {
   width: 100%;
 }
 
-.btn{
-  border:none;
+.btn {
+  border: none;
   outline: none;
   cursor: pointer;
 }
@@ -34,13 +34,30 @@ img {
   transition: 300ms;
 }
 
-.primary-btn:hover{
+.primary-btn:hover {
   transform: translateY(-3px);
 }
 
-
-@media screen and (max-width: 576px){
-  .App{
+@media screen and (max-width: 576px) {
+  .App {
     font-size: 3vw;
+  }
+}
+
+/* Global animations */
+.Footer,
+.Header__logo,
+.Question {
+  animation: fade 1500ms forwards;
+}
+
+@keyframes fade {
+  0% {
+    opacity: 0;
+  }
+
+  70%,
+  100% {
+    opacity: 1;
   }
 }

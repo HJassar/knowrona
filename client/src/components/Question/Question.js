@@ -93,7 +93,7 @@ const Question = ({ quizData, questionIndex, isAnswered, setIsAnswered, disableC
     })
 
     return (
-      <div>
+      <div className='Question'>
         <div className='Question__stem'>
           {stem}
         </div>

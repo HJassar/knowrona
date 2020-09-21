@@ -4,6 +4,7 @@ import { Redirect } from 'react-router-dom';
 import './Quiz.css';
 import Question from '../../components/Question/Question';
 import NextButton from '../../components/NextButton/NextButton';
+import { set } from 'mongoose';
 
 const Quiz = ({ quizData, renderPage, setResultData }) => {
 
@@ -13,7 +14,11 @@ const Quiz = ({ quizData, renderPage, setResultData }) => {
   const [isAnswered, setIsAnswered] = useState(false);
   const [disableClick, setDisableClick] = useState(false);
   const [buttonText, setButtonText] = useState('Next');
+  const [timeIsUp, setTimeIsUp] = useState(false);
 
+  setTimeout(() => {
+    setTimeIsUp(true);
+  }, 3000);
 
   const handleNextClick = () => {
     setQuestionIndex(questionIndex + 1);
@@ -56,8 +61,18 @@ const Quiz = ({ quizData, renderPage, setResultData }) => {
 
       </div>
     );
-  } else{
-    return <Redirect to="/mainmenu" />
+  } else {
+    return (
+      <div>
+        <h1>Ops...</h1>
+        No Active sessions, redirecting you to main menu...
+        {
+          timeIsUp?
+            <Redirect to="/mainmenu" />
+          :null
+        }
+      </div>
+    )
   }
 };
 
