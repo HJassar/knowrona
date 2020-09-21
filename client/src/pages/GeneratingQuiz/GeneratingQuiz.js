@@ -16,7 +16,7 @@ const GeneratingQuiz = ({ setQuizDataPassUp, renderPage }) => {
   renderPage('/quiz');
   useEffect(() => {
     axios
-      .get('/quiz/generate')
+      .get('/session/generate')
       .then((res) => {
         console.log(res.data);
         // This sets the isLoaded state to true, so that the quiz question can

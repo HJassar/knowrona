@@ -4,6 +4,7 @@ const path = require('path');
 const mongoose = require('mongoose');
 const enforce = require('express-sslify');
 const cron = require('cron').CronJob;
+const cors = require("cors");
 
 //Models declarations
 const Quiz = require("./models/quiz");
@@ -13,7 +14,7 @@ const Question = require("./models/question");
 const indexRouter = require("./routes/index");
 const quizRouter = require("./routes/quizzes");
 const questionRouter = require("./routes/questions");
-const cors = require("cors");
+const sessionRouter = require("./routes/session");
 
 
 // Config declarations
@@ -75,12 +76,16 @@ seedDB();
 app.use(indexRouter);
 app.use("/quiz", quizRouter);
 app.use("/questions", questionRouter);
+app.use("/session", sessionRouter);
+
 
 // Redirect to React in non Dev environment
-if(environment !== 'dev'){
+if (environment !== 'dev') {
   app.use(enforce.HTTPS({ trustProtoHeader: true }));
   app.use(express.static(path.join("client", "build")));
-  app.get("*", (req, res) => { res.sendFile(path.resolve(__dirname, "client", "build", "index.html")); });
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
+  });
 }
 
 // Listening to the server

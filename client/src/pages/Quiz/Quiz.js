@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Redirect } from 'react-router-dom';
-import axios from 'axios';
 
 import './Quiz.css';
 import Question from '../../components/Question/Question';
