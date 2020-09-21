@@ -49,9 +49,10 @@ const Main = () => {
   }
 
   const setResultData = () => {
-    axios.get(`/session/result/quizData.quizId`)
+    axios.get(`/session/result/${quizData.quizId}`)
       .then(res => setScore(res.data.result))
       .catch(err => console.log(err));
+    console.log(quizData.quizId);
   }
 
   return (
