@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Route, Switch, Redirect, useLocation } from 'react-router-dom';
+import axios from 'axios';
 
 import './Main.css';
 
@@ -15,12 +16,14 @@ import TermsOfUse from '../TermsOfUse/TermsOfUse';
 import Question from '../../components/Question/Question';
 import Quiz from '../Quiz/Quiz';
 import Results from '../Results/Results';
+import Axios from 'axios';
 
 const Main = () => {
   // State used to determine dynamic routing
   const [routerPath, setRouterPath] = useState('');
   // State used to store data, may need to refactor it out of GeneratingQuiz at some point since it may be duplicating state.
   const [quizData, setQuizData] = useState('');
+  const[score, setScore] = useState(0);
 
   let location = useLocation().pathname;
 
@@ -45,6 +48,12 @@ const Main = () => {
     setQuizData(data);
   }
 
+  const setResultData = () => {
+    axios.get(`/session/result/quizData.quizId`)
+      .then(res => setScore(res.data.result))
+      .catch(err => console.log(err));
+  }
+
   return (
     <div className='container'>
       {displayHeader()}
@@ -58,13 +67,20 @@ const Main = () => {
               <Landing />
             )}
           </Route>
-          <Route path='/results' component={Results} />
+          <Route 
+            path='/results'
+            render={(props) => (
+              <Results {...props}
+                score={score}
+              />
+            )}
+          />
           <Route path='/mainmenu' component={MainMenu} />
           <Route 
             path='/generatingquiz'
             render={(props) => (
               <GeneratingQuiz {...props}  
-              renderPage= {renderPage}
+                renderPage= {renderPage}
                 setQuizDataPassUp={setQuizDataPassUp} 
               />
             )}  
@@ -80,7 +96,8 @@ const Main = () => {
             ( 
               <Quiz 
                 quizData={quizData}
-                renderPage={renderPage} 
+                renderPage={renderPage}
+                setResultData={setResultData} 
               />
             )}
           </Route>
