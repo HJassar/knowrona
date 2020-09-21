@@ -21,6 +21,8 @@ const port = process.env.PORT || 5000;
 const ip = process.env.IP;
 const db = process.env.DATABASEURL || "mongodb://localhost/knowrona";
 const seedDB = require("./config/seed");
+const environment = process.env.NODE_ENV || 'dev';
+
 
 //Needed to make requests from front end to back end.
 app.use(cors());
@@ -38,47 +40,33 @@ mongoose.connect(db, ({
 
 
 
-// What server are we at?
-const environment = process.env.NODE_ENV || 'dev'
-switch (environment) {
-  case 'dev':
-    require("dotenv").config();
-    
-    // Simulate loading of server in DEV
-    const slowness = process.env.SLOWNESS || 0;
-    let loadTime = slowness * 1000 * Math.random()
-    app.use((req, res, next) => {
-      setTimeout(() => {
-        loadTime = slowness * 1000 * Math.random();
-        console.log("loaded")
-        next();
-      }, loadTime);
-    })
-
-    app.get("/", (req, res) => { res.send("This page shows in dev mode only"); });
-
-    break;
-
-  case 'staging':
-    app.use(enforce.HTTPS({ trustProtoHeader: true }));
-    app.use(express.static(path.join("client", "build")));
-    app.get("*", (req, res) => { res.sendFile(path.resolve(__dirname, "client", "build", "index.html")); });
-    // Clear the quizzes collection every 24 hours
-    var job = new cron('0 0 20 * * *', function () {
-      Quiz.deleteMany({}, (err, deletedQuizes) => {
-        if (err) console.log(err);
-        console.log('Scheduled deletion of quizzes')
-      });
-    }, null, true, 'America/Los_Angeles');
-    job.start();
-    break;
-
-  case 'production':
-    app.use(enforce.HTTPS({ trustProtoHeader: true }));
-    app.use(express.static(path.join("client", "build")));
-    app.get("*", (req, res) => { res.sendFile(path.resolve(__dirname, "client", "build", "index.html")); });
-    break;
+// Special for Dev Environment
+if (environment == 'dev') {
+  require("dotenv").config();
+  // Simulate loading 
+  const slowness = process.env.SLOWNESS || 0;
+  let loadTime = slowness * 1000 * Math.random()
+  app.use((req, res, next) => {
+    setTimeout(() => {
+      loadTime = slowness * 1000 * Math.random();
+      console.log("loaded")
+      next();
+    }, loadTime);
+  })
+  app.get("/", (req, res) => { res.send("This page shows in dev mode only"); });
 }
+
+// Regular DB clearance in Staging
+if (environment == 'staging') {
+  var job = new cron('0 0 20 * * *', function () {
+    Quiz.deleteMany({}, (err, deletedQuizes) => {
+      if (err) console.log(err);
+      console.log('Scheduled deletion of quizzes')
+    });
+  }, null, true, 'America/Los_Angeles');
+  job.start();
+}
+
 
 // Calling the seed function
 seedDB();
@@ -87,6 +75,13 @@ seedDB();
 app.use(indexRouter);
 app.use("/quiz", quizRouter);
 app.use("/questions", questionRouter);
+
+// Redirect to React in non Dev environment
+if(environment !== 'dev'){
+  app.use(enforce.HTTPS({ trustProtoHeader: true }));
+  app.use(express.static(path.join("client", "build")));
+  app.get("*", (req, res) => { res.sendFile(path.resolve(__dirname, "client", "build", "index.html")); });
+}
 
 // Listening to the server
 app.listen(port, ip, () => {
