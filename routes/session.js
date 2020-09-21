@@ -5,7 +5,6 @@ const Question = require('../models/question');
 
 // Router is /session
 
-
 // Generate a quiz for session
 router.get('/generate', (req, res) => {
 
@@ -79,5 +78,13 @@ router.get('/:quizId/:questionId/:choiceId', (req, res) => {
         })
     })
 })
+
+
+router.get('/result/:quizId', (req, res) => {
+    const result = 50 + Math.floor(50 * Math.random());
+    console.log(result)
+    res.send({ result: result });
+})
+
 
 module.exports = router;
