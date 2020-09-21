@@ -5,7 +5,8 @@ import './Quiz.css';
 import Question from '../../components/Question/Question';
 import NextButton from '../../components/NextButton/NextButton';
 
-const Quiz = ({ quizData, renderPage }) => {
+const Quiz = ({ quizData, renderPage, setResultData }) => {
+
   const [correctChoiceId, setCorrectChoiceId] = useState('');
   const [explanationText, setExplanationText] = useState('');
   const [questionIndex, setQuestionIndex] = useState(0);
@@ -27,7 +28,7 @@ const Quiz = ({ quizData, renderPage }) => {
     } else {
       //Create logic for sending to the results page
       setQuestionIndex(0);
-
+      setResultData();
       renderPage('results');
     }
   }
