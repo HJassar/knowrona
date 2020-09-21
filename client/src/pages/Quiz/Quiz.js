@@ -12,10 +12,14 @@ const Quiz = ({ quizData, renderPage }) => {
   const [explanationText, setExplanationText] = useState('');
   const [questionIndex, setQuestionIndex] = useState(0);
   const [isAnswered, setIsAnswered] = useState(false);
+  const [buttonText, setButtonText] = useState('Next');
 
 
   const handleNextClick = () => {
     setQuestionIndex(questionIndex + 1);
+    if (quizData.questions.length - 2 === questionIndex) {
+      setButtonText('Get Results');
+    }
     if (quizData.questions.length - 1 > questionIndex) {
       // setCorrectChoiceId('');
       // setExplanationText('');
@@ -40,7 +44,9 @@ const Quiz = ({ quizData, renderPage }) => {
 
       {isAnswered ? <NextButton
         handleNextClick={handleNextClick}
-      /> : null}
+        buttonText={buttonText}
+      />
+      : null}
 
     </div>
   );
