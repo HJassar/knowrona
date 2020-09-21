@@ -71,21 +71,21 @@ const questions = [
 
 const seedDB = async () => {
 	try {
-		await Question.deleteMany({},(err,questions)=>{
-			if(err) {return console.log(err);}
-			console.log("Deleted Old Questions");
-		});
+		// await Question.deleteMany({},(err,questions)=>{
+		// 	if(err) {return console.log(err);}
+		// 	console.log("Deleted Old Questions");
+		// });
 
 		await Quiz.deleteMany({},(err,quizzes)=>{
 			if(err) {return console.log(err);}
 			console.log("Deleted Old Quizzes");
 		});
 
-		for (const question of questions) {
-			await Question.create(question,(err,question)=>{
-				console.log(question._id+ " has been created");
-			});
-		}
+		// for (const question of questions) {
+		// 	await Question.create(question,(err,question)=>{
+		// 		console.log(question._id+ " has been created");
+		// 	});
+		// }
 	} catch (err) {
 		console.log(err);
 	}

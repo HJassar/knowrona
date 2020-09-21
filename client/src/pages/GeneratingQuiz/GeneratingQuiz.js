@@ -7,13 +7,13 @@ import './GeneratingQuiz.css';
 import BigLogo from '../../components/BigLogo/BigLogo';
 import Quiz from '../Quiz/Quiz';
 
-const GeneratingQuiz = ({ setQuizDataPassUp }) => {
+const GeneratingQuiz = ({ setQuizDataPassUp, renderPage }) => {
   // useState is one of React's 'hooks', this one in particular stores data and the
   // below declarations are the standard syntax.  You declare an array of two values
   // The first one is the name of the piece of state you want, and the second is
   // the name of the function you use to set the value.
   const [isLoaded, setIsLoaded] = useState(false);
-
+  renderPage('/quiz');
   useEffect(() => {
     axios
       .get('/quiz/generate')

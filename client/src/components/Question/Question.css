@@ -37,7 +37,11 @@
   border-radius: var(--default-radius);
   text-align: justify;
   padding: 15px;
-
+  display:block;
+  margin: 1em auto;
+  width: 100%;
+  text-align: center;
+  border: none;
   /* Not necessary */
   /* margin-top: 0; */
   /* position: relative; */
@@ -55,11 +59,21 @@
   transform: translateY(-3px);
 }
 
-.Question__right {
+
+.Question__choice--disabled:hover{
+  transform: unset;
+}
+
+.Question__choice--disabled{
+  cursor: default; 
+}
+
+.Question__choice--correct {
   background-color: var(--success);
 }
 
-.Question__wrong {
+.Question__choice--incorrect {
   background-color: var(--error);
   text-decoration: line-through;
+  opacity:0.7;
 }

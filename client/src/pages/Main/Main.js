@@ -64,6 +64,7 @@ const Main = () => {
             path='/generatingquiz'
             render={(props) => (
               <GeneratingQuiz {...props}  
+              renderPage= {renderPage}
                 setQuizDataPassUp={setQuizDataPassUp} 
               />
             )}  

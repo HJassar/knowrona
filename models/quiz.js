@@ -4,12 +4,12 @@ const quizSchema = new mongoose.Schema(
 	{
 		questions: [
 			{
-				id: {
+				questionId: {
 					type: mongoose.Schema.Types.ObjectId,
 					ref: "Question"
 				},
-				points: Number,
-				selectedChoice: String
+				points: {type: Number, default: 0},
+				selectedChoice: {type: String, default: null}
 			}
 		],
 		result: Number
@@ -18,3 +18,9 @@ const quizSchema = new mongoose.Schema(
 );
 
 module.exports = mongoose.model("Quiz", quizSchema);
+
+// for future reference, result system.
+// quiz.questions.lenghth = 5
+// +1 +1 0 0 +1  3/5... 
+// 2 /2 iscorrect  1  1  1 1   6/5
+//  

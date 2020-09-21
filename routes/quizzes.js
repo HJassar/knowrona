@@ -11,29 +11,30 @@ router.get('/generate', (req, res) => {
         quizId: null,
         questions: []
     }
-    
+
     Quiz.create({}, (err, generatedQuiz) => {
         if (err) return console.log(err)
         currentSession.quizId = generatedQuiz._id;
-        const pushing = async (cb) => {
-            await Question.aggregate([{ $sample: { size: 5 } }], (err, questions) => {
+        const pushingQuestionsToSession = async () => {
+            await Question.aggregate([{ $sample: { size: 5 } }], async (err, questions) => {
                 if (err) return console.log(err)
                 questions.forEach(question => {
                     const compactQuestion = {
                         id: question._id,
                         stem: question.stem,
-                        choices: question.choices.map(choice=>{
-                            return {choiceText: choice.text, choiceId: choice._id}
+                        choices: question.choices.map(choice => {
+                            return { choiceText: choice.text, choiceId: choice._id }
                         })
                     }
-                    generatedQuiz.questions.push(question._id);
                     currentSession.questions.push(compactQuestion)
+                    generatedQuiz.questions.push(question._id);
                 })
             })
+            generatedQuiz.save();
             // console.log(currentSession)
             res.send(currentSession)
         }
-        pushing();
+        pushingQuestionsToSession();
     })
 })
 
