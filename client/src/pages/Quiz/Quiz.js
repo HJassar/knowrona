@@ -33,26 +33,32 @@ const Quiz = ({ quizData, renderPage, setResultData }) => {
     }
   }
 
+  console.log('quiz data', quizData)
+
   document.title = 'KnowRona | Quiz';
-  return (
-    <div className='Quiz'>
-      <Question
-        quizData={quizData}
-        questionIndex={questionIndex}
-        isAnswered={isAnswered}
-        setIsAnswered={setIsAnswered}
-        disableClick={disableClick}
-        setDisableClick={setDisableClick}
-      />
+  if (quizData) {
+    return (
+      <div className='Quiz'>
+        <Question
+          quizData={quizData}
+          questionIndex={questionIndex}
+          isAnswered={isAnswered}
+          setIsAnswered={setIsAnswered}
+          disableClick={disableClick}
+          setDisableClick={setDisableClick}
+        />
 
-      {isAnswered ? <NextButton
-        handleNextClick={handleNextClick}
-        buttonText={buttonText}
-      />
-      : null}
+        {isAnswered ? <NextButton
+          handleNextClick={handleNextClick}
+          buttonText={buttonText}
+        />
+          : null}
 
-    </div>
-  );
+      </div>
+    );
+  } else{
+    return <Redirect to="/mainmenu" />
+  }
 };
 
 export default Quiz;

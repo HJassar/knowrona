@@ -54,10 +54,10 @@ const Question = ({ quizData, questionIndex, isAnswered, setIsAnswered, disableC
       const ChoiceClasses = ['Question__choice']
 
       if (disableClick) {
-      ChoiceClasses.push('Question__choice--disabled');
+        ChoiceClasses.push('Question__choice--disabled');
       }
 
-        if (isAnswered) {
+      if (isAnswered) {
         if (selectedChoiceId !== '') {
           console.log('selected ' + selectedChoiceId)
           if (props.id === correctChoiceId) {
@@ -98,12 +98,13 @@ const Question = ({ quizData, questionIndex, isAnswered, setIsAnswered, disableC
           {stem}
         </div>
         {choiceButtons}
-        <div>{isAnswered?explanation:null}</div>
+        <div>{isAnswered ? explanation : null}</div>
       </div>
     )
 
   } else {
-    return (<Link to='/generatingquiz'>generate</Link>)
+    // return (<Link to='/generatingquiz'>generate</Link>)
+    return null;
   }
 
 };
