@@ -41,7 +41,7 @@ router.get('/generate', (req, res) => {
 
 
 // Submit choice
-router.get('/:quizId/:questionId/:choiceId', (req, res) => {
+router.get('/:quizId/:questionId/:choiceId/:questionIndex', (req, res) => {
 
     const quizId = req.params.quizId;
     const questionId = req.params.questionId;
