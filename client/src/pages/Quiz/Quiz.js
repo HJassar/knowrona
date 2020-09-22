@@ -4,7 +4,6 @@ import { Redirect } from 'react-router-dom';
 import './Quiz.css';
 import Question from '../../components/Question/Question';
 import NextButton from '../../components/NextButton/NextButton';
-import { set } from 'mongoose';
 
 const Quiz = ({ quizData, renderPage, setResultData }) => {
 
@@ -13,7 +12,7 @@ const Quiz = ({ quizData, renderPage, setResultData }) => {
   const [questionIndex, setQuestionIndex] = useState(0);
   const [isAnswered, setIsAnswered] = useState(false);
   const [disableClick, setDisableClick] = useState(false);
-  const [buttonText, setButtonText] = useState('Next');
+  const [buttonText, setButtonText] = useState('next');
   const [timeIsUp, setTimeIsUp] = useState(false);
 
   setTimeout(() => {
@@ -23,7 +22,7 @@ const Quiz = ({ quizData, renderPage, setResultData }) => {
   const handleNextClick = () => {
     setQuestionIndex(questionIndex + 1);
     if (quizData.questions.length - 2 === questionIndex) {
-      setButtonText('Get Results');
+      setButtonText('submit');
     }
     if (quizData.questions.length - 1 > questionIndex) {
       // setCorrectChoiceId('');
@@ -53,7 +52,8 @@ const Quiz = ({ quizData, renderPage, setResultData }) => {
           setDisableClick={setDisableClick}
         />
 
-        {isAnswered ? <NextButton
+        {isAnswered ?
+        <NextButton
           handleNextClick={handleNextClick}
           buttonText={buttonText}
         />

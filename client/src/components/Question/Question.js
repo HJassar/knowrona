@@ -1,4 +1,3 @@
-import { faGreaterThanEqual } from '@fortawesome/free-solid-svg-icons';
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';

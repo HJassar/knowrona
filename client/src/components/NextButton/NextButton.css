@@ -1,0 +1,16 @@
+.NextButton{
+    background:var(--secondary);
+    color: var(--on-secondary);
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+    position: fixed;
+    right: 10px;
+    bottom: 100px;
+    border: none;
+    outline: none;
+    font-size: 2.5em;
+    font-weight: 100 !important;
+    cursor: pointer;
+}
+
