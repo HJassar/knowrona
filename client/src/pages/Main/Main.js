@@ -28,7 +28,7 @@ const Main = () => {
 
   let location = useLocation().pathname;
 
-  // Used to delay the start of the screen.  No fade effect yet.
+  // Used to delay the start of the screen.
   const timer = 3;
   useEffect(() => {
     setTimeout(() => {

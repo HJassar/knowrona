@@ -20,7 +20,7 @@ const Question = ({ quizData, questionIndex, isAnswered, setIsAnswered, disableC
 
     axios
       .get(
-        `/session/${quizData.quizId}/${quizData.questions[questionIndex].id}/${choiceId}`
+        `/session/${quizData.quizId}/${quizData.questions[questionIndex].id}/${choiceId}/${questionIndex}`
       )
       .then((res) => {
         console.log(res.data);
