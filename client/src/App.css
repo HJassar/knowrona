@@ -5,6 +5,7 @@ body {
   color: white;
   font-family: "Open Sans", sans-serif;
   margin: 0;
+  font-size: 130%;
 }
 
 .App {
@@ -52,7 +53,7 @@ img {
 
 @media screen and (max-width: 576px) {
   .App {
-    font-size: 3vw;
+    /* font-size: 3vw; */
   }
 }
 

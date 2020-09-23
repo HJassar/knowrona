@@ -18,11 +18,11 @@ const Results = (props) => {
     }
       : result >= 90 ? {
         rank: 'excellent!',
-        message: 'You did very well!<br /> Keep trying until you get the perfect score!'
+        message: 'You did very well!Keep trying until you get the perfect score!'
       }
         : result >= 80 ? {
           rank: 'very good',
-          message: 'You did very well!<br /> Keep trying until you get the perfect score!'
+          message: 'You did very well! Keep trying until you get the perfect score!'
         }
           : result >= 70 ? {
             rank: 'good',
