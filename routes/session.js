@@ -89,13 +89,18 @@ router.get('/result/:quizId', (req, res) => {
     const quizId = req.params.quizId;
     Quiz.findById(quizId, (err, currentQuiz) => {
         let result = 0;
+        let count = 0;
         currentQuiz.questions.map(q => {
             result += q.points;
-            return result;
+            count++;
+            return result, count;
         });
+        result = result / count * 100;
+        currentQuiz.result = result;
+        currentQuiz.save();
         res.send({ result: result });
-    })
-})
+    });
+});
 
 
 module.exports = router;
