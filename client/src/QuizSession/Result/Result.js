@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { FacebookShareButton } from 'react-share';
 
 import './Result.css';
 
@@ -41,10 +42,16 @@ const Results = (props) => {
       <h1>Your score is {result}%</h1>
       <h2>{evaluation.rank}</h2>
       <p>{evaluation.message}</p>
-      <button className="primary-btn secondary-btn btn">
-        <FontAwesomeIcon icon={faShareAlt} />
-        <span className="secondary-btn__name">Share Your Score</span>
-      </button>
+        <FacebookShareButton
+          url={'https://knowrona.net'}
+          resetButtonStyle={false}
+          hashtag = '#knowRona'
+          quote={`I got a ${evaluation.rank} score of ${result}% in KnowRona!\nYour turn!`}
+          className="primary-btn secondary-btn btn"
+          >
+          <FontAwesomeIcon icon={faShareAlt} />
+          <span className="secondary-btn__name">Share Your Score</span>
+        </FacebookShareButton>
       <Link to='/home'><button className="primary-btn btn">Play Again</button></Link>
     </div>
   );

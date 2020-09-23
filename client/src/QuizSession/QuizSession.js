@@ -9,7 +9,7 @@ import './QuizSession.css'
 
 const QuizSession = (props) => {
 
-    // States
+   // States
     const [timeIsUp, setTimeIsUp] = useState(false);
     const [result, setResult] = useState()
 
