@@ -45,7 +45,7 @@ const Results = (props) => {
         <FontAwesomeIcon icon={faShareAlt} />
         <span className="secondary-btn__name">Share Your Score</span>
       </button>
-      <Link to='/generatingquiz'><button className="primary-btn btn">Play Again</button></Link>
+      <Link to='/home'><button className="primary-btn btn">Play Again</button></Link>
     </div>
   );
 };

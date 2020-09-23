@@ -112,11 +112,12 @@ const Question = (props) => {
       {questionData.stem}
       {choiceButtons}
       {explanation}
-      {/* {correctChoiceId != '' ? */}
+      {correctChoiceId != '' ?
       <NextButton
       click={handleNextClick}
       isGetResults={questionIndex === questionsCount - 1}
       />
+      :null}
     </div>
   )
 
