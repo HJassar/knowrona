@@ -1,5 +1,5 @@
 import React from 'react';
-import logo from '../../assets/logo_white.png'
+import logo from '../logo_white.png'
 import './BigLogo.css';
 
 const BigLogo = () => {

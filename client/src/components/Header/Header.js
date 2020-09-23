@@ -5,12 +5,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 
 import './Header.css';
-import logo from '../../assets/logo_white.png';
+import logo from '../logo_white.png';
 
 const Header = () => {
   let location = useLocation().pathname;
   const displayHeaderLogo = () => {
-    if (!['/', '/mainmenu', '/generatingquiz', '/landing'].includes(location)) {
+    if (!['/', '/home'].includes(location)) {
       return <HeaderLogo />;
     }
   };
@@ -19,7 +19,7 @@ const Header = () => {
     <header className='Header'>
       {displayHeaderLogo()}
       <div className='Header__menu'>
-        <Link className='Header__menu-button' to='/mainmenu'>
+        <Link className='Header__menu-button' to='/home'>
           <FontAwesomeIcon icon={faBars} />
         </Link>
       </div>

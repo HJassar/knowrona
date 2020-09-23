@@ -9,6 +9,18 @@ body {
 
 .App {
   text-align: center;
+  display:flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
+}
+
+.main {
+  width: calc(100% - 20px);
+  max-width: 768px;
+  margin: 0 auto;
+  flex-grow: 1;
+  padding: 10px;
 }
 
 img {

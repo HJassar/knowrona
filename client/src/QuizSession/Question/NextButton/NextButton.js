@@ -5,20 +5,19 @@ import { faCaretRight, faGraduationCap } from '@fortawesome/free-solid-svg-icons
 
 import './NextButton.css';
 
-const NextButton = ({ handleNextClick, buttonText }) => {
-  const handleClick = () => {
-    handleNextClick();
-  }
+const NextButton = (props) => {
+
   return (
-      <button 
+    <button
       className="NextButton"
-      onClick={handleClick}>
-        {buttonText === 'next'?
+      onClick={props.click}
+    >
+      {!props.isGetResults ?
         <FontAwesomeIcon icon={faCaretRight} />
         :
         <FontAwesomeIcon icon={faGraduationCap} />
       }
-        </button>
+    </button>
   );
 }
 
