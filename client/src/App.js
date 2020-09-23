@@ -1,7 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
-import './App.css';
 import Header from './Components/Header/Header';
 import Footer from './Components/Footer/Footer';
 import Splash from './Splash/Splash';
@@ -10,6 +9,7 @@ import QuizSession from './QuizSession/QuizSession';
 // import Dashboard from './Dashboard/Dashboard';
 // import Pages from './Pages/Pages';
 
+import './App.css';
 
 function App() {
   return (

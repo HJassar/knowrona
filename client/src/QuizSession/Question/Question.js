@@ -1,5 +1,4 @@
-import React, { useLayoutEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
 import axios from 'axios';
 
 import NextButton from './NextButton/NextButton'
@@ -76,7 +75,7 @@ const Question = (props) => {
       ChoiceClasses.push('Question__choice--disabled');
     }
 
-    if (correctChoiceId != '') {
+    if (correctChoiceId !== '') {
       if (props.id === correctChoiceId) {
         ChoiceClasses.push('Question__choice--correct')
       } else if (props.id === selectedChoiceId) {
