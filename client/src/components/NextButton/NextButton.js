@@ -1,6 +1,6 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCaretRight, faGraduationCap } from '@fortawesome/free-solid-svg-icons';
+import { faChevronRight, faGraduationCap } from '@fortawesome/free-solid-svg-icons';
 
 
 import './NextButton.css';
@@ -14,7 +14,7 @@ const NextButton = ({ handleNextClick, buttonText }) => {
       className="NextButton"
       onClick={handleClick}>
         {buttonText === 'next'?
-        <FontAwesomeIcon icon={faCaretRight} />
+        <FontAwesomeIcon icon={faChevronRight} />
         :
         <FontAwesomeIcon icon={faGraduationCap} />
       }

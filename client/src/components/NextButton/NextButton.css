@@ -12,5 +12,7 @@
     font-size: 2.5em;
     font-weight: 100 !important;
     cursor: pointer;
+    text-align:center;
+    padding:0;
 }
 
