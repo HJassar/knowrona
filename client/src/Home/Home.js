@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-import BigLogo from '../Components/BigLogo/BigLogo';
+import BigLogo from '../components/BigLogo/BigLogo';
 
 import './Home.css';
 import { Redirect } from 'react-router-dom';

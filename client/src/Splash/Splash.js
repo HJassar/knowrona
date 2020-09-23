@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import { Redirect } from 'react-router-dom';
-import BigLogo from '../Components/BigLogo/BigLogo';
+import BigLogo from '../components/BigLogo/BigLogo';
 
 import './Splash.css';
 

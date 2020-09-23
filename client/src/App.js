@@ -1,8 +1,8 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
-import Header from './Components/Header/Header';
-import Footer from './Components/Footer/Footer';
+import Header from './components/Header/Header';
+import Footer from './components/Footer/Footer';
 import Splash from './Splash/Splash';
 import Home from './Home/Home';
 import QuizSession from './QuizSession/QuizSession';
