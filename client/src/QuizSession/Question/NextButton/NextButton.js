@@ -1,11 +1,13 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCaretRight, faGraduationCap } from '@fortawesome/free-solid-svg-icons';
+import { faChevronRight, faGraduationCap } from '@fortawesome/free-solid-svg-icons';
 
 
 import './NextButton.css';
 
 const NextButton = (props) => {
+
+  
 
   return (
     <button
@@ -13,7 +15,7 @@ const NextButton = (props) => {
       onClick={props.click}
     >
       {!props.isGetResults ?
-        <FontAwesomeIcon icon={faCaretRight} />
+        <FontAwesomeIcon icon={faChevronRight} />
         :
         <FontAwesomeIcon icon={faGraduationCap} />
       }

@@ -60,6 +60,7 @@ const Question = (props) => {
         )
         .then((res) => {
           setResult(res.data.result)
+          console.log(res)
         })
         .catch((err) => console.log(err));
     }
@@ -108,18 +109,16 @@ const Question = (props) => {
 
   // Finally, return the Question!
   return (
-    <>
+    <div className='Question'>
       {questionData.stem}
       {choiceButtons}
       {explanation}
-      {correctChoiceId != '' ?
+      {/* {correctChoiceId != '' ? */}
       <NextButton
       click={handleNextClick}
       isGetResults={questionIndex === questionsCount - 1}
       />
-      :
-      null}
-    </>
+    </div>
   )
 
 };

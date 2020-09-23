@@ -1,18 +1,3 @@
-.Question {
-  /* Neither of these two are necessary */
-  /* display: flex;
-  flex-direction: column; */
-
-  /* this is already configured site-wide */
-  /* margin: 0; */
-
-  /* already configured, but turn it on and see where the footer goes to... */
-  /* min-height: 100vh; */
-
-  /* absolutely don't use font size vh + don't change the size in a whole page, this gets configured in app.css -> body so that you can change the font-size site-wide */
-  /* font-size: 2.3vh; */
-}
-
 .Question__stem {
   /* We're using variables */
   background: var(--surface);

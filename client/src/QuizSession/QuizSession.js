@@ -4,6 +4,8 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 import Question from './Question/Question';
 import Result from './Result/Result';
 
+import './QuizSession.css'
+
 
 const QuizSession = (props) => {
 
@@ -31,23 +33,23 @@ const QuizSession = (props) => {
                 }
             </div>
         )
-    } else if(result){
+    } else if (result) {
         return (
             <>
                 <Result
-                result={result}
+                    result={result}
                 />
             </>
         )
-    
-}else{
+
+    } else {
         return (
-            <>
+            <div className='QuizSession'>
                 <Question
                     quizData={quizData}
                     setResult={setResult}
                 />
-            </>
+            </div>
         )
     }
 }

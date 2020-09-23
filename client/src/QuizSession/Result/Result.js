@@ -10,18 +10,37 @@ const Results = (props) => {
   document.title = 'KnowRona | Results';
 
   const result = props.result;
-  const message =
-        result === 100 ? 'PERFECT'
-        : result > 90 ? 'EXCELLENT'
-        : result > 80 ? 'GOOD JOB!'
-        : result > 70 ? 'NEED TO STUDY'
-        : result > 60 ? 'CNN/FOX NEWS MUCH?'
-        : 'UHM...';
+  const evaluation =
+    result === 100 ? {
+      rank: 'perfect!',
+      message: 'You must be a scientist or something!'
+    }
+      : result >= 90 ? {
+        rank: 'excellent!',
+        message: 'You did very well!<br /> Keep trying until you get the perfect score!'
+      }
+        : result >= 80 ? {
+          rank: 'very good',
+          message: 'You did very well!<br /> Keep trying until you get the perfect score!'
+        }
+          : result >= 70 ? {
+            rank: 'good',
+            message: 'Not bad! Let\'s try again and close some gaps!'
+          }
+            : result >= 50 ? {
+              rank: 'poor',
+              message: 'But it\'s all good. Keep trying to improve your score'
+            }
+              : {
+                rank: 'failed!',
+                message: 'But it\'s all good. Keep trying to improve your score'
+              };
 
   return (
     <div className='Results'>
-      <h1><strong>{result}</strong></h1>
-      <h1>Your score is {message}%</h1>
+      <h1>Your score is {result}%</h1>
+      <h2>{evaluation.rank}</h2>
+      <p>{evaluation.message}</p>
       <button className="primary-btn secondary-btn btn">
         <FontAwesomeIcon icon={faShareAlt} />
         <span className="secondary-btn__name">Share Your Score</span>

@@ -8,11 +8,11 @@ const quizSchema = new mongoose.Schema(
 					type: mongoose.Schema.Types.ObjectId,
 					ref: "Question"
 				},
-				points: {type: Number, default: 0},
-				selectedChoice: {type: String, default: null}
+				points: { type: Number, default: 0 },
+				selectedChoice: { type: String, default: null }
 			}
 		],
-		result: Number
+		result: { type: Number, default: -1 }
 	},
 	{ timestamps: true }
 );
