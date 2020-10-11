@@ -1,16 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { FacebookShareButton } from 'react-share';
-
+import { connect } from 'react-redux';
+import { clearQuiz } from '../../redux/quiz/quiz.actions';
 import './Result.css';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShareAlt } from '@fortawesome/free-solid-svg-icons';
 
-const Results = (props) => {
+const Results = ( { result, clearQuiz }) => {
   document.title = 'KnowRona | Results';
 
-  const result = props.result;
   const evaluation =
     result === 100 ? {
       rank: 'perfect!',
@@ -52,9 +52,18 @@ const Results = (props) => {
           <FontAwesomeIcon icon={faShareAlt} />
           <span className="secondary-btn__name">Share Your Score</span>
         </FacebookShareButton>
-      <Link to='/home'><button className="primary-btn btn">Play Again</button></Link>
+      <Link to='/home'>
+      <button className="primary-btn btn" onClick={clearQuiz}>Play Again</button></Link>
     </div>
   );
 };
 
-export default Results;
+const mapStatetoProps = state => ({
+  result: state.quiz.result
+});
+
+const mapDispatchtoProps = dispatch => ({
+  clearQuiz: () => dispatch(clearQuiz())
+})
+
+export default connect(mapStatetoProps, mapDispatchtoProps)(Results);

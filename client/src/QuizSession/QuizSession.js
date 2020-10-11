@@ -1,22 +1,23 @@
 import React, { useState } from 'react';
-import { Switch, Route, Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 
 import Question from './Question/Question';
 import Result from './Result/Result';
 
 import './QuizSession.css'
+import { connect } from 'react-redux';
 
-
-const QuizSession = (props) => {
+const QuizSession = ( { quizData, result }) => {
 
    // States
     const [timeIsUp, setTimeIsUp] = useState(false);
-    const [result, setResult] = useState()
+    // Removing this next line due to Redux
+    // const [result, setResult] = useState()
 
-    // Required Data
-    const quizData = props.location.state;
+    // Required Data-Removed due to REDUX
+    // const quizData = props.location.state;
 
-    if (!props.location.state) {
+    if (!quizData) {
         setTimeout(() => {
             setTimeIsUp(true);
         }, 3000);
@@ -36,9 +37,7 @@ const QuizSession = (props) => {
     } else if (result) {
         return (
             <>
-                <Result
-                    result={result}
-                />
+                <Result/>
             </>
         )
 
@@ -47,11 +46,15 @@ const QuizSession = (props) => {
             <div className='QuizSession'>
                 <Question
                     quizData={quizData}
-                    setResult={setResult}
                 />
             </div>
         )
     }
 }
 
-export default QuizSession;
+const mapStateToProps = state => ({
+    quizData: state.quiz.quizData,
+    result: state.quiz.result
+});
+
+export default connect(mapStateToProps)(QuizSession);

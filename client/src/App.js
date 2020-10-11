@@ -16,7 +16,7 @@ function App() {
     <div className='App'>
       <Router>
         <Header />
-        <main class='main'>
+        <main className='main'>
           <Switch>
             <Route exact path='/' component={Splash} />
             <Route path='/home' component={Home} />
