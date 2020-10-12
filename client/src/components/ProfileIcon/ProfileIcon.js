@@ -1,14 +1,14 @@
 import React from 'react'
 
 import './ProfileIcon.css';
-
+import image from './batman.JPG';
 import { connect } from 'react-redux';
 import { toggleProfileHidden } from '../../redux/profile/profile.actions';
 
 const ProfileIcon = ({ hidden, toggleProfileHidden }) => {
   return (
     <div className='ProfileIcon'>
-      <img className='ProfileIcon-img' onClick={hidden ? toggleProfileHidden : null} src='batman.jpg' />
+      <img className='ProfileIcon-img' onClick={hidden ? toggleProfileHidden : null} src={image} alt='Profile Picture' />
     </div>
   );
 }
