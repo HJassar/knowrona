@@ -1,0 +1,26 @@
+.SideMenu {
+  position: absolute;
+  width: 200px;
+  top: 0;
+  right: 0;
+  z-index: 5;
+}
+
+.SideMenu__img {
+  position: relative;
+}
+
+.SideMenu__img-close {
+  position: absolute;
+  top: -20px;
+  left: 5px;
+}
+
+.SideMenu__img-close:hover {
+  cursor: pointer;
+}
+
+
+.SideMenu__img .ProfileIcon .ProfileIcon-img {
+  width: 200px;
+}

@@ -6,8 +6,12 @@ import { faBars } from '@fortawesome/free-solid-svg-icons';
 
 import './Header.css';
 import logo from '../logo_white.png';
+import SideMenu from '../SideMenu/SideMenu';
+import ProfileIcon from '../ProfileIcon/ProfileIcon';
 
-const Header = () => {
+import { connect } from 'react-redux';
+
+const Header = ( {toggleProfileHidden}) => {
   let location = useLocation().pathname;
   const displayHeaderLogo = () => {
     if (!['/', '/home'].includes(location)) {
@@ -19,9 +23,15 @@ const Header = () => {
     <header className='Header'>
       {displayHeaderLogo()}
       <div className='Header__menu'>
+        <ProfileIcon />
         <Link className='Header__menu-button' to='/home'>
           <FontAwesomeIcon icon={faBars} />
         </Link>
+        {
+          !toggleProfileHidden ? (
+            <SideMenu />
+          ) : null
+        }
       </div>
     </header>
   );
@@ -43,4 +53,8 @@ const HeaderLogo = () => {
   );
 };
 
-export default Header;
+const mapStateToProps = state => ({
+  toggleProfileHidden: state.profile.hidden
+});
+
+export default connect(mapStateToProps)(Header);
