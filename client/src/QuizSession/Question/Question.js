@@ -4,8 +4,11 @@ import axios from 'axios';
 import NextButton from './NextButton/NextButton'
 import './Question.css';
 
+import { connect } from 'react-redux';
+import { setResult } from '../../redux/quiz/quiz.actions';
+
 // const Question = ({ quizData, questionIndex, isAnswered, setIsAnswered, disableClick, setDisableClick }) => {
-const Question = (props) => {
+const Question = ({setResult, ...otherProps}) => {
 
   // States
   const [choiceSelected, setChoiceSelected] = useState(false);
@@ -14,12 +17,10 @@ const Question = (props) => {
   const [explanation, setExplanation] = useState('');
   const [questionIndex, setQuestionIndex] = useState(0);
 
-  const setResult = props.setResult;
-
   // Inherited Data
-  const quizId = props.quizData.quizId;
-  const questionsCount = props.quizData.questions.length;
-  const questionData = props.quizData.questions[questionIndex];
+  const quizId = otherProps.quizData.quizId;
+  const questionsCount = otherProps.quizData.questions.length;
+  const questionData = otherProps.quizData.questions[questionIndex];
   const questionId = questionData.id;
   const choicesArray = questionData.choices
 
@@ -120,7 +121,11 @@ const Question = (props) => {
       :null}
     </div>
   )
-
 };
 
-export default Question;
+const mapDispatchtoProps = dispatch => ({
+  setResult: result => dispatch(setResult(result))
+})
+
+
+export default connect(null, mapDispatchtoProps)(Question);

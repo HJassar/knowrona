@@ -1,16 +1,20 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 
 import BigLogo from '../components/BigLogo/BigLogo';
 
+import { connect } from 'react-redux';
+import { setQuizData } from '../redux/quiz/quiz.actions';
+
 import './Home.css';
 import { Redirect } from 'react-router-dom';
 
-const Home = (props) => {
+const Home = ( { quizData, setGeneratedQuiz } ) => {
   document.title = 'KnowRona | Main Menu';
 
   const [status, setStatus] = useState('landed');
-  const [generatedQuiz, setGeneratedQuiz] = useState({})
+  // This is being replaced with a call to set the quiz in the store
+  // const [generatedQuiz, setGeneratedQuiz] = useState({})
 
   const handleGenerateClick = (event) => {
     // Show generating quiz componenet until the quiz is sent back
@@ -68,16 +72,11 @@ const Home = (props) => {
         break;
       case 'loaded':
         return (
-          <Redirect to={
-            {
-              pathname: '/quiz',
-              state: generatedQuiz
-            }}
-          />)
+          <Redirect to='/quiz'
+        />)
         break;
     }
   }
-
 
   return (
     <div className='Home'>
@@ -87,4 +86,12 @@ const Home = (props) => {
   );
 };
 
-export default Home;
+const mapStateToProps = state => ({
+  quizData: state.quiz.quizData
+});
+
+const mapDispatchToProps = dispatch => ({
+  setGeneratedQuiz: quizData => dispatch(setQuizData(quizData)) 
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);
