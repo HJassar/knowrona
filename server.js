@@ -74,7 +74,7 @@ seedDB();
 
 // Creating routes shorthand
 app.use(indexRouter);
-app.use("/quiz", quizRouter);
+app.use("/quizzes", quizRouter);
 app.use("/questions", questionRouter);
 app.use("/session", sessionRouter);
 
