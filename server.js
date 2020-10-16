@@ -9,6 +9,7 @@ const cors = require("cors");
 //Models declarations
 const Quiz = require("./models/quiz");
 const Question = require("./models/question");
+const User = require("./models/user");
 
 //Routes declarations
 const indexRouter = require("./routes/index");
