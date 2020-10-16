@@ -13,13 +13,14 @@ const SideMenu = ( { toggleProfileHidden }) => {
         <p className='SideMenu__img-close' onClick={toggleProfileHidden}>X</p>
         <ProfileIcon />
       </div>
-      <p>Batman</p>
-      <p>Edit Profile</p>
-      <p>LogOut</p>
+      <p className='SideMenu__item'>Batman</p>
+      <p className='SideMenu__item'>Edit Profile</p>
+      <p className='SideMenu__item'>LogOut</p>
+      <hr  className='SideMenu__breakline'/>
       <br/>
-      <Link to='/home'>Home</Link>
-      <p>Qbank</p>
-      <p>Admin Dash</p>
+      <Link className='SideMenu__link' to='/home'>Home</Link>
+      <p className='SideMenu__item'>Qbank</p>
+      <p className='SideMenu__item'>Admin Dash</p>
     </div>
   );
 }
