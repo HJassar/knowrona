@@ -15,6 +15,8 @@ const indexRouter = require("./routes/index");
 const quizRouter = require("./routes/quizzes");
 const questionRouter = require("./routes/questions");
 const sessionRouter = require("./routes/session");
+const adminRouter = require("./routes/admin");
+
 
 
 // Config declarations
@@ -77,6 +79,8 @@ app.use(indexRouter);
 app.use("/quizzes", quizRouter);
 app.use("/questions", questionRouter);
 app.use("/session", sessionRouter);
+app.use("/admin", adminRouter);
+
 
 
 // Redirect to React in non Dev environment
