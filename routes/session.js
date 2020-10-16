@@ -39,11 +39,11 @@ router.get('/generate', (req, res) => {
 
 
 // 2. Submit choice
-router.get('/:quizId/:questionId/:choiceId/:questionIndex', (req, res) => {
-    const quizId = req.params.quizId;
-    const questionId = req.params.questionId;
-    const choiceId = req.params.choiceId;
-    const qi = req.params.questionIndex;
+router.get('/answer', (req, res) => {
+    const quizId = req.query.quizId;
+    const questionId = req.query.questionId;
+    const choiceId = req.query.choiceId;
+    const qi = req.query.questionIndex;
 
     // Compare answer to choices
     Quiz.findById(quizId, (err, currentQuiz) => {

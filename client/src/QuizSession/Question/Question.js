@@ -31,7 +31,7 @@ const Question = ({setResult, ...otherProps}) => {
 
     axios
       .get(
-        `/session/${quizId}/${questionId}/${choiceId}/${questionIndex}`
+        `/session/answer?quizId=${quizId}&questionId=${questionId}&choiceId=${choiceId}&questionIndex=${questionIndex}`
       )
       .then((res) => {
         res.data.choices.map((choice) => {
