@@ -10,8 +10,9 @@ import SideMenu from '../SideMenu/SideMenu';
 import ProfileIcon from '../ProfileIcon/ProfileIcon';
 
 import { connect } from 'react-redux';
+import { toggleProfileHidden } from '../../redux/profile/profile.actions';
 
-const Header = ( {toggleProfileHidden}) => {
+const Header = ( { hidden, toggleProfileHidden }) => {
   let location = useLocation().pathname;
   const displayHeaderLogo = () => {
     if (!['/', '/home'].includes(location)) {
@@ -23,12 +24,17 @@ const Header = ( {toggleProfileHidden}) => {
     <header className='Header'>
       {displayHeaderLogo()}
       <div className='Header__menu'>
-        <ProfileIcon />
-        <Link className='Header__menu-button' to='/home'>
-          <FontAwesomeIcon icon={faBars} />
+        <Link to='/profile'>
+          <ProfileIcon />
         </Link>
+        <div className='Header__menu-button' onClick={toggleProfileHidden}>
+          <FontAwesomeIcon icon={faBars} />
+        </div>
+        {/* <Link className='Header__menu-button' to='/home'>
+          <FontAwesomeIcon icon={faBars} />
+        </Link> */}
         {
-          !toggleProfileHidden ? (
+          !hidden ? (
             <SideMenu />
           ) : null
         }
@@ -54,7 +60,11 @@ const HeaderLogo = () => {
 };
 
 const mapStateToProps = state => ({
-  toggleProfileHidden: state.profile.hidden
+  hidden: state.profile.hidden
 });
 
-export default connect(mapStateToProps)(Header);
+const mapDispatchToProps = dispatch => ({
+  toggleProfileHidden: () => dispatch(toggleProfileHidden())
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header);

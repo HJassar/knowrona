@@ -19,6 +19,7 @@
   background: none;
   color: var(--on-background);
   text-decoration: none;
+  cursor: pointer;
 }
 
 .Header__img{
