@@ -12,7 +12,8 @@ const quizSchema = new mongoose.Schema(
 				selectedChoice: { type: String, default: null }
 			}
 		],
-		result: { type: Number, default: -1 }
+		result: { type: Number, default: -1 },
+		inTrash: {type: Boolean, default: false}
 	},
 	{ timestamps: true }
 );

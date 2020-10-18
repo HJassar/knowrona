@@ -22,7 +22,7 @@ router.get('/', (req, res) => {
     Quiz.find({}, (err, allQuizzes) => {
         if (err) { return console.log(err) }
         const quizCount = allQuizzes.length;
-        const pageCount = quizCount / quizzesPerPage;
+        const pageCount = Math.ceil(quizCount / quizzesPerPage);
 
         const firstQuiz = (currentPage - 1) * quizzesPerPage;
         const lastQuiz = firstQuiz + quizzesPerPage;
@@ -37,5 +37,6 @@ router.get('/', (req, res) => {
 
 
 // Delete
+
 
 module.exports = router;
