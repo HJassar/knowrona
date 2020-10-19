@@ -1,8 +1,8 @@
 .SideMenu {
-  position: absolute;
+  /* position: absolute; */
   width: 200px;
-  top: 0;
-  right: 0;
+  /* top: 0;
+  right: 0; */
   z-index: 5;
   border-left: 2px solid #3f3f3f;
   height:100vh;
@@ -10,14 +10,14 @@
 
 .SideMenu__img {
   
-  position: relative;
+  /* position: relative; */
   background:var(--background);
 }
 
 .SideMenu__img-close {
-  position: absolute;
-  top: -20px;
-  left: 5px;
+  /* position: absolute; */
+  /* top: -20px;
+  left: 5px; */
 }
 
 .SideMenu__img-close:hover {
