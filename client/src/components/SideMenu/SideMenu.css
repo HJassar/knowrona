@@ -1,10 +1,11 @@
 .SideMenu {
-  position: absolute;
+  position: fixed;
   width: 200px;
   top: 0;
   right: 0;
-  z-index: 5;
+  z-index: 99;
   border-left: 2px solid #3f3f3f;
+  background: var(--background);
   height:100vh;
 }
 
