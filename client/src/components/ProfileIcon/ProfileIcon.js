@@ -7,16 +7,15 @@ import image from './profile-pic.png';
 import { connect } from 'react-redux';
 import { toggleProfileHidden } from '../../redux/profile/profile.actions';
 
-const ProfileIcon = ({ hidden, toggleProfileHidden }) => {
+const ProfileIcon = ({ }) => {
   return (
     <div className='ProfileIcon'>
-      <img className='ProfileIcon-img' onClick={hidden ? toggleProfileHidden : null} src={image} alt='Profile Picture' />
+      <img className='ProfileIcon-img' src={image} alt='Profile Picture' />
     </div>
   );
 }
 
 const mapStateToProps = state => ({
-  hidden: state.profile.hidden
 });
 
 const mapDispatchToProps = dispatch => ({
