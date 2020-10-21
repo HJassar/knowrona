@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 import { setQuizData } from '../redux/quiz/quiz.actions';
 
 import './Home.css';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 
 const Home = ({ quizData, setGeneratedQuiz }) => {
     document.title = 'KnowRona | Main Menu';
@@ -43,7 +43,9 @@ const Home = ({ quizData, setGeneratedQuiz }) => {
                         >
                             Generate a Quiz!
                         </button>
-                        <button className='btn primary-btn'>LOGIN</button>
+                        <Link to='/login'>
+                            <button className='btn primary-btn'>LOGIN</button>
+                        </Link>
                     </>
                 );
                 break;
