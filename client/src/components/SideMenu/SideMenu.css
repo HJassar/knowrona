@@ -5,6 +5,7 @@
   right: 0; */
   z-index:5;
   border-left: 2px solid #3f3f3f;
+  background: var(--background);
   height:100vh;
   background:var(--background);
 }

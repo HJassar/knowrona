@@ -33,11 +33,7 @@ const Home = ( { quizData, setGeneratedQuiz } ) => {
 
   }
 
-  // Temporarily hiding the login button
-  const loginButtonStyle = {
-    display: 'none'
-  };
-
+ 
 
   const HomeContent = () => {
     switch (status) {
@@ -51,7 +47,6 @@ const Home = ( { quizData, setGeneratedQuiz } ) => {
               Generate a Quiz!
           </button>
             <button
-              style={loginButtonStyle}
               className='btn primary-btn'
             >
               LOGIN

@@ -38,7 +38,6 @@
     "express": "^4.17.1",
     "express-sslify": "^1.2.0",
     "flash": "^1.1.0",
-    "mongoose": "^5.10.5",
-    "react-share": "^4.3.0"
+    "mongoose": "^5.10.5"
   }
 }
