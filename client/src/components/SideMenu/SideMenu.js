@@ -19,11 +19,13 @@ const SideMenu = ( { toggleProfileHidden }) => {
           icon={faTimes} />
         <ProfileIcon />
       </div>
-      <ul>
+      <ul className='SideMenu__list'>
+        <div className='SideMenu__section'>
         <li className='SideMenu__item'>Batman</li>
         <li className='SideMenu__item'>Edit Profile</li>
         <li className='SideMenu__item'>LogOut</li>
-        <li><Link className='SideMenu__link' to='/home'>Home</Link></li>
+        </div>
+        <li className='SideMenu__item'><Link className='SideMenu__link' to='/home'>Home</Link></li>
         <li className='SideMenu__item'>Qbank</li>
         <li className='SideMenu__item'>Admin Dash</li>
       </ul>

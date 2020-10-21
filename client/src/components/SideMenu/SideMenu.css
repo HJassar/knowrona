@@ -3,33 +3,42 @@
   width: 200px;
   /* top: 0;
   right: 0; */
-  z-index: 5;
+  z-index:5;
   border-left: 2px solid #3f3f3f;
   height:100vh;
+  background:var(--background);
 }
 
 .SideMenu__img {
   
   /* position: relative; */
-  background:var(--background);
 }
 
 .SideMenu__img-close {
   /* position: absolute; */
   /* top: -20px;
   left: 5px; */
+  margin-right:150px;
+
 }
 
 .SideMenu__img-close:hover {
   cursor: pointer;
 }
 
+.SideMenu__img .ProfileIcon .ProfileIcon-img  {
+  width: 70%;  
+}
 
-.SideMenu__img .ProfileIcon .ProfileIcon-img {
-  width: 70%;
+.SideMenu__list{
+  padding:0 1em;
+
 }
 
 .SideMenu__item{
+  padding-top:1em;
+  padding-bottom:1em;
+  list-style:none;
   cursor: pointer;
 }
 
@@ -38,11 +47,19 @@
   color: var(--on-primary);
 }
 
-.SideMenu__breakline{
-  width:70%;
-  height:1px;
-  border-width:0;
-  /* once we add the color in color pallete, a variable can be used */
-  background:#3f3f3f;
+.SideMenu__section{
+  border-bottom: 0.2px solid  #3f3f3f;
+}
 
+@media screen and (max-width: 576px) {
+  .SideMenu{
+    width:100vw;
+  }
+  .SideMenu__img .ProfileIcon .ProfileIcon-img  {
+    width: 30%;  
+  }
+  .SideMenu__list{
+    padding:0 5em;
+  
+  }
 }

@@ -1,6 +1,6 @@
 .Footer {
   font-size: 0.9em;
-
+  z-index:-1;
 }
 
 .Footer__nav {
