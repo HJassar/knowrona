@@ -10,6 +10,7 @@ import QuizSession from './QuizSession/QuizSession';
 // import Pages from './Pages/Pages';
 
 import './App.css';
+import Login from './components/Login/Login';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
             {/* <Route path='/dashboard' component={Dashboard} /> */}
             <Route path='/quiz' component={QuizSession} />
             {/* <Route path='/' component={Pages} /> */}
+            <Route path='/login' component={Login} />
             <Route render={() => { return <h1>404 page</h1> }} />
           </Switch>
         </main>
