@@ -10,17 +10,29 @@ const Login = () => {
     const handleEmail = (e) => setEmail(e.target.value);
 
     // Stores the password in the password state
-    const handlePassword = (e) => setPassword(e.target.value)
+    const handlePassword = (e) => setPassword(e.target.value);
     return (
         <>
             <div className='container'>
-                <div>
-                    <input type='text' value={email} onChange={handleEmail} placeholder='Username or Email' />
+                <div className='form-group'>
+                    <input
+                        type='text'
+                        value={email}
+                        onChange={handleEmail}
+                        placeholder='Username or Email'
+                        required
+                    />
                 </div>
-                <div>
-                    <input type='password' placeholder='Password' />
+                <div className='form-group'>
+                    <input
+                        type='password'
+                        placeholder='Password'
+                        value={password}
+                        onChange={handlePassword}
+                        required
+                    />
                 </div>
-                <div>
+                <div className='form-group'>
                     <button className='btn-primary'>Log In</button>
                 </div>
                 <p>

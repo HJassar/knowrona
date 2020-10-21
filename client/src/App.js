@@ -11,27 +11,38 @@ import QuizSession from './QuizSession/QuizSession';
 
 import './App.css';
 import Login from './components/Login/Login';
+import Register from './components/Register/Register';
+import ForgetPassword from './components/ForgetPassword/ForgetPassword';
 
 function App() {
-  return (
-    <div className='App'>
-      <Router>
-        <Header />
-        <main className='main'>
-          <Switch>
-            <Route exact path='/' component={Splash} />
-            <Route path='/home' component={Home} />
-            {/* <Route path='/dashboard' component={Dashboard} /> */}
-            <Route path='/quiz' component={QuizSession} />
-            {/* <Route path='/' component={Pages} /> */}
-            <Route path='/login' component={Login} />
-            <Route render={() => { return <h1>404 page</h1> }} />
-          </Switch>
-        </main>
-        <Footer />
-      </Router>
-    </div>
-  );
+    return (
+        <div className='App'>
+            <Router>
+                <Header />
+                <main className='main'>
+                    <Switch>
+                        <Route exact path='/' component={Splash} />
+                        <Route path='/home' component={Home} />
+                        {/* <Route path='/dashboard' component={Dashboard} /> */}
+                        <Route path='/quiz' component={QuizSession} />
+                        {/* <Route path='/' component={Pages} /> */}
+                        <Route path='/login' component={Login} />
+                        <Route path='/register' component={Register} />
+                        <Route
+                            path='/forget-password'
+                            component={ForgetPassword}
+                        />
+                        <Route
+                            render={() => {
+                                return <h1>404 page</h1>;
+                            }}
+                        />
+                    </Switch>
+                </main>
+                <Footer />
+            </Router>
+        </div>
+    );
 }
 
 export default App;
