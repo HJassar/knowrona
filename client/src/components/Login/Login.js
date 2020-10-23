@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import './Login.css';
 
 const Login = () => {
     const [email, setEmail] = useState('');
@@ -15,7 +16,7 @@ const Login = () => {
         <>
             <div className='container'>
                 <div className='form-group'>
-                    <input
+                    <input className='form-group__input'
                         type='text'
                         value={email}
                         onChange={handleEmail}
@@ -24,7 +25,7 @@ const Login = () => {
                     />
                 </div>
                 <div className='form-group'>
-                    <input
+                    <input className='form-group__input'
                         type='password'
                         placeholder='Password'
                         value={password}
@@ -33,16 +34,18 @@ const Login = () => {
                     />
                 </div>
                 <div className='form-group'>
-                    <button className='btn-primary'>Log In</button>
+                    <button className='primary-btn'>LOGIN</button>
                 </div>
+                <div className='Login__paragraph'>
                 <p>
                     Don't have an account yet?{' '}
-                    <Link to='/register'>Register here</Link>
+                    <Link className='Login__link'to='/register'>Register here</Link>
                 </p>
                 <p>
-                    <Link to='/forget-password'>Click Here</Link> to recover
+                    <Link className='Login__link' to='/forget-password'>Click Here</Link> to recover
                     your password
                 </p>
+                </div>
             </div>
         </>
     );

@@ -1,0 +1,31 @@
+
+
+.form-group__input{
+  box-sizing: border-box;
+  width: 100%;
+  margin-top: 0.5em;
+  padding: 0.4em;
+  padding-left: 1em;
+  font-size: 1.5em; 
+  letter-spacing: 0.3em;
+  background: var(--surface);
+  border-radius: 50px;
+  border:none;  
+}
+.form-group .primary-btn{
+    background:#4361ee;
+    border:none;
+}
+.form-group .form-group__input:focus, .primary-btn:focus{
+    outline:0;
+  }
+
+   .Login__paragraph{
+       text-align:left;
+       padding-left:1em;
+       font-size:1.2em;
+    
+   }
+   .Login__link{
+       color:#e63946;
+   }
