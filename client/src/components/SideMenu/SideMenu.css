@@ -9,11 +9,7 @@
   height:100vh;
 }
 
-.SideMenu__img-close {
-  margin-right:150px;
-}
-
-.SideMenu__img-close:hover {
+.SideMenu__close {
   cursor: pointer;
 }
 
