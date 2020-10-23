@@ -16,22 +16,24 @@ const SideMenu = ({ toggleProfileHidden }) => {
         className='SideMenu__close'
         onClick={toggleProfileHidden}
         icon={faTimes} />
-      
-        <ProfileIcon />
-      
-      <div className='SideMenu__section'>
-        <ul className='SideMenu__list'>
-          <li className='SideMenu__item'>Batman</li>
-          <li className='SideMenu__item'>Edit Profile</li>
-          <li className='SideMenu__item'>LogOut</li>
-        </ul>
-      </div>
-      <div className='SideMenu__section'>
-        <ul className='SideMenu__list'>
-          <li className='SideMenu__item'><Link className='SideMenu__link' to='/home'>Home</Link></li>
-          <li className='SideMenu__item'>Qbank</li>
-          <li className='SideMenu__item'>Admin Dash</li>
-        </ul>
+
+      <ProfileIcon />
+
+      <div className='SideMenu__menu' >
+        <div className='SideMenu__section'>
+          <ul className='SideMenu__list'>
+            <li className='SideMenu__item'>Batman</li>
+            <li className='SideMenu__item'>Edit Profile</li>
+            <li className='SideMenu__item'>LogOut</li>
+          </ul>
+        </div>
+        <div className='SideMenu__section'>
+          <ul className='SideMenu__list'>
+            <li className='SideMenu__item'><Link className='SideMenu__link' to='/home'>Home</Link></li>
+            <li className='SideMenu__item'>Qbank</li>
+            <li className='SideMenu__item'>Admin Dash</li>
+          </ul>
+        </div>
       </div>
     </div>
   );
