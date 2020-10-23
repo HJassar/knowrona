@@ -10,7 +10,7 @@ import { toggleProfileHidden } from '../../redux/profile/profile.actions';
 import './SideMenu.css';
 
 const SideMenu = ({ toggleProfileHidden }) => {
-  // We declare node using the useRef hook in order to make the sidebar div programatically selectable.
+  // We declare node using the useRef hook in order to make the sidebar div programatically selectable. See https://medium.com/@pitipatdop/little-neat-trick-to-capture-click-outside-with-react-hook-ba77c37c7e82 for full solution.
   const node = useRef();
 
   // Adds a general event listener for a click upon mounting and removes it upon dismounting.
