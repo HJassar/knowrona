@@ -1,19 +1,21 @@
 import React, {useState} from 'react';
 import { Redirect } from 'react-router-dom';
 import BigLogo from '../components/BigLogo/BigLogo';
+import { connect } from 'react-redux';
+import { setSplashOver } from '../redux/utils/utils.actions';
 
 import './Splash.css';
 
-const Splash = () => {
+const Splash = ( { setSplashOver, splashOver }) => {
 
-  const [animationIsOver,setAnimationIsOver] = useState(false)
+  // const [animationIsOver,setAnimationIsOver] = useState(false)
 
   setTimeout(() => {
-    setAnimationIsOver(true);
+    setSplashOver()
   }, 3000);
 
   document.title = 'KnowRona | Home';
-  if(!animationIsOver){
+  if(!splashOver){
   return (
     <div className='Splash'>
       <BigLogo />
@@ -29,5 +31,12 @@ const Splash = () => {
     return <Redirect to='/home' />
   }
 };
+const mapStateToProps = state => ({
+  splashOver: state.utils.splashOver
+});
 
-export default Splash;
+const mapDispatchToProps = dispatch => ({
+  setSplashOver: () => dispatch(setSplashOver())
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Splash);

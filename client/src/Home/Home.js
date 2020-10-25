@@ -5,11 +5,12 @@ import BigLogo from '../components/BigLogo/BigLogo';
 
 import { connect } from 'react-redux';
 import { setQuizData } from '../redux/quiz/quiz.actions';
+import { setSplashOver } from '../redux/utils/utils.actions';
 
 import './Home.css';
 import { Redirect, Link } from 'react-router-dom';
 
-const Home = ({ quizData, setGeneratedQuiz }) => {
+const Home = ({ quizData, setGeneratedQuiz, setSplashOver }) => {
     document.title = 'KnowRona | Main Menu';
 
     const [status, setStatus] = useState('landed');
@@ -19,6 +20,7 @@ const Home = ({ quizData, setGeneratedQuiz }) => {
     const handleGenerateClick = (event) => {
         // Show generating quiz componenet until the quiz is sent back
         setStatus('loading');
+        setSplashOver();
         // Prevent the button from generating another quiz
         event.target.disabled = true;
         event.target.className = 'Question__choice--disabled';
@@ -43,7 +45,7 @@ const Home = ({ quizData, setGeneratedQuiz }) => {
                         >
                             Generate a Quiz!
                         </button>
-                        <Link to='/login'>
+                        <Link onClick={()=> setSplashOver()}to='/login'>
                             <button className='btn primary-btn'>LOGIN</button>
                         </Link>
                     </>
@@ -71,12 +73,13 @@ const Home = ({ quizData, setGeneratedQuiz }) => {
     );
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
     quizData: state.quiz.quizData
 });
 
-const mapDispatchToProps = (dispatch) => ({
-    setGeneratedQuiz: (quizData) => dispatch(setQuizData(quizData))
+const mapDispatchToProps = dispatch => ({
+    setGeneratedQuiz: quizData => dispatch(setQuizData(quizData)),
+    setSplashOver: () => dispatch(setSplashOver())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);

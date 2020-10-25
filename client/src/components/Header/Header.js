@@ -12,7 +12,7 @@ import ProfileIcon from '../ProfileIcon/ProfileIcon';
 import { connect } from 'react-redux';
 import { toggleProfileHidden } from '../../redux/profile/profile.actions';
 
-const Header = ( { hidden, toggleProfileHidden }) => {
+const Header = ( { hidden, toggleProfileHidden, splashOver }) => {
   let location = useLocation().pathname;
   const displayHeaderLogo = () => {
     if (!['/', '/home'].includes(location)) {
@@ -23,22 +23,26 @@ const Header = ( { hidden, toggleProfileHidden }) => {
   return (
     <header className='Header'>
       {displayHeaderLogo()}
-      <div className='Header__menu'>
-        <Link to='/profile'>
-          <ProfileIcon />
-        </Link>
-        <div className='Header__menu-button' onClick={toggleProfileHidden}>
-          <FontAwesomeIcon icon={faBars} />
-        </div>
-        {/* <Link className='Header__menu-button' to='/home'>
-          <FontAwesomeIcon icon={faBars} />
-        </Link> */}
-        {
-          !hidden ? (
-            <SideMenu />
-          ) : null
-        }
-      </div>
+      {
+        splashOver ? (
+          <div className='Header__menu'>
+            <Link to='/profile'>
+              <ProfileIcon />
+            </Link>
+            <div className='Header__menu-button' onClick={toggleProfileHidden}>
+              <FontAwesomeIcon icon={faBars} />
+            </div>
+            {/* <Link className='Header__menu-button' to='/home'>
+              <FontAwesomeIcon icon={faBars} />
+            </Link> */}
+            {
+              !hidden ? (
+                <SideMenu />
+              ) : null
+            }
+          </div>
+        ) : null
+      } 
     </header>
   );
 };
@@ -60,7 +64,8 @@ const HeaderLogo = () => {
 };
 
 const mapStateToProps = state => ({
-  hidden: state.profile.hidden
+  hidden: state.profile.hidden,
+  splashOver: state.utils.splashOver
 });
 
 const mapDispatchToProps = dispatch => ({
