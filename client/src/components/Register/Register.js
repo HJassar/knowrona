@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import './Register.css';
 
 const Register = () => {
     const [email, setEmail] = useState('');
@@ -16,7 +17,7 @@ const Register = () => {
             <div className='container'>
                 <form className='registration-form'>
                     <div className='form-group'>
-                        <input
+                        <input className='form-group__input'
                             type='email'
                             placeholder='Email Address'
                             value={email}
@@ -25,7 +26,7 @@ const Register = () => {
                         />
                     </div>
                     <div className='form-group'>
-                        <input
+                        <input className='form-group__input'
                             type='text'
                             placeholder='Username'
                             value={username}
@@ -34,7 +35,7 @@ const Register = () => {
                         />
                     </div>
                     <div className='form-group'>
-                        <input
+                        <input className='form-group__input'
                             type='password'
                             placeholder='Password'
                             value={password}
@@ -43,7 +44,7 @@ const Register = () => {
                         />
                     </div>
                     <div className='form-group'>
-                        <input
+                        <input className='form-group__input'
                             type='password'
                             placeholder='Confirm password'
                             value={confirmPassword}
@@ -52,10 +53,10 @@ const Register = () => {
                         />
                     </div>
                     <div className='form-group'>
-                        <button className='btn-primary'>Register</button>
+                        <button className='primary-btn'>Register</button>
                     </div>
-                    <p>
-                        Already have an account? <Link to='/login'>Log In</Link>
+                    <p className='Register__paragraph'>
+                        Already have an account? <Link className='Register__link' to='/login'>Log In</Link>
                     </p>
                 </form>
             </div>
