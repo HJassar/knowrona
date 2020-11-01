@@ -59,7 +59,7 @@ const Login = ({ setCurrentUser }) => {
   return (
     <>
       <div className="container">
-        <form className="login-form">
+        <form className="login-form" onSubmit={onSubmit}>
           <div className="form-group">
             <input
               className="form-group__input"
