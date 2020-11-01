@@ -26,7 +26,7 @@ const Login = ({ setCurrentUser }) => {
 
     //SNEHA: USE THIS ENDPOINT ON BACKEND
     axios
-      .post("/auth/login", userData)
+      .post("/login", userData)
       .then((res) => {
         //SNEHA: Response is expecting a JWT "token" from the backend. So try initially with {token: (whatever generated token you have made)} and pass that object in a response back to the front end.
         // Save to localStorage

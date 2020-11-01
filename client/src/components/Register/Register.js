@@ -24,7 +24,7 @@ const Register = () => {
     };
     //SNEHA: So we can test functionality, you can pass back the object containing the data for the newly created user as the response.
     axios
-      .post("/auth/register", newUser)
+      .post("/register", newUser)
       .then((res) => console.log(res.data))
       .catch((err) => console.log(err.message));
   };
