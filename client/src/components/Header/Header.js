@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
-
+import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 
@@ -12,7 +12,12 @@ import ProfileIcon from "../ProfileIcon/ProfileIcon";
 import { connect } from "react-redux";
 import { toggleProfileHidden } from "../../redux/profile/profile.actions";
 
-const Header = ({ hidden, toggleProfileHidden, splashOver }) => {
+const Header = ({
+  hidden,
+  toggleProfileHidden,
+  splashOver,
+  isAuthenticated,
+}) => {
   let location = useLocation().pathname;
   const displayHeaderLogo = () => {
     if (!["/", "/home"].includes(location)) {
@@ -27,6 +32,7 @@ const Header = ({ hidden, toggleProfileHidden, splashOver }) => {
   return (
     <header className="Header">
       {displayHeaderLogo()}
+      {/* USE THIS INSTEAD ONCE BACKEND IS CONNECTED TO AUTHORIZATION: {splashOver && isAuthenticated ? ( */}
       {splashOver ? (
         <div className="Header__menu">
           <Link to="/profile">
@@ -64,6 +70,7 @@ const HeaderLogo = () => {
 const mapStateToProps = (state) => ({
   hidden: state.profile.hidden,
   splashOver: state.utils.splashOver,
+  isAuthenticated: state.auth.isAuthenticated,
 });
 
 const mapDispatchToProps = (dispatch) => ({

@@ -1,5 +1,5 @@
 const AuthActionTypes = {
-  // TOGGLE_Auth_HIDDEN: 'TOGGLE_Auth_HIDDEN'
+  SET_CURRENT_USER: "SET_CURRENT_USER",
 };
 
 export default AuthActionTypes;
