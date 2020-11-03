@@ -14,6 +14,7 @@
   position:absolute;
   top:5px;
   left:15px;
+  z-index: 5;
 }
 
 .SideMenu__img .ProfileIcon .ProfileIcon-img {
@@ -38,6 +39,7 @@
 /* The reason for this is, no matter how many sections we have, the very last one will not have a line under it, this is one exception where BEM is not preferable  */
 .SideMenu__menu > div {
   position: relative;
+  z-index: 5;
 }
 
 .SideMenu__menu > div::after {
@@ -52,6 +54,16 @@
 
 .SideMenu__menu > div:nth-last-child(1)::after {
   display: none;
+}
+
+.SideMenu__overlay {
+  position: fixed;
+  top: 10;
+  right: 0;
+  width: 100vw;
+  height: 100vw;
+  z-index: 1;
+  background-color: transparent;
 }
 
 @media screen and (max-width: 576px) {

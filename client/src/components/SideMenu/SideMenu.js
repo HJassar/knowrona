@@ -54,8 +54,10 @@ const SideMenu = ({ toggleProfileHidden }) => {
       />
 
       <ProfileIcon />
-
+      
+      <div className="SideMenu__overlay"></div>
       <div className="SideMenu__menu">
+        
         <div className="SideMenu__section">
           <ul className="SideMenu__list">
             <li className="SideMenu__item" onClick={toggleProfileHidden}>
