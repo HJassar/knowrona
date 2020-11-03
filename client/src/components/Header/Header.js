@@ -22,7 +22,7 @@ const Header = ({
   const displayHeaderLogo = () => {
     if (!["/", "/home"].includes(location)) {
       return (
-        <Link to="/home">
+        <Link to="/home" style={{ textDecoration: 'none' }}>
           <HeaderLogo />
         </Link>
       );
