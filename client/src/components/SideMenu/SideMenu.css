@@ -11,12 +11,17 @@
 .SideMenu__close {
     cursor: pointer;
     position: absolute;
-    top: 5px;
+    top: 15px;
     left: 15px;
 }
 
-.SideMenu__img .ProfileIcon .ProfileIcon-img {
-    width: 70%;
+.SideMenu__avatar{
+    width: 180px;
+    height: 180px;
+    margin: 35px auto 0;
+    border-radius: 50%;
+    overflow: hidden;
+    
 }
 
 .SideMenu__list {
@@ -67,7 +72,7 @@
     .SideMenu {
         width: 100vw;
     }
-    .SideMenu__img .ProfileIcon .ProfileIcon-img {
+    .SideMenu__img .ProfilePicture .ProfilePicture-img {
         width: 30%;
     }
     .SideMenu__section::after {

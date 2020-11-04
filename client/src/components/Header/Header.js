@@ -7,7 +7,7 @@ import { faBars } from "@fortawesome/free-solid-svg-icons";
 import "./Header.css";
 import logo from "../logo_white.png";
 import SideMenu from "../SideMenu/SideMenu";
-import ProfileIcon from "../ProfileIcon/ProfileIcon";
+import ProfilePicture from "../ProfilePicture/ProfilePicture";
 
 import { connect } from "react-redux";
 import { toggleProfileHidden } from "../../redux/profile/profile.actions";
@@ -34,9 +34,11 @@ const Header = ({
       {displayHeaderLogo()}
       {/* USE THIS INSTEAD ONCE BACKEND IS CONNECTED TO AUTHORIZATION: {splashOver && isAuthenticated ? ( */}
       {splashOver ? (
-        <div className="Header__menu">
+        <div className='Header__menu'>
           <Link to="/profile">
-            <ProfileIcon />
+            <div className='Header__avatar'>
+              <ProfilePicture />
+            </div>
           </Link>
           <div className="Header__menu-button" onClick={toggleProfileHidden}>
             <FontAwesomeIcon icon={faBars} />

@@ -31,3 +31,11 @@
 .Header__logo {
     color: white;
 }
+
+.Header__avatar{
+  width: 35px;
+  height: 35px;
+  margin-right: 10px;
+  border-radius: 50%;
+  overflow: hidden;
+}

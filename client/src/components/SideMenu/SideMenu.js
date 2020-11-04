@@ -4,7 +4,7 @@ import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
-import ProfileIcon from '../ProfileIcon/ProfileIcon';
+import ProfilePicture from '../ProfilePicture/ProfilePicture';
 import { connect } from 'react-redux';
 import { toggleProfileHidden } from '../../redux/profile/profile.actions';
 import './SideMenu.css';
@@ -50,7 +50,9 @@ const SideMenu = ({ toggleProfileHidden }) => {
         <div className='SideMenu' ref={node}>
             <Overlay />
             <div className='SideMenu__menu'>
-                <ProfileIcon />
+                <div className='SideMenu__avatar'>
+                    <ProfilePicture />
+                </div>
                 <FontAwesomeIcon
                     className='SideMenu__close'
                     onClick={toggleProfileHidden}
