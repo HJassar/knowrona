@@ -15,25 +15,23 @@ import { toggleProfileHidden } from "../../redux/profile/profile.actions";
 const Header = ({
   hidden,
   toggleProfileHidden,
-  splashOver,
-  isAuthenticated,
+  // splashOver,
+  // isAuthenticated
 }) => {
+  
   let location = useLocation().pathname;
-  const displayHeaderLogo = () => {
-    if (!["/", "/home"].includes(location)) {
-      return (
-        <Link to="/home" style={{ textDecoration: 'none' }}>
-          <HeaderLogo />
-        </Link>
-      );
-    }
-  };
+  
+  const displayHeaderLogo = ["/", "/home"].includes(location) ? false:true;
+  const displayHeaderMenu = ["/"].includes(location) ? false : true;
 
   return (
     <header className="Header">
-      {displayHeaderLogo()}
-      {/* USE THIS INSTEAD ONCE BACKEND IS CONNECTED TO AUTHORIZATION: {splashOver && isAuthenticated ? ( */}
-      {splashOver ? (
+      {displayHeaderLogo ?
+        <Link to="/home" style={{ textDecoration: 'none' }}>
+          <HeaderLogo />
+        </Link>
+        : null}
+      {displayHeaderMenu ?
         <div className='Header__menu'>
           <Link to="/profile">
             <div className='Header__avatar'>
@@ -44,11 +42,11 @@ const Header = ({
             <FontAwesomeIcon icon={faBars} />
           </div>
           {/* <Link className='Header__menu-button' to='/home'>
-              <FontAwesomeIcon icon={faBars} />
-            </Link> */}
+            <FontAwesomeIcon icon={faBars} />
+          </Link> */}
           {!hidden ? <SideMenu /> : null}
         </div>
-      ) : null}
+        : null}
     </header>
   );
 };
