@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
+import "./ForgetPassword.css";
+
 const ForgetPassword = (props) => {
     let sendEmail = props.sendEmail;
     if (sendEmail) {
@@ -28,6 +30,7 @@ const ForgetPasswordInput = (props) => {
                 <form>
                     <div className='form-group'>
                         <input
+                            className="form-group__input"
                             type='text'
                             placeholder='Email Address'
                             value={email}
@@ -35,9 +38,9 @@ const ForgetPasswordInput = (props) => {
                             required
                         />
                         <div className='form-group'>
-                            <button onClick={switchToMessage}>Send</button>
+                            <button className="primary-btn" onClick={switchToMessage}>Send</button>
                             <Link to='/Login'>
-                                <button>Cancel</button>
+                                <button className="primary-btn">Back to Login</button>
                             </Link>
                         </div>
                     </div>
