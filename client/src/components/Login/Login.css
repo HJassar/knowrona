@@ -1,6 +1,5 @@
 
 .form-group .primary-btn{
-    background:#4361ee;
     border:none;
 }
 
@@ -12,5 +11,5 @@
     
    }
    .Login__link{
-       color:#e63946;
+    color: var(--secondary);
    }
