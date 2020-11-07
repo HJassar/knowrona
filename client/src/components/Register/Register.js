@@ -8,9 +8,9 @@ import CheckBox from "../CheckBox/CheckBox";
 
 const Register = () => {
   const [email, setEmail] = useState("");
-  const [username, setUsername] = useState("");
+  const [name, setName] = useState("");
   const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
+  const [password2, setPassword2] = useState("");
 
   // Password Validation State:
   const [min8, setMin8] = useState(false);
@@ -22,7 +22,7 @@ const Register = () => {
   const [hasNoSpaces, setHasNoSpaces] = useState(true);
 
   const handleEmail = (e) => setEmail(e.target.value);
-  const handleUsername = (e) => setUsername(e.target.value);
+  const handleUsername = (e) => setName(e.target.value);
 
   const handlePassword = (e) => {
     const isMin8Validate = new passwordValidator();
@@ -61,22 +61,28 @@ const Register = () => {
     //   .is().not().oneOf(['Passw0rd', 'Password123']); // Blacklist these values
     setPassword(e.target.value);
   };
-  const handleConfirmPassword = (e) => setConfirmPassword(e.target.value);
+  const handleConfirmPassword = (e) => setPassword2(e.target.value);
 
   const onSubmit = (e) => {
     e.preventDefault();
+    if (password !== password2) {
+      alert("Passwords don't match");
+      return;
+    }
     const newUser = {
       email,
-      username,
+      name,
       password,
-      confirmPassword,
+      password2,
     };
+    console.log(newUser);
     //SNEHA: So we can test functionality, you can pass back the object containing the data for the newly created user as the response.
     axios
-      .post("/register", newUser)
+      .post("/auth/register", newUser)
       .then((res) => console.log(res.data))
-      .catch((err) => console.log(err.message));
+      .catch((err) => console.log(err));
   };
+
   return (
     <>
       <div className="container">
@@ -96,7 +102,7 @@ const Register = () => {
               className="form-group__input"
               type="text"
               placeholder="Username"
-              value={username}
+              value={name}
               onChange={handleUsername}
               required
             />
@@ -116,13 +122,25 @@ const Register = () => {
               className="form-group__input"
               type="password"
               placeholder="Confirm password"
-              value={confirmPassword}
+              value={password2}
               onChange={handleConfirmPassword}
               required
             />
           </div>
           <div>
             <ul>
+              <li>
+                <CheckBox
+                  checked={
+                    password === password2 &&
+                    password !== "" &&
+                    password2 !== ""
+                      ? "True"
+                      : "False"
+                  }
+                />
+                Passwords Match
+              </li>
               <li>
                 <CheckBox checked={min8 ? "True" : "False"} />
                 Minimum Length of 8

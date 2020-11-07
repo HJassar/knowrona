@@ -8,7 +8,6 @@ import {
 import "./CheckBox.css";
 
 const CheckBox = ({ checked }) => {
-  console.log("CHECKED? : ", checked);
   return (
     <div className="CheckBox">
       {checked === "True" ? (
