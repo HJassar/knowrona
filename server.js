@@ -15,12 +15,14 @@ const Quiz = require("./models/quiz");
 const Question = require("./models/question");
 const User = require("./models/user");
 
-//Routes declarations
+//Routers 
 const indexRouter = require("./routes/index");
 const quizRouter = require("./routes/quizzes");
 const questionRouter = require("./routes/questions");
 const sessionRouter = require("./routes/session");
 const adminRouter = require("./routes/admin");
+const authRouter = require("./routes/auth");
+
 
 // Config declarations
 const port = process.env.PORT || 5000;
@@ -62,12 +64,14 @@ app.use((req, res, next) => {
   next();
 })
 
-// Creating routes shorthand
+// Creating routes
 app.use(indexRouter);
 app.use("/quizzes", quizRouter);
 app.use("/questions", questionRouter);
 app.use("/session", sessionRouter);
 app.use("/admin", adminRouter);
+app.use("/auth", authRouter);
+
 
 
 // Special for Dev Environment
