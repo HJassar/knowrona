@@ -5,6 +5,7 @@ import axios from "axios";
 
 import passwordValidator from "password-validator";
 import CheckBox from "../CheckBox/CheckBox";
+import Loader from "react-loader-spinner";
 
 const Register = () => {
   const [email, setEmail] = useState("");
@@ -20,9 +21,57 @@ const Register = () => {
   const [hasLowercase, setHasLowercase] = useState(false);
   const [hasTwoDigits, setHasTwoDigits] = useState(false);
   const [hasNoSpaces, setHasNoSpaces] = useState(true);
+  const [isUsernameAlphanumeric, setIsUsernameAlphanumeric] = useState(false);
+  const [isEmailValid, setIsEmailValid] = useState(false);
 
-  const handleEmail = (e) => setEmail(e.target.value);
-  const handleUsername = (e) => setUsername(e.target.value);
+  const [doneTypingEmailInterval, setDoneTypingEmailInterval] = useState(1500); //time in ms (5 seconds)
+  const [emailTypingTimer, setEmailTypingTimer] = useState(null); //state t o hold the time in
+  const [isEmailAvailable, setIsEmailAvailable] = useState(false);
+  const [emailCheckLoading, setEmailCheckLoading] = useState(false);
+
+  const onEmailKeyUp = (e) => {
+    clearTimeout(emailTypingTimer);
+    if (email !== "") {
+      setEmailCheckLoading(true);
+    }
+    const input = e.target.value;
+    if (e.target.value) {
+      setEmailTypingTimer(
+        setTimeout(() => {
+          checkEmailExists(input);
+        }, doneTypingEmailInterval)
+      );
+    }
+  };
+
+  const checkEmailExists = (email) => {
+    axios
+      .get(`/auth/validateEmail/${email}`)
+      .then((res) => {
+        res.data === true
+          ? setIsEmailAvailable(true)
+          : setIsEmailAvailable(false);
+        console.log(res.data);
+        setEmailCheckLoading(false);
+      })
+      .catch((err) => console.log(err));
+  };
+
+  const handleEmail = (e) => {
+    const isEmailValid = new passwordValidator();
+    const regex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    isEmailValid.has(regex);
+    setIsEmailValid(isEmailValid.validate(e.target.value));
+    setEmail(e.target.value);
+  };
+
+  const handleUsername = (e) => {
+    const isAlphaNumeric = new passwordValidator();
+    const regex = /^[0-9a-zA-Z]+$/;
+    isAlphaNumeric.has(regex);
+    setIsUsernameAlphanumeric(isAlphaNumeric.validate(e.target.value));
+    setUsername(e.target.value);
+  };
 
   const handlePassword = (e) => {
     const isMin8Validate = new passwordValidator();
@@ -76,10 +125,11 @@ const Register = () => {
       password2,
     };
     console.log(newUser);
-    //SNEHA: So we can test functionality, you can pass back the object containing the data for the newly created user as the response.
     axios
       .post("/auth/register", newUser)
-      .then((res) => console.log(res.data))
+      .then((res) => {
+        console.log(res.data);
+      })
       .catch((err) => console.log(err));
   };
 
@@ -95,8 +145,36 @@ const Register = () => {
               value={email}
               onChange={handleEmail}
               required
+              onKeyUp={onEmailKeyUp}
             />
           </div>
+          <div>
+            <CheckBox checked={isEmailValid ? "True" : "False"} />
+            Valid Email Address
+          </div>
+          {emailCheckLoading ? (
+            <div>
+              <span>Checking Availability</span>
+              <Loader
+                type="ThreeDots"
+                color="#1d62b1"
+                height={20}
+                width={20}
+                timeout={0}
+              />
+            </div>
+          ) : (
+            <div>
+              <CheckBox checked={isEmailAvailable ? "True" : "False"} />
+              <span>
+                {email === ""
+                  ? "Enter an e-mail address to check for availability."
+                  : isEmailAvailable
+                  ? "Email is Available"
+                  : "Email Already Taken. Please choose a different email"}
+              </span>
+            </div>
+          )}
           <div className="form-group">
             <input
               className="form-group__input"
@@ -106,6 +184,10 @@ const Register = () => {
               onChange={handleUsername}
               required
             />
+          </div>
+          <div>
+            <CheckBox checked={isUsernameAlphanumeric ? "True" : "False"} />
+            Username contains only letters and numbers.
           </div>
           <div className="form-group">
             <input
