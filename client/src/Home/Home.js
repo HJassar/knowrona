@@ -17,7 +17,7 @@ const Home = ({ quizData, setGeneratedQuiz, setSplashOver }) => {
         setSplashOver();
     }, []);
     const [status, setStatus] = useState('confirmLogin');
-    const [isLoggedInConfirmed, setIsLoggedInConfirmed] = useState(false);
+
     // This is being replaced with a call to set the quiz in the store
     // const [generatedQuiz, setGeneratedQuiz] = useState({})
 
@@ -38,10 +38,6 @@ const Home = ({ quizData, setGeneratedQuiz, setSplashOver }) => {
     //         .catch((err) => console.log(err));
     // };
 
-    // Handles confirmed Login
-    const confirmedLogin = () => {
-      
-    }
 
     const HomeContent = () => {
         switch (status) {
@@ -50,7 +46,7 @@ const Home = ({ quizData, setGeneratedQuiz, setSplashOver }) => {
                     <>
                         <img
                             onClick={() =>
-                                setIsLoggedInConfirmed(true)
+                                setStatus('isLoggedInConfirmed')
                             }
                             src={ProfilePic}
                             alt='Profile Picture'
