@@ -8,7 +8,7 @@ import CheckBox from "../CheckBox/CheckBox";
 
 const Register = () => {
   const [email, setEmail] = useState("");
-  const [name, setName] = useState("");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [password2, setPassword2] = useState("");
 
@@ -22,7 +22,7 @@ const Register = () => {
   const [hasNoSpaces, setHasNoSpaces] = useState(true);
 
   const handleEmail = (e) => setEmail(e.target.value);
-  const handleUsername = (e) => setName(e.target.value);
+  const handleUsername = (e) => setUsername(e.target.value);
 
   const handlePassword = (e) => {
     const isMin8Validate = new passwordValidator();
@@ -71,7 +71,7 @@ const Register = () => {
     }
     const newUser = {
       email,
-      name,
+      username,
       password,
       password2,
     };
@@ -102,7 +102,7 @@ const Register = () => {
               className="form-group__input"
               type="text"
               placeholder="Username"
-              value={name}
+              value={username}
               onChange={handleUsername}
               required
             />

@@ -6,9 +6,9 @@ const userSchema = new mongoose.Schema(
 		firstName: String,
 		lastName: String,
 		roles: { type: String, default: 'player' },
-		userName: String,
+		username: {type: String, unique: true},
 		displayName: String,
-		email: String,
+		email: {type: String, unique: true},
 		quizzes: [
 			{
 				quizId: {
