@@ -11,9 +11,9 @@ const CheckBox = ({ checked }) => {
   return (
     <div className="CheckBox">
       {checked === "True" ? (
-        <FontAwesomeIcon icon={faCheckCircle} />
+        <FontAwesomeIcon className="CheckBox__valid" icon={faCheckCircle} />
       ) : (
-        <FontAwesomeIcon icon={faTimesCircle} />
+        <FontAwesomeIcon className="CheckBox__invalid" icon={faTimesCircle} />
       )}
     </div>
   );

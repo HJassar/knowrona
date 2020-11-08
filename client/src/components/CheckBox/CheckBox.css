@@ -1,0 +1,12 @@
+.CheckBox {
+  display: inline-block;
+  margin-right: 5px;
+}
+
+.CheckBox__valid {
+  color: var(--success);
+}
+
+.CheckBox__invalid {
+  color: var(--error);
+}

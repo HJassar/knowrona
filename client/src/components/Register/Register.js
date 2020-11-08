@@ -24,18 +24,32 @@ const Register = () => {
   const [isUsernameAlphanumeric, setIsUsernameAlphanumeric] = useState(false);
   const [isEmailValid, setIsEmailValid] = useState(false);
 
-  const [doneTypingEmailInterval, setDoneTypingEmailInterval] = useState(1500); //time in ms (5 seconds)
+  //Realtime check of email availability
+  const [doneTypingEmailInterval, setDoneTypingEmailInterval] = useState(500); //time in ms (5 seconds)
   const [emailTypingTimer, setEmailTypingTimer] = useState(null); //state t o hold the time in
   const [isEmailAvailable, setIsEmailAvailable] = useState(false);
   const [emailCheckLoading, setEmailCheckLoading] = useState(false);
+  const [emailDisplay, setEmailDisplay] = useState("");
+
+  //Realtime check of username availability
+  const [doneTypingUsernameInterval, setDoneTypingUsernameInterval] = useState(
+    500
+  ); //time in ms (5 seconds)
+  const [usernameTypingTimer, setUsernameTypingTimer] = useState(null); //state t o hold the time in
+  const [isUsernameAvailable, setIsUsernameAvailable] = useState(false);
+  const [usernameCheckLoading, setUsernameCheckLoading] = useState(false);
+  const [usernameDisplay, setUsernameDisplay] = useState("");
 
   const onEmailKeyUp = (e) => {
     clearTimeout(emailTypingTimer);
     if (email !== "") {
-      setEmailCheckLoading(true);
+      setEmailCheckLoading(false);
     }
     const input = e.target.value;
-    if (e.target.value) {
+    if (e.target.value && isEmailValid) {
+      if (email !== "") {
+        setEmailCheckLoading(true);
+      }
       setEmailTypingTimer(
         setTimeout(() => {
           checkEmailExists(input);
@@ -44,15 +58,78 @@ const Register = () => {
     }
   };
 
+  const onUsernameKeyUp = (e) => {
+    clearTimeout(usernameTypingTimer);
+    if (username !== "") {
+      setUsernameCheckLoading(false);
+    }
+    const input = e.target.value;
+    if (e.target.value && isUsernameAlphanumeric) {
+      if (username !== "") {
+        setUsernameCheckLoading(true);
+      }
+      setUsernameTypingTimer(
+        setTimeout(() => {
+          checkUsernameExists(input);
+        }, doneTypingUsernameInterval)
+      );
+    }
+  };
+
   const checkEmailExists = (email) => {
+    const emailTimeStamp = Date.now();
+    console.log(Date.now());
     axios
-      .get(`/auth/validateEmail/${email}`)
+      .get(`/auth/validateEmail/${email}/${emailTimeStamp}`)
       .then((res) => {
-        res.data === true
-          ? setIsEmailAvailable(true)
-          : setIsEmailAvailable(false);
+        console.log("Original TimeStamp: ", emailTimeStamp);
+        console.log("Received TimeStamp: ", res.data.timeStamp);
+        if (
+          res.data.available === "true" &&
+          res.data.timeStamp >= emailTimeStamp
+        ) {
+          setEmailDisplay(email);
+          setIsEmailAvailable(true);
+          console.log("Most recent request");
+        } else if (
+          res.data.available === "false" &&
+          res.data.timeStamp >= emailTimeStamp
+        ) {
+          setEmailDisplay(email);
+          setIsEmailAvailable(false);
+          console.log("Stale request or not available");
+        }
         console.log(res.data);
         setEmailCheckLoading(false);
+      })
+      .catch((err) => console.log(err));
+  };
+
+  const checkUsernameExists = (username) => {
+    const usernameTimeStamp = Date.now();
+    console.log(Date.now());
+    axios
+      .get(`/auth/validateUsername/${username}/${usernameTimeStamp}`)
+      .then((res) => {
+        console.log("Original TimeStamp: ", usernameTimeStamp);
+        console.log("Received TimeStamp: ", res.data.timeStamp);
+        if (
+          res.data.available === "true" &&
+          res.data.timeStamp >= usernameTimeStamp
+        ) {
+          setUsernameDisplay(username);
+          setIsUsernameAvailable(true);
+          console.log("Most recent request");
+        } else if (
+          res.data.available === "false" &&
+          res.data.timeStamp >= usernameTimeStamp
+        ) {
+          setUsernameDisplay(username);
+          setIsUsernameAvailable(false);
+          console.log("Stale request or not available");
+        }
+        console.log(res.data);
+        setUsernameCheckLoading(false);
       })
       .catch((err) => console.log(err));
   };
@@ -157,7 +234,7 @@ const Register = () => {
               <span>Checking Availability</span>
               <Loader
                 type="ThreeDots"
-                color="#1d62b1"
+                color="var(--primary)"
                 height={20}
                 width={20}
                 timeout={0}
@@ -165,13 +242,15 @@ const Register = () => {
             </div>
           ) : (
             <div>
-              <CheckBox checked={isEmailAvailable ? "True" : "False"} />
+              <CheckBox
+                checked={isEmailAvailable && email ? "True" : "False"}
+              />
               <span>
                 {email === ""
-                  ? "Enter an e-mail address to check for availability."
+                  ? "Enter a valid e-mail address to check for availability."
                   : isEmailAvailable
-                  ? "Email is Available"
-                  : "Email Already Taken. Please choose a different email"}
+                  ? `${emailDisplay} is available`
+                  : `${emailDisplay} is already taken. Please choose a different email`}
               </span>
             </div>
           )}
@@ -183,12 +262,38 @@ const Register = () => {
               value={username}
               onChange={handleUsername}
               required
+              onKeyUp={onUsernameKeyUp}
             />
           </div>
           <div>
             <CheckBox checked={isUsernameAlphanumeric ? "True" : "False"} />
-            Username contains only letters and numbers.
+            Username contains only letters and numbers with no spaces.
           </div>
+          {usernameCheckLoading ? (
+            <div>
+              <span>Checking Availability</span>
+              <Loader
+                type="ThreeDots"
+                color="var(--primary)"
+                height={20}
+                width={20}
+                timeout={0}
+              />
+            </div>
+          ) : (
+            <div>
+              <CheckBox
+                checked={isUsernameAvailable && username ? "True" : "False"}
+              />
+              <span>
+                {username === ""
+                  ? "Enter a username to check for availability."
+                  : isUsernameAvailable
+                  ? `${usernameDisplay} is available`
+                  : `${usernameDisplay} is already taken. Please choose a different username.`}
+              </span>
+            </div>
+          )}
           <div className="form-group">
             <input
               className="form-group__input"
