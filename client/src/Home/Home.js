@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 import BigLogo from '../components/BigLogo/BigLogo';
-import ProfilePic from '../components/ProfilePicture/profile-pic.png';
 
 import { connect } from 'react-redux';
 import { setQuizData } from '../redux/quiz/quiz.actions';
@@ -10,6 +9,7 @@ import { setSplashOver } from '../redux/utils/utils.actions';
 
 import './Home.css';
 import { Redirect, Link } from 'react-router-dom';
+import ConfirmLogin from '../components/ConfirmLogin/ConfirmLogin';
 
 const Home = ({ quizData, setGeneratedQuiz, setSplashOver }) => {
     document.title = 'KnowRona | Main Menu';
@@ -38,28 +38,14 @@ const Home = ({ quizData, setGeneratedQuiz, setSplashOver }) => {
     //         .catch((err) => console.log(err));
     // };
 
-
     const HomeContent = () => {
         switch (status) {
             case 'confirmLogin':
                 return (
-                    <>
-                        <img
-                            onClick={() =>
-                                setStatus('isLoggedInConfirmed')
-                            }
-                            src={ProfilePic}
-                            alt='Profile Picture'
-                        />
-                        <small>
-                            <Link to='/login'>
-                                (Not you?) Sign in with a different account.
-                            </Link>
-                        </small>
-                    </>
+                    <ConfirmLogin confirmedLogin={console.log('hello world')} />
                 );
             case 'isLoggedInConfirmed':
-                return <p>Hello world!</p>;
+                return <p>Welcome Batman</p>;
 
             case 'loading':
                 return (
