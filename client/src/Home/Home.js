@@ -9,7 +9,7 @@ import { setSplashOver } from '../redux/utils/utils.actions';
 
 import './Home.css';
 import { Redirect, Link } from 'react-router-dom';
-import ConfirmLogin from '../components/ConfirmLogin/ConfirmLogin';
+import ProfilePic from '../components/ProfilePicture/ProfilePicture';
 
 const Home = ({ quizData, setGeneratedQuiz, setSplashOver }) => {
     document.title = 'KnowRona | Main Menu';
@@ -41,9 +41,7 @@ const Home = ({ quizData, setGeneratedQuiz, setSplashOver }) => {
     const HomeContent = () => {
         switch (status) {
             case 'confirmLogin':
-                return (
-                    <ConfirmLogin confirmedLogin={console.log('hello world')} />
-                );
+                return <ConfirmLogin />;
             case 'isLoggedInConfirmed':
                 return <p>Welcome Batman</p>;
 
@@ -60,6 +58,19 @@ const Home = ({ quizData, setGeneratedQuiz, setSplashOver }) => {
                 break;
         }
     };
+
+    const ConfirmLogin = () => (
+        <div className='ConfirmLogin'>
+            <button onClick={() => setStatus('isLoggedInConfirmed')}>
+                <ProfilePic />
+            </button>
+            <small>
+                <Link to='/login'>
+                    (Not you?) Sign in with a different account.
+                </Link>
+            </small>
+        </div>
+    );
 
     return (
         <div className='Home'>
