@@ -47,63 +47,68 @@ const SideMenu = ({ toggleProfileHidden }) => {
         );
     };
     return (
-        <div className='SideMenu' ref={node}>
+        <>
             <Overlay />
-            <div className='SideMenu__menu'>
-                <div className='SideMenu__avatar'>
-                    <ProfilePicture />
-                </div>
-                <FontAwesomeIcon
-                    className='SideMenu__close'
-                    onClick={toggleProfileHidden}
-                    icon={faTimes}
-                />
-                <div className='SideMenu__section'>
-                    <ul className='SideMenu__list'>
-                        <li
-                            className='SideMenu__item'
-                            onClick={toggleProfileHidden}
-                        >
-                            Batman
-                        </li>
-                        <li
-                            className='SideMenu__item'
-                            onClick={toggleProfileHidden}
-                        >
-                            Edit Profile
-                        </li>
-                        <li className='SideMenu__item' onClick={handleLogout}>
-                            LogOut
-                        </li>
-                    </ul>
-                </div>
-                <div className='line'></div>
-                <div className='SideMenu__section'>
-                    <ul className='SideMenu__list'>
-                        <li
-                            className='SideMenu__item'
-                            onClick={toggleProfileHidden}
-                        >
-                            <Link className='SideMenu__link' to='/home'>
-                                Home
-                            </Link>
-                        </li>
-                        <li
-                            className='SideMenu__item'
-                            onClick={toggleProfileHidden}
-                        >
-                            Qbank
-                        </li>
-                        <li
-                            className='SideMenu__item'
-                            onClick={toggleProfileHidden}
-                        >
-                            Admin Dash
-                        </li>
-                    </ul>
+            <div className='SideMenu' ref={node}>
+                <div className='SideMenu__menu'>
+                    <div className='SideMenu__avatar'>
+                        <ProfilePicture />
+                    </div>
+                    <FontAwesomeIcon
+                        className='SideMenu__close'
+                        onClick={toggleProfileHidden}
+                        icon={faTimes}
+                    />
+                    <div className='SideMenu__section'>
+                        <ul className='SideMenu__list'>
+                            <li
+                                className='SideMenu__item'
+                                onClick={toggleProfileHidden}
+                            >
+                                Batman
+                            </li>
+                            <li
+                                className='SideMenu__item'
+                                onClick={toggleProfileHidden}
+                            >
+                                Edit Profile
+                            </li>
+                            <li
+                                className='SideMenu__item'
+                                onClick={handleLogout}
+                            >
+                                LogOut
+                            </li>
+                        </ul>
+                    </div>
+                    <div className='line'></div>
+                    <div className='SideMenu__section'>
+                        <ul className='SideMenu__list'>
+                            <li
+                                className='SideMenu__item'
+                                onClick={toggleProfileHidden}
+                            >
+                                <Link className='SideMenu__link' to='/home'>
+                                    Home
+                                </Link>
+                            </li>
+                            <li
+                                className='SideMenu__item'
+                                onClick={toggleProfileHidden}
+                            >
+                                Qbank
+                            </li>
+                            <li
+                                className='SideMenu__item'
+                                onClick={toggleProfileHidden}
+                            >
+                                Admin Dash
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
-        </div>
+        </>
     );
 };
 
