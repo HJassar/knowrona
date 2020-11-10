@@ -65,7 +65,7 @@ const Home = ({ quizData, setGeneratedQuiz, setSplashOver }) => {
                 <ProfilePic />
             </button>
             <small>
-                <Link to='/login'>
+                <Link to='/login' className='link' style={{ textDecoration: 'none' }}>
                     (Not you?) Sign in with a different account.
                 </Link>
             </small>
