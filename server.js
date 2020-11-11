@@ -70,13 +70,6 @@ app.use((req, res, next) => {
   next();
 });
 
-// Creating routes
-app.use(indexRouter);
-app.use("/quizzes", quizRouter);
-app.use("/questions", questionRouter);
-app.use("/session", sessionRouter);
-app.use("/admin", adminRouter);
-app.use("/auth", authRouter);
 
 // Special for Dev Environment
 if (environment == "dev") {
@@ -95,6 +88,15 @@ if (environment == "dev") {
     res.send("This page shows in dev mode only");
   });
 }
+
+// Creating routes
+app.use(indexRouter);
+app.use("/quizzes", quizRouter);
+app.use("/questions", questionRouter);
+app.use("/session", sessionRouter);
+app.use("/admin", adminRouter);
+app.use("/auth", authRouter);
+
 
 // Regular DB clearance in Staging
 if (environment == "staging") {
