@@ -1,19 +1,19 @@
 .ConfirmLogin img{
-    width: 7em;
+    width: 6em;
     height: auto;
     border-radius:50%;
     
 }
-
 button{
     background: var(--primary);
     border-radius: var(--default-radius);
     width: 100%;
+    max-width: 45em;
     height: 200px;
     border: none;
     margin-bottom: 10px;
 }
-
 .link {
     color: white;
+    margin: 8em;
 }
