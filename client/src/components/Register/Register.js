@@ -14,8 +14,8 @@ const Register = () => {
   const [password2, setPassword2] = useState("");
 
   // Password Validation State:
-  const [min8, setMin8] = useState(false);
-  const [max100, setMax100] = useState(true);
+  const [min, setMin] = useState(false);
+  const [max, setMax] = useState(true);
   const [hasSymbols, setHasSymbols] = useState(false);
   const [hasUppercase, setHasUppercase] = useState(false);
   const [hasLowercase, setHasLowercase] = useState(false);
@@ -151,14 +151,12 @@ const Register = () => {
   };
 
   const handlePassword = (e) => {
-    const isMin8Validate = new passwordValidator();
-    isMin8Validate.is().min(8); // Minimum length 8
-    isMin8Validate.validate(e.target.value) ? setMin8(true) : setMin8(false);
-    const isMax100Validate = new passwordValidator();
-    isMax100Validate.is().max(100); // Maximum length 100
-    isMax100Validate.validate(e.target.value)
-      ? setMax100(true)
-      : setMax100(false);
+    const isMinValidate = new passwordValidator();
+    isMinValidate.is().min(4); // Minimum length 4
+    isMinValidate.validate(e.target.value) ? setMin(true) : setMin(false);
+    const isMaxValidate = new passwordValidator();
+    isMaxValidate.is().max(12); // Maximum length 12
+    isMaxValidate.validate(e.target.value) ? setMax(true) : setMax(false);
     const hasSymbolsValidate = new passwordValidator();
     hasSymbolsValidate.has().symbols(); // Must have symbols
     hasSymbolsValidate.validate(e.target.value)
@@ -329,12 +327,12 @@ const Register = () => {
                 Passwords Match
               </li>
               <li>
-                <CheckBox checked={min8 ? "True" : "False"} />
-                Minimum Length of 8
+                <CheckBox checked={min ? "True" : "False"} />
+                Minimum Length of 4
               </li>
               <li>
-                <CheckBox checked={max100 ? "True" : "False"} />
-                Maximum Length of 100
+                <CheckBox checked={max ? "True" : "False"} />
+                Maximum Length of 12
               </li>
               <li>
                 <CheckBox checked={hasSymbols ? "True" : "False"} />
