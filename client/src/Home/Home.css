@@ -4,7 +4,7 @@
     border-radius:50%;
     
 }
-button{
+.ConfirmLogin__btn{
     background: var(--primary);
     border-radius: var(--default-radius);
     width: 100%;
@@ -13,7 +13,9 @@ button{
     border: none;
     margin-bottom: 10px;
 }
-.link {
-    color: white;
+
+
+.ConfirmLogin__link {
+    color:var(--on-primary);
     margin: 8em;
 }

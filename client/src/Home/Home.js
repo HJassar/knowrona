@@ -61,11 +61,11 @@ const Home = ({ quizData, setGeneratedQuiz, setSplashOver }) => {
 
     const ConfirmLogin = () => (
         <div className='ConfirmLogin'>
-            <button onClick={() => setStatus('isLoggedInConfirmed')}>
+            <button class="ConfirmLogin__btn" onClick={() => setStatus('isLoggedInConfirmed')}>
                 <ProfilePic />
             </button>
             <small>
-                <Link to='/login' className='link' style={{ textDecoration: 'none' }}>
+                <Link to='/login' className='ConfirmLogin__link' style={{ textDecoration: 'none' }}>
                     (Not you?) Sign in with a different account.
                 </Link>
             </small>
