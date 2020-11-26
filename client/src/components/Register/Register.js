@@ -3,6 +3,9 @@ import { Link } from "react-router-dom";
 import "./Register.css";
 import axios from "axios";
 
+import shown from "./shown.png";
+import hidden from "./hidden.png";
+
 import passwordValidator from "password-validator";
 import CheckBox from "../CheckBox/CheckBox";
 import Loader from "react-loader-spinner";
@@ -40,6 +43,8 @@ const Register = () => {
   const [usernameCheckLoading, setUsernameCheckLoading] = useState(false);
   const [usernameDisplay, setUsernameDisplay] = useState("");
 
+  const [togglePassword, setTogglePassword] = useState(false);
+  const [toggleConfirmPassword, setToggleConfirmPassword] = useState(false);
   const onEmailKeyUp = (e) => {
     clearTimeout(emailTypingTimer);
     if (email !== "") {
@@ -208,6 +213,27 @@ const Register = () => {
       .catch((err) => console.log(err));
   };
 
+  const togglePasswordVisible = (e) => {
+    passwordTypeSetter(e, setTogglePassword, togglePassword);
+  };
+
+  const toggleConfirmPasswordVisible = (e) => {
+    passwordTypeSetter(e, setToggleConfirmPassword, toggleConfirmPassword);
+  };
+
+  const passwordTypeSetter = (e, stateSet, state) => {
+    console.log(e.target);
+    console.log(e.target.parentNode.previousSibling);
+    if (e.target.parentNode.previousSibling) {
+      if (e.target.parentNode.previousSibling.type === "password") {
+        e.target.parentNode.previousSibling.type = "text";
+        stateSet(!state);
+      } else {
+        e.target.parentNode.previousSibling.type = "password";
+        stateSet(!state);
+      }
+    }
+  };
   return (
     <>
       <div className="container">
@@ -301,6 +327,12 @@ const Register = () => {
               onChange={handlePassword}
               required
             />
+            <div
+              className="form-group__toggle-password"
+              onClick={togglePasswordVisible}
+            >
+              {togglePassword ? <img src={shown} /> : <img src={hidden} />}
+            </div>
           </div>
           <div className="form-group">
             <input
@@ -311,6 +343,16 @@ const Register = () => {
               onChange={handleConfirmPassword}
               required
             />
+            <div
+              className="form-group__toggle-password"
+              onClick={toggleConfirmPasswordVisible}
+            >
+              {toggleConfirmPassword ? (
+                <img src={shown} />
+              ) : (
+                <img src={hidden} />
+              )}
+            </div>
           </div>
           <div>
             <ul>

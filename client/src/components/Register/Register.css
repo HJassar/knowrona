@@ -1,7 +1,12 @@
-.Register__link{
-    color: var(--secondary);
+.Register__link {
+  color: var(--secondary);
 }
 
-.Register__paragraph{
-    font-size:1.2em;
+.Register__paragraph {
+  font-size: 1.2em;
+}
+
+.form-group__toggle-password img {
+  background-color: #fff;
+  width: 35px;
 }
