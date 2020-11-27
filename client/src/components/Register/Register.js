@@ -253,7 +253,7 @@ const Register = () => {
             <CheckBox checked={isEmailValid ? "True" : "False"} />
             Valid Email Address
           </div>
-          {emailCheckLoading ? (
+          {isEmailValid && emailCheckLoading ? (
             <div>
               <span>Checking Availability</span>
               <Loader
@@ -264,7 +264,7 @@ const Register = () => {
                 timeout={0}
               />
             </div>
-          ) : (
+          ) : isEmailValid ? (
             <div>
               <CheckBox
                 checked={isEmailAvailable && email ? "True" : "False"}
@@ -277,6 +277,8 @@ const Register = () => {
                   : `${emailDisplay} is already taken. Please choose a different email`}
               </span>
             </div>
+          ) : (
+            "Enter a valid e-mail address to check for availability."
           )}
           <div className="form-group">
             <input
@@ -293,7 +295,7 @@ const Register = () => {
             <CheckBox checked={isUsernameAlphanumeric ? "True" : "False"} />
             Username contains only letters and numbers with no spaces.
           </div>
-          {usernameCheckLoading ? (
+          {isUsernameAlphanumeric && usernameCheckLoading ? (
             <div>
               <span>Checking Availability</span>
               <Loader
@@ -304,19 +306,21 @@ const Register = () => {
                 timeout={0}
               />
             </div>
-          ) : (
+          ) : isUsernameAlphanumeric ? (
             <div>
               <CheckBox
                 checked={isUsernameAvailable && username ? "True" : "False"}
               />
               <span>
                 {username === ""
-                  ? "Enter a username to check for availability."
+                  ? "Enter a valid username to check for availability."
                   : isUsernameAvailable
                   ? `${usernameDisplay} is available`
                   : `${usernameDisplay} is already taken. Please choose a different username.`}
               </span>
             </div>
+          ) : (
+            "Enter a valid username to check for availability."
           )}
           <div className="form-group">
             <input
