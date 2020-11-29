@@ -32,7 +32,7 @@ const questions = [
 			{ text: "Headache", isCorrect: false},
 			{ text: "New loss of taste or smell", isCorrect: false},
 			{ text: "Nausea or vomiting", isCorrect: false},
-			{ text: "High-grade fever", isCorrect: false}
+			{ text: "High-grade fever", isCorrect: true}
 		],
 		explanation:
 			"As with most viral illnesses, fevers during COVID-19 are low-grade fevers. High-grade fever during COVID-19 may point towards an additional infection besides COVID-19, e.g. bacterial pneumonia"
