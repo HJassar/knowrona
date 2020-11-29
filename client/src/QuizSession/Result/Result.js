@@ -43,7 +43,7 @@ const Results = ( { result, clearQuiz }) => {
       <h2>{evaluation.rank}</h2>
       <p>{evaluation.message}</p>
         <FacebookShareButton
-          url={'https://knowrona.net'}
+          url={'https://www.knowrona.net'}
           resetButtonStyle={false}
           hashtag = '#knowRona'
           quote={`I got a ${evaluation.rank} score of ${result}% in KnowRona!\nYour turn!`}

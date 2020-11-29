@@ -50,26 +50,25 @@ const questions = [
 	},
 	{
 		stem:
-			"People are encouraged to meet up outside wherever possible, but which of these do we know is a major factor in preventing the virus from spreading as easily outside?",
+			"Prolonged use of surgical masks causes:",
 		choices: [
-			{ text: "The pollution", isCorrect: false, counter: 10 },
-			{ text: "The breeze", isCorrect: true, counter: 4 },
-			{ text: "Oxygen levels", isCorrect: false, counter: 6 }
+			{ text: "Increased CO2 levels", isCorrect: false },
+			{ text: "Labored breathing", isCorrect: true },
+			{ text: "Decreased O2 levels", isCorrect: false }
 		],
 		explanation:
-			"It’s the breeze. Scientists are still studying all the reasons why being with people outside is so much safer than being in an enclosed space, but even the slightest breeze helps disperse the virus, exposing you to much lower levels than you would meeting inside. Some studies have also found direct sunlight reduces the amount of time the virus will remain infectious, which is another benefit of being outside."
+			"According to WHO, prolonged use of surgical masks can cause uncomfortable breathing. However, it does not affect CO2 or O2 levels in your body."
 	},
 	{
 		stem:
-			"A high temperature and a continuous cough have been official coronavirus symptoms since the start of the pandemic. But which of these did the government add to the list of early symptoms that people should look for?",
+			"Drinking bleach or any other disinfectant will protect you against COVID-19:",
 		choices: [
-			{ text: "A sore throat", isCorrect: false, counter: 1 },
-			{ text: "A rash on yoyr skin", isCorrect: false, counter: 6 },
-			{ text: "Loosing your sense of smell or taste", isCorrect: true, counter: 15 }
+			{ text: "True", isCorrect: false },
+			{ text: "False", isCorrect: true }
 		],
 		explanation:
-			"It’s losing your sense of smell or taste – or sometimes just a noticeable change in smell or taste. These are the three symptoms the government lists as ones which could require you to self-isolate: a high-temperature, a new persistent cough and the loss of smell or taste. Difficulty breathing, extreme tiredness, stomach pain and diarrhoea are among the other symptoms that have been associated with the virus, but these are usually present along with at least one of the main three symptoms."
-	}
+			"If we have to explain this to you then we have a bigger problem than COVID..."
+	},
 ];
 
 const seedDB = () => {
