@@ -16,8 +16,8 @@ const QuizSession = ( { quizData, result }) => {
 
     // Required Data-Removed due to REDUX
     // const quizData = props.location.state;
-
-    if (!quizData) {
+    console.log(quizData, 'here')
+    if (Object.keys(quizData).length === 0 && quizData.constructor === Object) {
         setTimeout(() => {
             setTimeIsUp(true);
         }, 3000);

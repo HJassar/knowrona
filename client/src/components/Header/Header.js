@@ -22,7 +22,7 @@ const Header = ({
   let location = useLocation().pathname;
   
   const displayHeaderLogo = ["/", "/home"].includes(location) ? false:true;
-  const displayHeaderMenu = ["/"].includes(location) ? false : true;
+  const displayHeaderMenu = false; //["/"].includes(location) ? false : true;
 
   return (
     <header className="Header">

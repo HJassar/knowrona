@@ -9,15 +9,19 @@ const Footer = () => {
     <div className="Footer">
       <nav className="Footer__nav">
         <ul className="Footer__list">
-          <li className="Footer__list-item"><Link className="Footer__link" to='about'>About</Link></li>
-          <li className="Footer__list-item"><Link className="Footer__link" to='contactus'>Contact Us</Link></li>
-          <li className="Footer__list-item"><Link className="Footer__link" to='privacy'>Privacy</Link></li>
-          <li className="Footer__list-item"><Link className="Footer__link" to='termsofuse'>Terms of Use</Link></li>
+          <li className="Footer__list-item">
+            <a href="https://www.facebook.com/KnowRona" target="_blank" className="Footer__link">About</a>
+          </li>
+          
+          <li className="Footer__list-item">
+            <a href="https://www.facebook.com/KnowRona" target="_blank" className="Footer__link">Contact Us</a>
+          </li>
+
           <li className="Footer__list-item">
             <a className="Footer__link Footer__cnsplit" href="https://cnsplit.com" target="_blank" rel="noopener noreferrer">
               A Project by
               <div className="Footer__cnsplit-logo">
-                <img src='./cnsplit_logo_white.png' alt=''></img>
+                <img src='/cnsplit_logo_white.png' alt=''></img>
               </div>
             </a>
           </li>

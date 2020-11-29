@@ -16,30 +16,45 @@ const Home = ({ quizData, setGeneratedQuiz, setSplashOver }) => {
     useEffect(() => {
         setSplashOver();
     }, []);
-    const [status, setStatus] = useState('confirmLogin');
+    const [status, setStatus] = useState('landed');
 
     // This is being replaced with a call to set the quiz in the store
     // const [generatedQuiz, setGeneratedQuiz] = useState({})
 
-    // const handleGenerateClick = (event) => {
-    //     // Show generating quiz componenet until the quiz is sent back
-    //     setStatus('loading');
-    //     setSplashOver();
-    //     // Prevent the button from generating another quiz
-    //     event.target.disabled = true;
-    //     event.target.className = 'Question__choice--disabled';
-    //     // Send the request to generate a quiz
-    //     axios
-    //         .get('/session/generate')
-    //         .then((res) => {
-    //             setGeneratedQuiz(res.data);
-    //             setStatus('loaded');
-    //         })
-    //         .catch((err) => console.log(err));
-    // };
+    const handleGenerateClick = (event) => {
+        // Show generating quiz componenet until the quiz is sent back
+        setStatus('loading');
+        setSplashOver();
+        // Prevent the button from generating another quiz
+        event.target.disabled = true;
+        event.target.className = 'Question__choice--disabled';
+        // Send the request to generate a quiz
+        axios
+            .get('/session/generate')
+            .then((res) => {
+                setGeneratedQuiz(res.data);
+                setStatus('loaded');
+            })
+            .catch((err) => console.log(err));
+    };
 
     const HomeContent = () => {
         switch (status) {
+            case 'landed':
+                return (
+                    <>
+                        <button
+                            onClick={handleGenerateClick}
+                            className='btn primary-btn'
+                        >
+                            Generate a Quiz!
+                        </button>
+                        {/* <Link onClick={() => setSplashOver()} to='/login'>
+                            <button className='btn primary-btn'>LOGIN</button>
+                        </Link> */}
+                    </>
+                );
+                break;
             case 'confirmLogin':
                 return <ConfirmLogin />;
             case 'isLoggedInConfirmed':
@@ -49,7 +64,7 @@ const Home = ({ quizData, setGeneratedQuiz, setSplashOver }) => {
                 return (
                     <>
                         <h1>Pulling the questions...</h1>
-                        <p>Taking too long? you can click here in 15 seconds</p>
+                        {/* <p>Taking too long? you can click here in 15 seconds</p> */}
                     </>
                 );
                 break;

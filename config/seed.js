@@ -4,46 +4,49 @@ const Quiz = require("../models/quiz");
 
 const questions = [
 	{
-		stem: "Corona is",
+		stem: "COVID-19 is caused by a",
 		choices: [
-			{ text: "virus", isCorrect: true, counter: 2 },
-			{ text: "animal", isCorrect: false, counter: 3 },
-			{ text: "bacterium", isCorrect: false }
+			{ text: "Virus", isCorrect: true },
+			{ text: "Animal", isCorrect: false },
+			{ text: "Bacterium", isCorrect: false }
 		],
 		explanation:
-			"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquet ex nisl, at hendrerit neque ultrices quis. Maecenas nec ante pulvinar, vehicula neque eu, bibendum velit. Donec blandit augue vitae facilisis maximus. Phasellus commodo magna non arcu mollis mattis. Donec vel libero lobortis lorem vestibulum aliquet ut nec dolor. Nulla vel magna gravida arcu tincidunt condimentum. Vivamus sollicitudin mollis lacus eu egestas. Praesent placerat auctor dolor, vitae sollicitudin augue tincidunt vitae. Pellentesque ante erat, dictum non arcu ac, condimentum malesuada arcu."
+			"Coronavirus disease 2019 (COVID-19) is caused by a new coronavirus first identified in Wuhan, China, in December 2019. Because it is a new virus, scientists are learning more each day. Although most people who have COVID-19 have mild symptoms, COVID-19 can also cause severe illness and even death. Some groups, including older adults and people who have certain underlying medical conditions, are at increased risk of severe illness."
 	},
 	{
-		stem: "Coronavirus is likely to be more dangerous for",
+		stem: "Which of the following groups is at increased risk of severe COVID-19",
 		choices: [
-			{ text: "teens", isCorrect: false, counter: 1 },
-			{ text: "adults", isCorrect: false, counter: 1 },
-			{ text: "people with weakened immune szstem", isCorrect: true, counter: 5 }
+			{ text: "Children", isCorrect: false},
+			{ text: "Athletics", isCorrect: false},
+			{ text: "Smokers", isCorrect: true}
 		],
 		explanation:
-			"Suspendisse aliquet ex nisl, at hendrerit neque ultrices quis. Maecenas nec ante pulvinar, vehicula neque eu, bibendum velit. Donec blandit augue vitae facilisis maximus. Phasellus commodo magna non arcu mollis mattis. Donec vel libero lobortis lorem vestibulum aliquet ut nec dolor. Nulla vel magna gravida arcu tincidunt condimentum. Vivamus sollicitudin mollis lacus eu egestas. Praesent placerat auctor dolor, vitae sollicitudin augue tincidunt vitae. Pellentesque ante erat, dictum non arcu ac, condimentum malesuada arcu."
-	},
-	{
-		stem:
-			"Washing your hands for 20 seconds is one of the most important ways of avoiding infection. But what part of the process is it that destroys the virus?",
-		choices: [
-			{ text: "water", isCorrect: false, counter: 20 },
-			{ text: "soap", isCorrect: true, counter: 35 },
-			{ text: "friction", isCorrect: false, counter: 15 }
-		],
-		explanation:
-			"The main factor is the soap. The soap molecules dissolve the wall that surrounds and protects the virus. If you wash your hands with soap for a good 20 seconds the virus will literally fall apart on your skin and no longer be a danger. "
+			"While children have been less affected by COVID-19 compared to adults, children can be infected with the virus that causes COVID-19 and some children develop severe illness. Children with underlying medical conditions are at increased risk for severe illness compared to children without underlying medical conditions."
 	},
 	{
 		stem:
-			"People are advised to social distance by staying two metres apart. But which kitchen appliance did the government use to help people understand how far two metres is?",
+			"Which of the following symptoms is NOT commonly associated with COVID-19",
 		choices: [
-			{ text: "cooker", isCorrect: false, counter: 10 },
-			{ text: "fridge", isCorrect: true, counter: 3 },
-			{ text: "microwave", isCorrect: false }
+			{ text: "Cough", isCorrect: false},
+			{ text: "Diarrhea", isCorrect: false },
+			{ text: "Headache", isCorrect: false},
+			{ text: "New loss of taste or smell", isCorrect: false},
+			{ text: "Nausea or vomiting", isCorrect: false},
+			{ text: "High-grade fever", isCorrect: false}
 		],
 		explanation:
-			"The government put out advice saying you could measure two metres by imagining the width of three fridges between you and the next person. It wasn’t seen as particularly useful advice and was widely mocked on social media. Other two metre distance comparisons from the government were: a bed; two benches or four chairs."
+			"As with most viral illnesses, fevers during COVID-19 are low-grade fevers. High-grade fever during COVID-19 may point towards an additional infection besides COVID-19, e.g. bacterial pneumonia"
+	},
+	{
+		stem:
+			"During exercise as a preventive measure you should:",
+		choices: [
+			{ text: "Wear a mask", isCorrect: false},
+			{ text: "Keep a safe distance from others", isCorrect: true },
+			{ text: "Wear a mask and keep a safe distance", isCorrect: false }
+		],
+		explanation:
+			"People should NOT wear masks when exercising, as masks may reduce the ability to breathe comfortably. Sweat can make the mask become wet more quickly which makes it difficult to breathe and promotes the growth of microorganisms. The important preventive measure during exercise is to maintain physical distance of at least one meter from others."
 	},
 	{
 		stem:
@@ -70,26 +73,15 @@ const questions = [
 ];
 
 const seedDB = () => {
-	Question.countDocuments({}, (err, count) => {
-		if (err) console.log(err);
-		if (count === 0) {
-			// Since the quizzes are dependent on the questions, it wouldn't make sense to have any, so let's clear the Quiz collection
-			Quiz.deleteMany({}, (err, deletedQuizes) => {
-				if (err) console.log(err);
-				console.log('All old quizzes have been deleted!')
+	Quiz.deleteMany({}, ()=>{})
+	.then(()=>{
+		Question.deleteMany({},()=>{}).then;
+	})
+	.then(()=>{
+		for (const question of questions) {
+			Question.create(question, (err, question) => {
+				console.log(question._id + " has been created");
 			});
-			// And seed!
-			try {
-				for (const question of questions) {
-					Question.create(question, (err, question) => {
-						console.log(question._id + " has been created");
-					});
-				}
-			} catch (err) {
-				console.log(err);
-			}
-		}else{
-			console.log('The database is not empty! Seeding has been skipped...')
 		}
 	})
 }
