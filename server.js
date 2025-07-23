@@ -122,7 +122,16 @@ seedDB();
 if (environment !== "dev") {
   app.use(enforce.HTTPS({ trustProtoHeader: true }));
   app.use(express.static(path.join("client", "build")));
-  app.get("*", (req, res) => {
+
+  // Set up rate limiter: maximum of 100 requests per 15 minutes
+  const RateLimit = require("express-rate-limit");
+  const limiter = RateLimit({
+    windowMs: 15 * 60 * 1000, // 15 minutes
+    max: 100, // max 100 requests per windowMs
+  });
+
+  // Apply rate limiter to the React route
+  app.get("*", limiter, (req, res) => {
     res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
   });
 }
